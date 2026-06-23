@@ -4,10 +4,10 @@ window.LANGBIANG_PRODUCT_GROUPS = [
     name: "Sprocket",
     description: "Front and rear drive components for hard chain load and race use.",
     links: [
-      { label: "Front Sprocket", href: "products.html#sprocket" },
-      { label: "Rear Sprocket", href: "products.html#sprocket" },
-      { label: "42CrMo4 Race Steel", href: "products.html#sprocket" },
-      { label: "7075-T6 Rear Sprocket", href: "products.html#sprocket" }
+      { label: "Front Sprocket", href: "/products/#sprocket" },
+      { label: "Rear Sprocket", href: "/products/#sprocket" },
+      { label: "42CrMo4 Race Steel", href: "/products/#sprocket" },
+      { label: "7075-T6 Rear Sprocket", href: "/products/#sprocket" }
     ]
   },
   {
@@ -15,10 +15,10 @@ window.LANGBIANG_PRODUCT_GROUPS = [
     name: "Bolt",
     description: "Titanium and race hardware for selected weight-saving and corrosion-control points.",
     links: [
-      { label: "Titanium Bolt Kit", href: "products.html#bolt" },
-      { label: "Sprocket Bolt Set", href: "products.html#bolt" },
-      { label: "Rotor Bolt Set", href: "products.html#bolt" },
-      { label: "Race Hardware", href: "products.html#bolt" }
+      { label: "Titanium Bolt Kit", href: "/products/#bolt" },
+      { label: "Sprocket Bolt Set", href: "/products/#bolt" },
+      { label: "Rotor Bolt Set", href: "/products/#bolt" },
+      { label: "Race Hardware", href: "/products/#bolt" }
     ]
   },
   {
@@ -26,10 +26,10 @@ window.LANGBIANG_PRODUCT_GROUPS = [
     name: "Disc Rotor",
     description: "Brake rotor programs for heat, mud, and race braking.",
     links: [
-      { label: "Front Disc Rotor", href: "products.html#disc-rotor" },
-      { label: "Rear Disc Rotor", href: "products.html#disc-rotor" },
-      { label: "Race Brake Rotor", href: "products.html#disc-rotor" },
-      { label: "Rotor Programs", href: "products.html#disc-rotor" }
+      { label: "Front Disc Rotor", href: "/products/#disc-rotor" },
+      { label: "Rear Disc Rotor", href: "/products/#disc-rotor" },
+      { label: "Race Brake Rotor", href: "/products/#disc-rotor" },
+      { label: "Rotor Programs", href: "/products/#disc-rotor" }
     ]
   },
   {
@@ -37,10 +37,10 @@ window.LANGBIANG_PRODUCT_GROUPS = [
     name: "Clutch Cover",
     description: "Billet clutch and engine side cover components by fitment.",
     links: [
-      { label: "Billet Clutch Cover", href: "products.html#clutch-cover" },
-      { label: "Engine Side Cover", href: "products.html#clutch-cover" },
-      { label: "Model-based Fitment", href: "products.html#clutch-cover" },
-      { label: "Custom / Batch", href: "products.html#clutch-cover" }
+      { label: "Billet Clutch Cover", href: "/products/#clutch-cover" },
+      { label: "Engine Side Cover", href: "/products/#clutch-cover" },
+      { label: "Model-based Fitment", href: "/products/#clutch-cover" },
+      { label: "Custom / Batch", href: "/products/#clutch-cover" }
     ]
   }
 ];
@@ -49,12 +49,13 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "front-sprocket-42crmo4",
     group: "sprocket",
+    order: 1,
     name: "42CrMo4 Race Steel Front Sprocket",
     category: "Front Sprockets",
     short:
       "Front sprocket for direct chain load, tooth wear, mud grinding, hard acceleration, and repeated racing abuse.",
     stock: "Batch slots open",
-    image: "assets/products/front-sprocket-scm440.png",
+    image: "/assets/products/front-sprocket-scm440.png",
     fitment: "By bike model, year, spline, and chain-size program",
     material: "42CrMo4 Cr-Mo alloy steel",
     treatment: "Heat-treated batch program, black oxide or phosphate finish depending on batch",
@@ -77,12 +78,13 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "rear-sprocket-42crmo4",
     group: "sprocket",
+    order: 2,
     name: "42CrMo4 Race Steel Rear Sprocket",
     category: "Rear Sprockets",
     short:
       "Steel rear sprocket for riders and fleets that choose durability, hard abuse, and predictable replacement over weight saving.",
     stock: "Made by batch",
-    image: "assets/images/product-bench.webp",
+    image: "/assets/images/product-bench.webp",
     fitment: "By bike model, year, hub pattern, and chain-size program",
     material: "42CrMo4 Cr-Mo alloy steel",
     treatment: "Heat-treated and protective finish by batch",
@@ -103,14 +105,44 @@ window.LANGBIANG_PRODUCTS = [
     }
   },
   {
+    slug: "race-steel-sprocket-program",
+    group: "sprocket",
+    order: 3,
+    placeholder: true,
+    name: "42CrMo4 Race Steel",
+    category: "Sprocket Program",
+    short: "Race steel sprocket program for hard chain load, tooth wear, mud, and fleet service.",
+    stock: "Batch fitment",
+    image: "/assets/images/product-bench.webp",
+    fitment: "By bike model, year, chain size, tooth count, and hub or spline program",
+    material: "42CrMo4 Cr-Mo alloy steel",
+    treatment: "Heat-treated batch program, black oxide or phosphate finish depending on batch",
+    options: "Front and rear sprocket programs by model, ratio, and batch",
+    chainSize: "428 / 520 by fitment",
+    useCase: "Racing, enduro, rental fleets, mud, hill climbs, and repeated abuse",
+    compatibility:
+      "Confirm bike model, year, spline or hub pattern, chain line, bolt pattern, and clearance before ordering.",
+    badges: ["42CrMo4", "Race Steel", "Front / Rear", "Batch"],
+    specs: {
+      "Bike fitment": "By model, year, chain size, tooth count, and hub or spline program",
+      Material: "42CrMo4 Cr-Mo alloy steel",
+      "Finish / treatment": "Heat-treated batch program, black oxide or phosphate finish depending on batch",
+      Options: "Front and rear sprocket programs by model, ratio, and batch",
+      "Chain size": "428 / 520 by fitment",
+      "Use case": "Racing, enduro, rental fleets, mud, hill climbs, and repeated abuse",
+      "Compatibility notes": "Verify spline or hub pattern, chain line, bolt pattern, and clearance"
+    }
+  },
+  {
     slug: "rear-sprocket-7075",
     group: "sprocket",
+    order: 4,
     name: "7075-T6 Race Aluminum Rear Sprocket",
     category: "Rear Sprockets",
     short:
       "Lightweight race rear sprocket for reduced rotating mass, sharper response, and premium race builds.",
     stock: "Made by batch",
-    image: "assets/products/rear-sprocket-7075.png",
+    image: "/assets/products/rear-sprocket-7075.png",
     fitment: "By bike model, year, hub pattern, and chain-size program",
     material: "7075-T6 aluminum",
     treatment: "CNC machined, anodized finish, inspected tooth profile",
@@ -132,12 +164,12 @@ window.LANGBIANG_PRODUCTS = [
   },
   {
     slug: "chain-guide",
-    group: "sprocket",
+    group: "drivetrain-protection",
     name: "Off-road Chain Guide",
     category: "Drivetrain Protection",
     short: "Chain control and drivetrain protection for mud, rocks, altered gearing, and rental-fleet use.",
     stock: "Prototype queue",
-    image: "assets/images/field-test.webp",
+    image: "/assets/images/field-test.webp",
     fitment: "By bike model, swingarm mount, rear sprocket diameter, and chain size",
     material: "CNC aluminum carrier with replaceable polymer wear block program",
     treatment: "Anodized carrier, replaceable guide insert",
@@ -160,11 +192,12 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "brake-rotor",
     group: "disc-rotor",
+    order: 3,
     name: "Race Brake Rotor",
     category: "Brake Rotors",
     short: "Brake rotor program for mud, heat, braking bite, flatness control, and predictable replacement.",
     stock: "Sample stock",
-    image: "assets/products/brake-rotor.png",
+    image: "/assets/products/brake-rotor.png",
     fitment: "Front / rear, model-specific diameter and bolt pattern",
     material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
     treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
@@ -187,11 +220,12 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "titanium-hardware",
     group: "bolt",
-    name: "Grade 5 Titanium Race Hardware Kit",
+    order: 1,
+    name: "Titanium Bolt Kit",
     category: "Race Hardware",
     short: "Optional race-build hardware for selected weight-saving points and corrosion control.",
     stock: "Selected stock",
-    image: "assets/images/product-bench.webp",
+    image: "/assets/images/product-bench.webp",
     fitment: "By measured thread, length, shoulder, washer, torque, and application",
     material: "Grade 5 titanium, Ti-6Al-4V",
     treatment: "Rolled thread where available, raw titanium or anodized finish by kit",
@@ -215,12 +249,13 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "sprocket-bolt-set",
     group: "bolt",
+    order: 2,
     placeholder: true,
     name: "Sprocket Bolt Set",
     category: "Race Hardware",
     short: "Batch-planned sprocket hardware by thread, length, washer stack, torque, and bike model.",
     stock: "Batch fitment",
-    image: "assets/images/product-bench.webp",
+    image: "/assets/images/product-bench.webp",
     fitment: "By hub, sprocket, thread, shoulder, washer, and torque requirement",
     material: "Steel or Grade 5 titanium by application",
     treatment: "Finish by batch and application",
@@ -243,12 +278,13 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "rotor-bolt-set",
     group: "bolt",
+    order: 3,
     placeholder: true,
     name: "Rotor Bolt Set",
     category: "Race Hardware",
     short: "Rotor hardware by bolt pattern, length, head clearance, heat exposure, and race use.",
     stock: "Batch fitment",
-    image: "assets/products/brake-rotor.png",
+    image: "/assets/products/brake-rotor.png",
     fitment: "By rotor, hub, caliper clearance, bolt pattern, and heat exposure",
     material: "Steel or Grade 5 titanium by application",
     treatment: "Finish by batch and application",
@@ -269,14 +305,44 @@ window.LANGBIANG_PRODUCTS = [
     }
   },
   {
+    slug: "race-hardware",
+    group: "bolt",
+    order: 4,
+    placeholder: true,
+    name: "Race Hardware",
+    category: "Race Hardware",
+    short: "Selected race-build fasteners and hard-part hardware by measured fitment and use case.",
+    stock: "Fitment request",
+    image: "/assets/images/product-bench.webp",
+    fitment: "By measured thread, length, shoulder, washer, torque, and application",
+    material: "Steel or Grade 5 titanium by application",
+    treatment: "Finish by batch and material choice",
+    options: "Engine cover, body hardware, sprocket hardware, rotor hardware, and measured kits",
+    chainSize: "Not applicable",
+    useCase: "Race builds, dealer stock, replacement hardware, corrosion-control points",
+    compatibility:
+      "Verify pitch, length, shoulder, washer stack, torque, heat exposure, and material choice before installation.",
+    badges: ["Hardware", "Fitment", "Batch", "Quote"],
+    specs: {
+      "Bike fitment": "By measured thread, length, shoulder, washer, torque, and application",
+      Material: "Steel or Grade 5 titanium by application",
+      "Finish / treatment": "Finish by batch and material choice",
+      Options: "Engine cover, body hardware, sprocket hardware, rotor hardware, and measured kits",
+      "Chain size": "Not applicable",
+      "Use case": "Race builds, dealer stock, replacement hardware, corrosion-control points",
+      "Compatibility notes": "Verify pitch, length, shoulder, washer stack, torque, heat exposure, and material choice"
+    }
+  },
+  {
     slug: "front-disc-rotor",
     group: "disc-rotor",
+    order: 1,
     placeholder: true,
     name: "Front Disc Rotor",
     category: "Brake Rotors",
     short: "Front rotor program by diameter, bolt pattern, braking load, mud, heat, and pad setup.",
     stock: "Program planning",
-    image: "assets/products/brake-rotor.png",
+    image: "/assets/products/brake-rotor.png",
     fitment: "Model-specific diameter, bolt pattern, offset, and caliper clearance",
     material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
     treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
@@ -299,12 +365,13 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "rear-disc-rotor",
     group: "disc-rotor",
+    order: 2,
     placeholder: true,
     name: "Rear Disc Rotor",
     category: "Brake Rotors",
     short: "Rear rotor program by diameter, bolt pattern, braking feel, mud clearing, and fleet replacement.",
     stock: "Program planning",
-    image: "assets/products/brake-rotor.png",
+    image: "/assets/products/brake-rotor.png",
     fitment: "Model-specific diameter, bolt pattern, offset, and caliper clearance",
     material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
     treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
@@ -325,14 +392,44 @@ window.LANGBIANG_PRODUCTS = [
     }
   },
   {
+    slug: "rotor-programs",
+    group: "disc-rotor",
+    order: 4,
+    placeholder: true,
+    name: "Rotor Programs",
+    category: "Brake Rotors",
+    short: "Brake rotor batch programs by model, diameter, bolt pattern, pad setup, heat, and mud use.",
+    stock: "Program planning",
+    image: "/assets/products/brake-rotor.png",
+    fitment: "Front / rear, model-specific diameter, bolt pattern, offset, and caliper clearance",
+    material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
+    treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
+    options: "Front rotor, rear rotor, fleet replacement, and dealer batch programs",
+    chainSize: "Not applicable",
+    useCase: "Motocross, enduro, rental fleet, wet terrain, race braking",
+    compatibility:
+      "Confirm rotor diameter, bolt circle, offset, caliper clearance, pad compound, and mounting hardware.",
+    badges: ["Rotor", "Program", "Heat", "Mud"],
+    specs: {
+      "Bike fitment": "Front / rear, model-specific diameter, bolt pattern, offset, and caliper clearance",
+      Material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
+      "Finish / treatment": "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
+      Options: "Front rotor, rear rotor, fleet replacement, and dealer batch programs",
+      "Chain size": "Not applicable",
+      "Use case": "Motocross, enduro, rental fleet, wet terrain, race braking",
+      "Compatibility notes": "Verify diameter, BCD, offset, caliper clearance, pad compound, and mounting hardware"
+    }
+  },
+  {
     slug: "billet-clutch-cover",
     group: "clutch-cover",
+    order: 1,
     placeholder: true,
     name: "Billet Clutch Cover",
     category: "Clutch Covers",
     short: "Billet clutch cover concept by model fitment, impact exposure, sealing surface, and batch demand.",
     stock: "Fitment request",
-    image: "assets/images/cnc-inspection.webp",
+    image: "/assets/images/cnc-inspection.webp",
     fitment: "Model-based fitment by sample, drawing, or measured cover",
     material: "Billet aluminum by batch program",
     treatment: "CNC machined, finish by batch, sealing surface check",
@@ -355,12 +452,13 @@ window.LANGBIANG_PRODUCTS = [
   {
     slug: "engine-side-cover",
     group: "clutch-cover",
+    order: 2,
     placeholder: true,
     name: "Engine Side Cover",
     category: "Clutch Covers",
     short: "Engine side cover program for model-based fitment, protection, sealing, and batch production.",
     stock: "Fitment request",
-    image: "assets/images/cnc-inspection.webp",
+    image: "/assets/images/cnc-inspection.webp",
     fitment: "Model-based fitment by sample, drawing, or measured cover",
     material: "Billet aluminum by batch program",
     treatment: "CNC machined, finish by batch, sealing surface check",
@@ -378,6 +476,65 @@ window.LANGBIANG_PRODUCTS = [
       "Chain size": "Not applicable",
       "Use case": "Race builds, hard enduro, premium replacement, dealer batches",
       "Compatibility notes": "Verify cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year"
+    }
+  },
+  {
+    slug: "model-based-fitment",
+    group: "clutch-cover",
+    order: 3,
+    placeholder: true,
+    name: "Model-based Fitment",
+    category: "Clutch Covers",
+    short: "Fitment program for clutch and engine covers by sample, drawing, measured cover, and model year.",
+    stock: "Fitment request",
+    image: "/assets/images/cnc-inspection.webp",
+    fitment: "By bike model, model year, sample cover, drawing, or measured reference",
+    material: "Billet aluminum by batch program",
+    treatment: "CNC machined, finish by batch, sealing surface check",
+    options: "Model-specific clutch cover and engine side cover programs",
+    chainSize: "Not applicable",
+    useCase: "Race builds, hard enduro, dealer batches, fitment development",
+    compatibility:
+      "Confirm cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year before production.",
+    badges: ["Fitment", "Model Year", "Sample", "Quote"],
+    specs: {
+      "Bike fitment": "By bike model, model year, sample cover, drawing, or measured reference",
+      Material: "Billet aluminum by batch program",
+      "Finish / treatment": "CNC machined, finish by batch, sealing surface check",
+      Options: "Model-specific clutch cover and engine side cover programs",
+      "Chain size": "Not applicable",
+      "Use case": "Race builds, hard enduro, dealer batches, fitment development",
+      "Compatibility notes": "Verify cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year"
+    }
+  },
+  {
+    slug: "custom-batch-clutch-cover",
+    group: "clutch-cover",
+    order: 4,
+    placeholder: true,
+    name: "Custom / Batch",
+    category: "Clutch Covers",
+    short: "Small-batch cover production by model, quantity, finish need, dealer program, and market.",
+    stock: "Batch planning",
+    image: "/assets/images/cnc-inspection.webp",
+    fitment: "By confirmed sample, drawing, batch quantity, market, and finish requirement",
+    material: "Billet aluminum by batch program",
+    treatment: "CNC machined, finish by batch, sealing surface check",
+    options: "Custom sample, dealer batch, fleet batch, and private fitment program",
+    chainSize: "Not applicable",
+    useCase: "Dealer stock, distributor program, race team batch, premium replacement",
+    compatibility:
+      "Confirm sample control, drawing revision, gasket surface, batch quantity, finish, packaging, and market requirements.",
+    badges: ["Custom", "Batch", "Dealer", "Quote"],
+    specs: {
+      "Bike fitment": "By confirmed sample, drawing, batch quantity, market, and finish requirement",
+      Material: "Billet aluminum by batch program",
+      "Finish / treatment": "CNC machined, finish by batch, sealing surface check",
+      Options: "Custom sample, dealer batch, fleet batch, and private fitment program",
+      "Chain size": "Not applicable",
+      "Use case": "Dealer stock, distributor program, race team batch, premium replacement",
+      "Compatibility notes":
+        "Verify sample control, drawing revision, gasket surface, batch quantity, finish, packaging, and market requirements"
     }
   }
 ];

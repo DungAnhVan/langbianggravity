@@ -16,7 +16,9 @@ function getProduct(slug) {
 }
 
 function productGroupProducts(groupSlug) {
-  return products.filter((product) => product.group === groupSlug);
+  return products
+    .filter((product) => product.group === groupSlug)
+    .sort((a, b) => (a.order || 99) - (b.order || 99));
 }
 
 function loadCart() {
@@ -282,7 +284,7 @@ function prefillQuote(product, requestType) {
   }
 
   storePendingQuote(fields);
-  window.location.href = "contact.html#contact";
+  window.location.href = "/contact/#contact";
 }
 
 function renderCart() {
