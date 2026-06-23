@@ -21,6 +21,10 @@ function productGroupProducts(groupSlug) {
     .sort((a, b) => (a.order || 99) - (b.order || 99));
 }
 
+function productSubgroupProducts(groupSlug, subgroupName) {
+  return productGroupProducts(groupSlug).filter((product) => product.subgroup === subgroupName);
+}
+
 function loadCart() {
   try {
     return JSON.parse(localStorage.getItem(CART_KEY)) || [];
@@ -153,15 +157,40 @@ function renderProductSections() {
       <div class="product-group-head">
         <p class="eyebrow">${group.name}</p>
         <h2>${group.name}</h2>
-        <p>${group.description}</p>
+        <p>${group.intro || group.description}</p>
       </div>
-      <div class="store-grid"></div>
     `;
 
-    const grid = qs(".store-grid", section);
-    productGroupProducts(group.slug).forEach((product) => {
-      grid.append(productCard(product, template));
-    });
+    if (group.subgroups?.length) {
+      group.subgroups.forEach((subgroup) => {
+        const productsForSubgroup = productSubgroupProducts(group.slug, subgroup.name);
+        if (!productsForSubgroup.length) return;
+
+        const subgroupSection = document.createElement("div");
+        subgroupSection.className = "product-subgroup";
+        subgroupSection.innerHTML = `
+          <div class="product-subgroup-head">
+            <h3>${subgroup.name}</h3>
+            <p>${subgroup.description}</p>
+          </div>
+          <div class="store-grid"></div>
+        `;
+
+        const subgroupGrid = qs(".store-grid", subgroupSection);
+        productsForSubgroup.forEach((product) => {
+          subgroupGrid.append(productCard(product, template));
+        });
+        section.append(subgroupSection);
+      });
+    } else {
+      const grid = document.createElement("div");
+      grid.className = "store-grid";
+      productGroupProducts(group.slug).forEach((product) => {
+        grid.append(productCard(product, template));
+      });
+      section.append(grid);
+    }
+
     root.append(section);
   });
 }
