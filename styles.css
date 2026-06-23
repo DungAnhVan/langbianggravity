@@ -372,6 +372,24 @@ p {
   margin-bottom: 42px;
 }
 
+.page-hero {
+  padding-top: 150px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.025) 1px, transparent 1px),
+    linear-gradient(120deg, #101412 0%, #080a09 72%);
+  background-size: 80px 80px, 80px 80px, auto;
+}
+
+.page-hero h1 {
+  max-width: 900px;
+}
+
+.page-hero .section-heading {
+  margin-bottom: 0;
+}
+
 .parts-section {
   background:
     linear-gradient(90deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px),
@@ -731,6 +749,13 @@ p {
   color: #cfd7ce;
   font-size: 0.98rem;
   font-weight: 540;
+}
+
+.product-material {
+  flex: 0;
+  margin-top: -4px;
+  color: #d9ded7;
+  font-weight: 750;
 }
 
 .price-row {

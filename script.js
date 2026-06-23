@@ -1,168 +1,7 @@
-const products = [
-  {
-    slug: "front-sprocket-42crmo4",
-    name: "42CrMo4 Race Steel Front Sprocket",
-    category: "Front Sprockets",
-    short:
-      "Front sprocket for direct chain load, tooth wear, mud grinding, hard acceleration, and repeated racing abuse.",
-    stock: "Batch slots open",
-    image: "assets/products/front-sprocket-scm440.png",
-    fitment: "By bike model, year, spline, and chain-size program",
-    material: "42CrMo4 Cr-Mo alloy steel",
-    treatment: "Heat-treated batch program, black oxide or phosphate finish depending on batch",
-    options: "12T, 13T, 14T, 15T by model and chain-size program",
-    chainSize: "428 / 520 by fitment",
-    useCase: "Motocross, enduro, rental fleet, race starts, hill climbs",
-    compatibility:
-      "Confirm bike model, year, spline profile, retaining plate, chain width, and case clearance before ordering.",
-    badges: ["42CrMo4", "Race Steel", "Front Load", "Chain Load"],
-    specs: {
-      "Bike fitment": "By model, year, spline, and chain-size program",
-      Material: "42CrMo4 Cr-Mo alloy steel",
-      "Heat treatment / finish": "Heat-treated batch program, black oxide or phosphate finish depending on batch",
-      "Tooth count / size options": "12T, 13T, 14T, 15T by model and chain-size program",
-      "Chain size": "428 / 520 by fitment",
-      "Use case": "Motocross, enduro, rental fleet, race starts, hill climbs",
-      "Compatibility notes": "Verify spline profile, retaining plate, chain width, and case clearance"
-    }
-  },
-  {
-    slug: "rear-sprocket-42crmo4",
-    name: "42CrMo4 Race Steel Rear Sprocket",
-    category: "Rear Sprockets",
-    short:
-      "Steel rear sprocket for riders and fleets that choose durability, hard abuse, and predictable replacement over weight saving.",
-    stock: "Made by batch",
-    image: "assets/images/product-bench.webp",
-    fitment: "By bike model, year, hub pattern, and chain-size program",
-    material: "42CrMo4 Cr-Mo alloy steel",
-    treatment: "Heat-treated and protective finish by batch",
-    options: "45T to 52T planning range, private tooth counts by batch",
-    chainSize: "428 / 520 by fitment",
-    useCase: "Hard enduro, rental fleet, mud, rocks, hill climbs, long service intervals",
-    compatibility:
-      "Confirm bolt circle diameter, center bore, bolt count, hub offset, chain line, and guide clearance before ordering.",
-    badges: ["42CrMo4", "Steel Rear", "Fleet Abuse", "Durability"],
-    specs: {
-      "Bike fitment": "By model, year, hub pattern, and chain-size program",
-      Material: "42CrMo4 Cr-Mo alloy steel",
-      "Heat treatment / finish": "Heat-treated and protective finish by batch",
-      "Tooth count / size options": "45T to 52T planning range, private tooth counts by batch",
-      "Chain size": "428 / 520 by fitment",
-      "Use case": "Hard enduro, rental fleet, mud, rocks, hill climbs, long service intervals",
-      "Compatibility notes": "Verify BCD, center bore, bolt count, offset, chain line, and guide clearance"
-    }
-  },
-  {
-    slug: "rear-sprocket-7075",
-    name: "7075-T6 Race Aluminum Rear Sprocket",
-    category: "Rear Sprockets",
-    short:
-      "Lightweight race rear sprocket for reduced rotating mass, sharper response, and premium race builds.",
-    stock: "Made by batch",
-    image: "assets/products/rear-sprocket-7075.png",
-    fitment: "By bike model, year, hub pattern, and chain-size program",
-    material: "7075-T6 aluminum",
-    treatment: "CNC machined, anodized finish, inspected tooth profile",
-    options: "45T, 48T, 49T, 50T, 52T, private tooth counts by batch",
-    chainSize: "428 / 520 by fitment",
-    useCase: "Race builds, performance setups, riders who want lighter rear drive",
-    compatibility:
-      "Confirm bolt circle diameter, center bore, bolt count, hub offset, chain line, and guide clearance before ordering.",
-    badges: ["7075-T6", "Race Aluminum", "Lightweight", "Response"],
-    specs: {
-      "Bike fitment": "By model, year, hub pattern, and chain-size program",
-      Material: "7075-T6 aluminum",
-      "Heat treatment / finish": "CNC machined, anodized finish, inspected tooth profile",
-      "Tooth count / size options": "45T, 48T, 49T, 50T, 52T, private tooth counts by batch",
-      "Chain size": "428 / 520 by fitment",
-      "Use case": "Race builds, performance setups, riders who want lighter rear drive",
-      "Compatibility notes": "Verify BCD, center bore, bolt count, offset, chain line, and guide clearance"
-    }
-  },
-  {
-    slug: "chain-guide",
-    name: "Off-road Chain Guide",
-    category: "Drivetrain Protection",
-    short:
-      "Chain control and drivetrain protection for mud, rocks, altered gearing, and rental-fleet use.",
-    stock: "Prototype queue",
-    image: "assets/images/field-test.webp",
-    fitment: "By bike model, swingarm mount, rear sprocket diameter, and chain size",
-    material: "CNC aluminum carrier with replaceable polymer wear block program",
-    treatment: "Anodized carrier, replaceable guide insert",
-    options: "Standard, mud-clearance, rental reinforced",
-    chainSize: "428 / 520",
-    useCase: "Enduro, rental fleet, rocks, mud, altered gearing",
-    compatibility:
-      "Confirm swingarm mount spacing, rear sprocket diameter, wheel travel, chain line, and guide clearance before ordering.",
-    badges: ["Chain Control", "Mud Clearance", "Drivetrain Protection", "B2B Program"],
-    specs: {
-      "Bike fitment": "By bike model, swingarm mount, rear sprocket diameter, and chain size",
-      Material: "CNC aluminum carrier with replaceable polymer wear block program",
-      "Heat treatment / finish": "Anodized carrier, replaceable guide insert",
-      "Tooth count / size options": "Clearance planned around rear sprocket diameter",
-      "Chain size": "428 / 520",
-      "Use case": "Enduro, rental fleet, rocks, mud, altered gearing",
-      "Compatibility notes": "Verify swingarm mount, wheel travel, sprocket diameter, chain line, and guide clearance"
-    }
-  },
-  {
-    slug: "brake-rotor",
-    name: "Race Brake Rotor",
-    category: "Brake Rotors",
-    short:
-      "Brake rotor program for mud, heat, braking bite, flatness control, and predictable replacement.",
-    stock: "Sample stock",
-    image: "assets/products/brake-rotor.png",
-    fitment: "Front / rear, model-specific diameter and bolt pattern",
-    material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
-    treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
-    options: "Front / rear, model-specific diameter and bolt pattern",
-    chainSize: "Not applicable",
-    useCase: "Motocross, enduro, rental fleet, wet terrain, race braking",
-    compatibility:
-      "Confirm rotor diameter, bolt circle, offset, caliper clearance, pad compound, and mounting hardware before ordering.",
-    badges: ["SUS420", "Heat", "Mud", "Flatness Check"],
-    specs: {
-      "Bike fitment": "Front / rear, model-specific diameter and bolt pattern",
-      Material: "SUS420 rotor steel or rotor-grade stainless steel by batch",
-      "Heat treatment / finish": "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
-      "Tooth count / size options": "Not applicable",
-      "Chain size": "Not applicable",
-      "Use case": "Motocross, enduro, rental fleet, wet terrain, race braking",
-      "Compatibility notes": "Verify diameter, BCD, offset, caliper clearance, pad compound, and mounting hardware"
-    }
-  },
-  {
-    slug: "titanium-hardware",
-    name: "Grade 5 Titanium Race Hardware Kit",
-    category: "Race Hardware",
-    short:
-      "Optional race-build hardware for selected weight-saving points and corrosion control.",
-    stock: "Selected stock",
-    image: "assets/images/product-bench.webp",
-    fitment: "By measured thread, length, shoulder, washer, torque, and application",
-    material: "Grade 5 titanium, Ti-6Al-4V",
-    treatment: "Rolled thread where available, raw titanium or anodized finish by kit",
-    options: "Rotor, sprocket, engine cover, body hardware, custom measured kits",
-    chainSize: "Not applicable",
-    useCase: "Premium race builds, corrosion control, selected weight-saving points",
-    compatibility:
-      "This is not required for every bike. Steel remains the right choice for many high-stress or heat-critical positions. Verify pitch, length, shoulder, washer, torque, anti-seize requirement, and heat exposure before installation.",
-    badges: ["Grade 5 Ti", "Optional", "Race Build", "Counts Grams"],
-    specs: {
-      "Bike fitment": "By measured thread, length, shoulder, washer, torque, and application",
-      Material: "Grade 5 titanium, Ti-6Al-4V",
-      "Heat treatment / finish": "Rolled thread where available, raw titanium or anodized finish by kit",
-      "Tooth count / size options": "Rotor, sprocket, engine cover, body hardware, custom measured kits",
-      "Chain size": "Not applicable",
-      "Use case": "Premium race builds, corrosion control, selected weight-saving points",
-      "Compatibility notes":
-        "Steel remains the right choice for many high-stress or heat-critical positions. Verify pitch, length, shoulder, washer, torque, anti-seize requirement, and heat exposure before installation."
-    }
-  }
-];
+const products = window.LANGBIANG_PRODUCTS || [];
+const PRICE_LABEL = "Price on request";
+const CART_KEY = "lg-cart";
+const PENDING_QUOTE_KEY = "lg-pending-quote";
 
 const state = {
   cart: loadCart()
@@ -170,7 +9,6 @@ const state = {
 
 const qs = (selector, root = document) => root.querySelector(selector);
 const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-const PRICE_LABEL = "Price on request";
 
 function getProduct(slug) {
   return products.find((product) => product.slug === slug);
@@ -178,14 +16,14 @@ function getProduct(slug) {
 
 function loadCart() {
   try {
-    return JSON.parse(localStorage.getItem("lg-cart")) || [];
+    return JSON.parse(localStorage.getItem(CART_KEY)) || [];
   } catch {
     return [];
   }
 }
 
 function saveCart() {
-  localStorage.setItem("lg-cart", JSON.stringify(state.cart));
+  localStorage.setItem(CART_KEY, JSON.stringify(state.cart));
   renderCart();
 }
 
@@ -210,11 +48,50 @@ function changeQty(slug, delta) {
   saveCart();
 }
 
+function quoteSummary() {
+  return state.cart
+    .map((item) => {
+      const product = getProduct(item.slug);
+      return product ? `${item.qty} x ${product.name}` : "";
+    })
+    .filter(Boolean)
+    .join(", ");
+}
+
+function storePendingQuote(fields) {
+  localStorage.setItem(PENDING_QUOTE_KEY, JSON.stringify(fields));
+}
+
+function applyQuoteFields(fields) {
+  const form = qs("[data-quote-form]");
+  if (!form || !fields) return false;
+  Object.entries(fields).forEach(([name, value]) => {
+    if (form.elements[name] && value) {
+      form.elements[name].value = value;
+    }
+  });
+  return true;
+}
+
+function applyPendingQuote() {
+  const form = qs("[data-quote-form]");
+  if (!form) return;
+  try {
+    const pending = JSON.parse(localStorage.getItem(PENDING_QUOTE_KEY));
+    if (pending && applyQuoteFields(pending)) {
+      localStorage.removeItem(PENDING_QUOTE_KEY);
+    }
+  } catch {
+    localStorage.removeItem(PENDING_QUOTE_KEY);
+  }
+}
+
 function renderStore() {
   const grid = qs("[data-store-grid]");
   const template = qs("#store-card-template");
   if (!grid || !template) return;
 
+  grid.innerHTML = "";
   products.forEach((product) => {
     const card = template.content.firstElementChild.cloneNode(true);
     const img = qs("img", card);
@@ -224,10 +101,15 @@ function renderStore() {
     qs(".product-meta", card).textContent = product.category;
     qs("h3", card).textContent = product.name;
     qs("p", card).textContent = product.short;
+    const material = qs("[data-product-material]", card);
+    if (material) material.textContent = `Material: ${product.material}`;
     qs(".price-row strong", card).textContent = PRICE_LABEL;
-    qs(".price-row span", card).textContent = "";
+    const priceNote = qs(".price-row span", card);
+    if (priceNote) priceNote.textContent = "";
     qs("[data-view-details]", card).addEventListener("click", () => openProduct(product.slug));
     qs("[data-add-cart]", card).addEventListener("click", () => addToCart(product.slug));
+    const fitment = qs("[data-request-fitment]", card);
+    if (fitment) fitment.addEventListener("click", () => prefillQuote(product, "Request fitment"));
     grid.append(card);
   });
 }
@@ -258,21 +140,21 @@ function openProduct(slug) {
       </table>
       <p><strong>Price:</strong> ${PRICE_LABEL}</p>
       <p><strong>Material:</strong> ${product.material}</p>
-      <p><strong>Heat treatment / finish:</strong> ${product.treatment}</p>
+      <p><strong>Finish / treatment:</strong> ${product.treatment}</p>
       <p><strong>Options:</strong> ${product.options}</p>
       <p><strong>Compatibility:</strong> ${product.compatibility}</p>
       <p class="warning-note">Warning: confirm fitment before installation.</p>
       <div class="detail-actions">
         <button class="button button-primary" type="button" data-modal-add>Add to Quote</button>
-        <button class="button" type="button" data-modal-bulk>Request Bulk Quote</button>
-        <button class="button" type="button" data-modal-b2b>B2B Inquiry</button>
+        <button class="button" type="button" data-modal-fitment>Request Fitment</button>
+        <button class="button" type="button" data-modal-b2b>Dealer / Fleet Inquiry</button>
       </div>
     </div>
   `;
 
   qs("[data-modal-add]", detail).addEventListener("click", () => addToCart(product.slug));
-  qs("[data-modal-bulk]", detail).addEventListener("click", () => prefillQuote(product, "Bulk quote"));
-  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillQuote(product, "B2B inquiry"));
+  qs("[data-modal-fitment]", detail).addEventListener("click", () => prefillQuote(product, "Request fitment"));
+  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillQuote(product, "Dealer / fleet inquiry"));
 
   if (typeof dialog.showModal === "function") {
     dialog.showModal();
@@ -292,13 +174,20 @@ function closeProduct() {
 }
 
 function prefillQuote(product, requestType) {
-  const form = qs("[data-quote-form]");
+  const fields = {
+    productNeeded: product.name,
+    customRequest: requestType,
+    quantity: "10"
+  };
   closeProduct();
-  if (!form) return;
-  form.productNeeded.value = product.name;
-  form.customRequest.value = requestType;
-  form.quantity.value = form.quantity.value || "10";
-  qs("#contact").scrollIntoView({ behavior: "smooth", block: "start" });
+
+  if (applyQuoteFields(fields)) {
+    qs("#contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  storePendingQuote(fields);
+  window.location.href = "contact.html#contact";
 }
 
 function renderCart() {
@@ -307,9 +196,12 @@ function renderCart() {
   qsa("[data-cart-count]").forEach((badge) => {
     badge.textContent = count;
   });
-  qs("[data-cart-total]").textContent = PRICE_LABEL;
+
+  const total = qs("[data-cart-total]");
+  if (total) total.textContent = PRICE_LABEL;
 
   const list = qs("[data-cart-items]");
+  if (!list) return;
   list.innerHTML = "";
 
   if (!state.cart.length) {
@@ -345,6 +237,7 @@ function renderCart() {
 
 function openCart() {
   const drawer = qs("[data-cart-drawer]");
+  if (!drawer) return;
   drawer.classList.add("is-open");
   drawer.setAttribute("aria-hidden", "false");
   document.body.classList.add("cart-open");
@@ -352,6 +245,7 @@ function openCart() {
 
 function closeCart() {
   const drawer = qs("[data-cart-drawer]");
+  if (!drawer) return;
   drawer.classList.remove("is-open");
   drawer.setAttribute("aria-hidden", "true");
   document.body.classList.remove("cart-open");
@@ -361,6 +255,7 @@ function setupNavigation() {
   const header = qs("[data-header]");
   const nav = qs("[data-nav]");
   const toggle = qs("[data-nav-toggle]");
+  if (!header || !nav || !toggle) return;
 
   const syncHeader = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 24);
@@ -389,45 +284,56 @@ function setupForms() {
   const status = qs("[data-form-status]");
   if (!form) return;
 
+  applyPendingQuote();
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(form);
     const lines = [
-      "Langbiang Gravity quote request",
+      "Langbiang Gravity fitment and quote request",
       "",
       `Name: ${data.get("name") || ""}`,
       `Phone / WhatsApp / Zalo: ${data.get("phone") || ""}`,
       `Email: ${data.get("email") || ""}`,
       `Business type: ${data.get("businessType") || ""}`,
       `Bike model: ${data.get("bikeModel") || ""}`,
+      `Model year: ${data.get("modelYear") || ""}`,
       `Product needed: ${data.get("productNeeded") || ""}`,
+      `Front / rear need: ${data.get("frontRearNeed") || ""}`,
+      `Chain size: ${data.get("chainSize") || ""}`,
+      `Tooth count: ${data.get("toothCount") || ""}`,
       `Quantity: ${data.get("quantity") || ""}`,
+      `Use case: ${data.get("useCase") || ""}`,
       `Custom request: ${data.get("customRequest") || ""}`,
       "",
       `Message: ${data.get("message") || ""}`
     ];
-    const subject = encodeURIComponent("Langbiang Gravity quote request");
+    const subject = encodeURIComponent("Langbiang Gravity fitment and quote request");
     const body = encodeURIComponent(lines.join("\n"));
-    status.textContent = "Email draft opened. Attach drawing or sample photo before sending if needed.";
+    if (status) status.textContent = "Email draft opened. Attach drawing or sample photo before sending if needed.";
     window.location.href = `mailto:sales@langbianggravity.com?subject=${subject}&body=${body}`;
   });
 }
 
 function setupCartQuote() {
   const link = qs("[data-cart-quote]");
-  link.addEventListener("click", () => {
-    const form = qs("[data-quote-form]");
-    if (!form) return;
-    const summary = state.cart
-      .map((item) => {
-        const product = getProduct(item.slug);
-        return product ? `${item.qty} x ${product.name}` : "";
-      })
-      .filter(Boolean)
-      .join(", ");
-    form.productNeeded.value = summary;
-    form.customRequest.value = "Product quote request";
+  if (!link) return;
+
+  link.addEventListener("click", (event) => {
+    const summary = quoteSummary();
+    const fields = {
+      productNeeded: summary,
+      customRequest: "Product quote request"
+    };
     closeCart();
+
+    if (applyQuoteFields(fields)) {
+      event.preventDefault();
+      qs("#contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
+    storePendingQuote(fields);
   });
 }
 
@@ -442,16 +348,16 @@ function init() {
     button.addEventListener("click", () => openProduct(button.dataset.openProduct));
   });
 
-  qs("[data-dialog-close]").addEventListener("click", closeProduct);
-  qs("[data-product-dialog]").addEventListener("click", (event) => {
+  qs("[data-dialog-close]")?.addEventListener("click", closeProduct);
+  qs("[data-product-dialog]")?.addEventListener("click", (event) => {
     if (event.target === event.currentTarget) closeProduct();
   });
 
   qsa("[data-cart-open]").forEach((button) => {
     button.addEventListener("click", openCart);
   });
-  qs("[data-cart-close]").addEventListener("click", closeCart);
-  qs("[data-cart-drawer]").addEventListener("click", (event) => {
+  qs("[data-cart-close]")?.addEventListener("click", closeCart);
+  qs("[data-cart-drawer]")?.addEventListener("click", (event) => {
     if (event.target === event.currentTarget) closeCart();
   });
 
