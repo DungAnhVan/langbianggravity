@@ -28,7 +28,7 @@ window.LANGBIANG_FITMENTS = [
     position: "Rear",
     toothCount: "48T",
     price: "Price on request",
-    detail: "Race steel rear 520 conversion sample for WR155R. Confirm hub pattern, chain line, and guide clearance."
+    detail: "42CrMo4 rear 520 conversion sample for WR155R. Confirm hub pattern, chain line, and guide clearance."
   },
   {
     line: "sprockets",
@@ -43,7 +43,7 @@ window.LANGBIANG_FITMENTS = [
     position: "Rear",
     toothCount: "50T",
     price: "Price on request",
-    detail: "7075-T6 rear sample for lower rotating mass. Confirm hub pattern, chain line, and guide clearance."
+    detail: "7075-T6 rear sample. Confirm hub pattern, chain line, and guide clearance."
   },
   {
     line: "sprockets",
@@ -58,7 +58,7 @@ window.LANGBIANG_FITMENTS = [
     position: "Front",
     toothCount: "13T",
     price: "Price on request",
-    detail: "Front race fitment sample for KTM 450 SX-F. Confirm spline and chain clearance before ordering."
+    detail: "Front fitment sample for KTM 450 SX-F. Confirm spline and chain clearance before ordering."
   },
   {
     line: "brake-rotor",
@@ -72,7 +72,7 @@ window.LANGBIANG_FITMENTS = [
     material: "SUS420 / rotor-grade stainless by batch",
     diameter: "260 mm sample",
     price: "Price on request",
-    detail: "Front brake rotor sample for heat, mud, braking load, and flatness check by batch."
+    detail: "Front brake rotor sample. Confirm diameter, bolt circle, offset, and flatness check."
   },
   {
     line: "brake-rotor",
@@ -86,7 +86,7 @@ window.LANGBIANG_FITMENTS = [
     material: "SUS420 / rotor-grade stainless by batch",
     diameter: "220 mm sample",
     price: "Price on request",
-    detail: "Rear brake rotor sample for mud, heat, braking feel, and fitment-based replacement."
+    detail: "Rear brake rotor sample. Confirm diameter, bolt circle, offset, and mounting hardware."
   },
   {
     line: "brake-rotor",

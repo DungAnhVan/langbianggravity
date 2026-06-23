@@ -423,14 +423,14 @@ function openProduct(slug) {
       <div class="detail-actions">
         <button class="button button-primary" type="button" data-modal-add>Add to Quote</button>
         <button class="button" type="button" data-modal-fitment>Request Fitment</button>
-        <button class="button" type="button" data-modal-b2b>Dealer / Fleet Inquiry</button>
+        <button class="button" type="button" data-modal-b2b>Dealer Inquiry</button>
       </div>
     </div>
   `;
 
   qs("[data-modal-add]", detail).addEventListener("click", () => addToCart(product.slug));
   qs("[data-modal-fitment]", detail).addEventListener("click", () => prefillQuote(product, "Request fitment"));
-  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillQuote(product, "Dealer / fleet inquiry"));
+  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillQuote(product, "Dealer inquiry"));
 
   if (typeof dialog.showModal === "function") {
     dialog.showModal();
@@ -493,14 +493,14 @@ function openFitment(sku) {
       <div class="detail-actions">
         <button class="button button-primary" type="button" data-modal-add-fitment>Add to Quote</button>
         <button class="button" type="button" data-modal-fitment>Request Fitment</button>
-        <button class="button" type="button" data-modal-b2b>Dealer / Fleet Inquiry</button>
+        <button class="button" type="button" data-modal-b2b>Dealer Inquiry</button>
       </div>
     </div>
   `;
 
   qs("[data-modal-add-fitment]", detail).addEventListener("click", () => addFitmentToCart(fitment.sku));
   qs("[data-modal-fitment]", detail).addEventListener("click", () => prefillFitmentQuote(fitment, "Request fitment"));
-  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillFitmentQuote(fitment, "Dealer / fleet inquiry"));
+  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillFitmentQuote(fitment, "Dealer inquiry"));
 
   if (typeof dialog.showModal === "function") {
     dialog.showModal();

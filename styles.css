@@ -511,6 +511,33 @@ p {
   background-size: 80px 80px;
 }
 
+.fact-strip-section {
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.025) 1px, transparent 1px),
+    var(--graphite);
+  background-size: 80px 80px;
+}
+
+.fact-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fact-strip span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  background: rgba(238, 241, 235, 0.045);
+  color: var(--off-white);
+  font-size: 0.94rem;
+  font-weight: 850;
+}
+
 .category-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));

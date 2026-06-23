@@ -2,8 +2,8 @@ window.LANGBIANG_PRODUCT_GROUPS = [
   {
     slug: "sprockets",
     name: "Sprockets",
-    description: "Front and rear drivetrain components for hard chain load, tooth wear, mud, and race use.",
-    cardCopy: "Front and rear drivetrain components for hard chain load, tooth wear, mud, and race use.",
+    description: "Front and rear sprockets by bike model, chain size, and tooth count.",
+    cardCopy: "Front and rear sprockets by bike model, chain size, and tooth count.",
     href: "/products/sprockets/",
     links: [
       { label: "Front Sprocket", href: "/products/sprockets/#front-sprocket" },
@@ -15,8 +15,8 @@ window.LANGBIANG_PRODUCT_GROUPS = [
   {
     slug: "brake-rotor",
     name: "Brake Rotor",
-    description: "Front and rear racing brake rotor programs for heat, mud, braking load, and fitment-based replacement.",
-    cardCopy: "Front and rear racing brake rotor programs for heat, mud, braking load, and fitment-based replacement.",
+    description: "Front and rear brake rotors by bike model, diameter, bolt pattern, and offset.",
+    cardCopy: "Front and rear brake rotors by bike model, diameter, bolt pattern, and offset.",
     href: "/products/brake-rotor/",
     links: [
       { label: "Front Brake Rotor", href: "/products/brake-rotor/#front-brake-rotor" },
@@ -40,8 +40,8 @@ window.LANGBIANG_PRODUCT_GROUPS = [
   {
     slug: "bolt-kits",
     name: "Bolt Kits",
-    description: "Grade 5 titanium race hardware kits for selected weight-saving and corrosion-control points.",
-    cardCopy: "Grade 5 titanium race hardware kits for selected weight-saving and corrosion-control points.",
+    description: "Grade 5 titanium hardware by application, thread, length, and torque check.",
+    cardCopy: "Grade 5 titanium hardware by application, thread, length, and torque check.",
     href: "/products/bolt-kits/",
     links: [
       { label: "Grade 5 Titanium Kit", href: "/products/bolt-kits/#grade-5-titanium" },
@@ -59,8 +59,7 @@ window.LANGBIANG_PRODUCTS = [
     order: 1,
     name: "42CrMo4 Race Steel Front Sprocket",
     category: "Sprockets",
-    short:
-      "Front sprocket for spline fitment, direct chain load, tooth wear, mud grinding, hard acceleration, and racing abuse.",
+    short: "Front sprocket by spline fitment, chain size, tooth count, and case clearance.",
     stock: "Batch slots open",
     image: "/assets/products/front-sprocket-scm440.png",
     fitment: "By bike model, year, spline, and chain-size program",
@@ -68,7 +67,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "Heat-treated batch program, black oxide or phosphate finish depending on batch",
     options: "12T, 13T, 14T, 15T by model and chain-size program",
     chainSize: "428 / 520 by fitment",
-    useCase: "Racing, enduro, rental fleet, hill climbs, mud, hard chain load",
+    useCase: "Spline fitment, chain size, tooth count, and case clearance",
     compatibility:
       "Confirm bike model, year, spline profile, retaining plate, chain width, and case clearance before ordering.",
     badges: ["42CrMo4", "Race Steel", "Front", "Chain Load"],
@@ -78,7 +77,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "Heat-treated batch program, black oxide or phosphate finish depending on batch",
       Options: "12T, 13T, 14T, 15T by model and chain-size program",
       "Chain size": "428 / 520 by fitment",
-      "Use case": "Racing, enduro, rental fleet, hill climbs, mud, hard chain load",
+      "Use case": "Spline fitment, chain size, tooth count, and case clearance",
       "Compatibility notes": "Verify spline profile, retaining plate, chain width, and case clearance"
     }
   },
@@ -88,8 +87,7 @@ window.LANGBIANG_PRODUCTS = [
     order: 2,
     name: "42CrMo4 Race Steel Rear Sprocket",
     category: "Sprockets",
-    short:
-      "Race steel rear sprocket for durability, hard chain abuse, mud grinding, and fitment-based tooth count.",
+    short: "42CrMo4 rear sprocket by hub pattern, chain line, material, and tooth count.",
     stock: "Made by batch",
     image: "/assets/images/product-bench.webp",
     fitment: "By bike model, year, hub pattern, and chain-size program",
@@ -97,7 +95,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "Heat-treated and protective finish by batch",
     options: "45T to 52T planning range, private tooth counts by batch",
     chainSize: "428 / 520 by fitment",
-    useCase: "Racing, hard enduro, rental fleet, hill climbs, mud, chain load",
+    useCase: "Hub pattern, chain line, tooth count, and material selection",
     compatibility:
       "Confirm bolt circle diameter, center bore, bolt count, hub offset, chain line, and guide clearance before ordering.",
     badges: ["42CrMo4", "Race Steel", "Rear", "Durability"],
@@ -107,7 +105,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "Heat-treated and protective finish by batch",
       Options: "45T to 52T planning range, private tooth counts by batch",
       "Chain size": "428 / 520 by fitment",
-      "Use case": "Racing, hard enduro, rental fleet, hill climbs, mud, chain load",
+      "Use case": "Hub pattern, chain line, tooth count, and material selection",
       "Compatibility notes": "Verify BCD, center bore, bolt count, offset, chain line, and guide clearance"
     }
   },
@@ -117,8 +115,7 @@ window.LANGBIANG_PRODUCTS = [
     order: 3,
     name: "7075-T6 Race Aluminum Rear Sprocket",
     category: "Sprockets",
-    short:
-      "7075-T6 rear sprocket for reduced rotating mass, sharper response, and premium performance builds.",
+    short: "7075-T6 rear sprocket by hub pattern, chain size, and tooth count.",
     stock: "Made by batch",
     image: "/assets/products/rear-sprocket-7075.png",
     fitment: "By bike model, year, hub pattern, and chain-size program",
@@ -126,7 +123,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "CNC machined, anodized finish, inspected tooth profile",
     options: "45T, 48T, 49T, 50T, 52T, private tooth counts by batch",
     chainSize: "428 / 520 by fitment",
-    useCase: "Race builds, performance setups, lower rotating mass, sharper rear drive response",
+    useCase: "Hub pattern, chain size, tooth count, and material selection",
     compatibility:
       "Confirm bolt circle diameter, center bore, bolt count, hub offset, chain line, and guide clearance before ordering.",
     badges: ["7075-T6", "Race Aluminum", "Rear", "Response"],
@@ -136,7 +133,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "CNC machined, anodized finish, inspected tooth profile",
       Options: "45T, 48T, 49T, 50T, 52T, private tooth counts by batch",
       "Chain size": "428 / 520 by fitment",
-      "Use case": "Race builds, performance setups, lower rotating mass, sharper rear drive response",
+      "Use case": "Hub pattern, chain size, tooth count, and material selection",
       "Compatibility notes": "Verify BCD, center bore, bolt count, offset, chain line, and guide clearance"
     }
   },
@@ -147,7 +144,7 @@ window.LANGBIANG_PRODUCTS = [
     placeholder: true,
     name: "Front Brake Rotor",
     category: "Brake Rotor",
-    short: "Front racing brake rotor program by diameter, bolt pattern, braking load, mud, heat, and pad setup.",
+    short: "Front brake rotor by diameter, bolt pattern, offset, and pad setup.",
     stock: "Program planning",
     image: "/assets/products/brake-rotor.png",
     fitment: "Model-specific diameter, bolt pattern, offset, and caliper clearance",
@@ -155,17 +152,17 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
     options: "Front rotor diameters by model and batch",
     chainSize: "Not applicable",
-    useCase: "Racing, enduro, wet terrain, rental fleet braking load",
+    useCase: "Diameter, bolt pattern, offset, and pad setup",
     compatibility:
       "Confirm diameter, bolt circle, offset, caliper clearance, pad compound, and mounting hardware.",
-    badges: ["Front", "SUS420", "Heat", "Mud"],
+    badges: ["Front", "SUS420", "Diameter", "Offset"],
     specs: {
       "Bike fitment": "Model-specific diameter, bolt pattern, offset, and caliper clearance",
       Material: "SUS420 / rotor-grade stainless by batch",
       "Finish / treatment": "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
       Options: "Front rotor diameters by model and batch",
       "Chain size": "Not applicable",
-      "Use case": "Racing, enduro, wet terrain, rental fleet braking load",
+      "Use case": "Diameter, bolt pattern, offset, and pad setup",
       "Compatibility notes": "Verify diameter, BCD, offset, caliper clearance, pad compound, and mounting hardware"
     }
   },
@@ -176,7 +173,7 @@ window.LANGBIANG_PRODUCTS = [
     placeholder: true,
     name: "Rear Brake Rotor",
     category: "Brake Rotor",
-    short: "Rear racing brake rotor program by diameter, bolt pattern, braking feel, mud clearing, and replacement cycles.",
+    short: "Rear brake rotor by diameter, bolt pattern, offset, and pad setup.",
     stock: "Program planning",
     image: "/assets/products/brake-rotor.png",
     fitment: "Model-specific diameter, bolt pattern, offset, and caliper clearance",
@@ -184,17 +181,17 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
     options: "Rear rotor diameters by model and batch",
     chainSize: "Not applicable",
-    useCase: "Racing, enduro, rental fleet, wet terrain, hard braking load",
+    useCase: "Diameter, bolt pattern, offset, and pad setup",
     compatibility:
       "Confirm diameter, bolt circle, offset, caliper clearance, pad compound, and mounting hardware.",
-    badges: ["Rear", "SUS420", "Mud", "Fleet"],
+    badges: ["Rear", "SUS420", "Diameter", "Offset"],
     specs: {
       "Bike fitment": "Model-specific diameter, bolt pattern, offset, and caliper clearance",
       Material: "SUS420 / rotor-grade stainless by batch",
       "Finish / treatment": "Precision-cut profile, heat treatment by batch, flatness check, controlled surface finish",
       Options: "Rear rotor diameters by model and batch",
       "Chain size": "Not applicable",
-      "Use case": "Racing, enduro, rental fleet, wet terrain, hard braking load",
+      "Use case": "Diameter, bolt pattern, offset, and pad setup",
       "Compatibility notes": "Verify diameter, BCD, offset, caliper clearance, pad compound, and mounting hardware"
     }
   },
@@ -213,7 +210,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "CNC machined, finish by batch, sealing surface check",
     options: "Billet clutch cover, model-based batches, private fitment request",
     chainSize: "Not applicable",
-    useCase: "Racing, enduro, improved replacement part design, dealer batches",
+    useCase: "Model fitment, sample, drawing, finish, and dealer batch",
     compatibility:
       "Verify cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year before ordering.",
     badges: ["CNC", "Billet", "Clutch Cover", "Batch"],
@@ -223,7 +220,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "CNC machined, finish by batch, sealing surface check",
       Options: "Billet clutch cover, model-based batches, private fitment request",
       "Chain size": "Not applicable",
-      "Use case": "Racing, enduro, improved replacement part design, dealer batches",
+      "Use case": "Model fitment, sample, drawing, finish, and dealer batch",
       "Compatibility notes": "Verify cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year"
     }
   },
@@ -242,7 +239,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "CNC machined, finish by batch, sealing surface check",
     options: "Water pump cover, model-based batches, private fitment request",
     chainSize: "Not applicable",
-    useCase: "Racing, enduro, improved replacement part design, dealer batches",
+    useCase: "Model fitment, sample, drawing, finish, and dealer batch",
     compatibility:
       "Verify cover shape, bolt pattern, gasket surface, coolant clearance, heat exposure, and model year before ordering.",
     badges: ["CNC", "Water Pump", "Fitment", "Batch"],
@@ -252,7 +249,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "CNC machined, finish by batch, sealing surface check",
       Options: "Water pump cover, model-based batches, private fitment request",
       "Chain size": "Not applicable",
-      "Use case": "Racing, enduro, improved replacement part design, dealer batches",
+      "Use case": "Model fitment, sample, drawing, finish, and dealer batch",
       "Compatibility notes": "Verify cover shape, bolt pattern, gasket surface, coolant clearance, heat exposure, and model year"
     }
   },
@@ -271,7 +268,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "CNC machined, finish by batch, sealing surface check",
     options: "Engine side cover, clutch cover, private batch fitment",
     chainSize: "Not applicable",
-    useCase: "Racing, enduro, improved replacement part design, dealer batches",
+    useCase: "Model fitment, sample, drawing, finish, and dealer batch",
     compatibility:
       "Verify cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year before ordering.",
     badges: ["CNC", "Engine Cover", "Fitment", "Batch"],
@@ -281,7 +278,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "CNC machined, finish by batch, sealing surface check",
       Options: "Engine side cover, clutch cover, private batch fitment",
       "Chain size": "Not applicable",
-      "Use case": "Racing, enduro, improved replacement part design, dealer batches",
+      "Use case": "Model fitment, sample, drawing, finish, and dealer batch",
       "Compatibility notes": "Verify cover shape, bolt pattern, gasket surface, oil clearance, heat exposure, and model year"
     }
   },
@@ -298,9 +295,9 @@ window.LANGBIANG_PRODUCTS = [
     fitment: "By confirmed sample, drawing, batch quantity, market, and finish requirement",
     material: "Billet aluminum by batch",
     treatment: "CNC machined, finish by batch, sealing surface check",
-    options: "Custom sample, dealer batch, fleet batch, and private fitment program",
+    options: "Custom sample, dealer batch, and private fitment program",
     chainSize: "Not applicable",
-    useCase: "Dealer stock, distributor program, race team batch, improved replacement part design",
+    useCase: "Dealer stock, distributor program, model-based batch, and replacement part design",
     compatibility:
       "Confirm sample control, drawing revision, gasket surface, batch quantity, finish, packaging, and market requirements.",
     badges: ["CNC", "Custom", "Batch", "Quote"],
@@ -308,9 +305,9 @@ window.LANGBIANG_PRODUCTS = [
       "Bike fitment": "By confirmed sample, drawing, batch quantity, market, and finish requirement",
       Material: "Billet aluminum by batch",
       "Finish / treatment": "CNC machined, finish by batch, sealing surface check",
-      Options: "Custom sample, dealer batch, fleet batch, and private fitment program",
+      Options: "Custom sample, dealer batch, and private fitment program",
       "Chain size": "Not applicable",
-      "Use case": "Dealer stock, distributor program, race team batch, improved replacement part design",
+      "Use case": "Dealer stock, distributor program, model-based batch, and replacement part design",
       "Compatibility notes":
         "Verify sample control, drawing revision, gasket surface, batch quantity, finish, packaging, and market requirements"
     }
@@ -321,7 +318,7 @@ window.LANGBIANG_PRODUCTS = [
     order: 1,
     name: "Grade 5 Titanium Race Hardware Kit",
     category: "Bolt Kits",
-    short: "Grade 5 titanium race hardware kit for selected weight-saving points and corrosion control.",
+    short: "Grade 5 titanium hardware kit by application, thread, length, shoulder, washer, and torque.",
     stock: "Selected stock",
     image: "/assets/images/product-bench.webp",
     fitment: "By measured thread, length, shoulder, washer, torque, and application",
@@ -329,7 +326,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "Rolled thread where available, raw titanium or anodized finish by kit",
     options: "Rotor, sprocket, engine cover, body hardware, custom measured kits",
     chainSize: "Not applicable",
-    useCase: "Race builds, selected weight-saving points, corrosion control",
+    useCase: "Application, thread pitch, length, shoulder, washer, and torque",
     compatibility:
       "Application must be verified by thread, length, shoulder, washer, torque, and heat exposure.",
     badges: ["Grade 5 Ti", "Ti-6Al-4V", "Race Kit", "Measured"],
@@ -339,7 +336,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "Rolled thread where available, raw titanium or anodized finish by kit",
       Options: "Rotor, sprocket, engine cover, body hardware, custom measured kits",
       "Chain size": "Not applicable",
-      "Use case": "Race builds, selected weight-saving points, corrosion control",
+      "Use case": "Application, thread pitch, length, shoulder, washer, and torque",
       "Compatibility notes": "Verify thread, length, shoulder, washer, torque, and heat exposure"
     }
   },
@@ -358,7 +355,7 @@ window.LANGBIANG_PRODUCTS = [
     treatment: "Raw titanium or anodized finish by batch",
     options: "Sprocket bolt sets, nuts, washers, and measured kits",
     chainSize: "Not applicable",
-    useCase: "Race builds, dealer stock, corrosion-control points",
+    useCase: "Thread, length, washer stack, torque, and bike model",
     compatibility:
       "Verify thread pitch, shoulder, washer, torque, clearance, and heat exposure before installation.",
     badges: ["Grade 5 Ti", "Sprocket Set", "Fitment", "Quote"],
@@ -368,7 +365,7 @@ window.LANGBIANG_PRODUCTS = [
       "Finish / treatment": "Raw titanium or anodized finish by batch",
       Options: "Sprocket bolt sets, nuts, washers, and measured kits",
       "Chain size": "Not applicable",
-      "Use case": "Race builds, dealer stock, corrosion-control points",
+      "Use case": "Thread, length, washer stack, torque, and bike model",
       "Compatibility notes": "Verify pitch, shoulder, washer, torque, clearance, and heat exposure"
     }
   },
@@ -385,9 +382,9 @@ window.LANGBIANG_PRODUCTS = [
     fitment: "By rotor, hub, caliper clearance, bolt pattern, and heat exposure",
     material: "Grade 5 Titanium / Ti-6Al-4V",
     treatment: "Raw titanium or anodized finish by batch",
-    options: "Front rotor, rear rotor, race measured kits",
+    options: "Front rotor, rear rotor, and measured kits",
     chainSize: "Not applicable",
-    useCase: "Race builds, rotor service, corrosion-control points",
+    useCase: "Bolt pattern, length, head clearance, and torque",
     compatibility:
       "Verify pitch, length, shoulder, head clearance, washer requirement, torque, and heat exposure.",
     badges: ["Grade 5 Ti", "Rotor Set", "Heat", "Quote"],
@@ -395,9 +392,9 @@ window.LANGBIANG_PRODUCTS = [
       "Bike fitment": "By rotor, hub, caliper clearance, bolt pattern, and heat exposure",
       Material: "Grade 5 Titanium / Ti-6Al-4V",
       "Finish / treatment": "Raw titanium or anodized finish by batch",
-      Options: "Front rotor, rear rotor, race measured kits",
+      Options: "Front rotor, rear rotor, and measured kits",
       "Chain size": "Not applicable",
-      "Use case": "Race builds, rotor service, corrosion-control points",
+      "Use case": "Bolt pattern, length, head clearance, and torque",
       "Compatibility notes": "Verify pitch, length, shoulder, head clearance, washer, torque, and heat exposure"
     }
   },
@@ -408,15 +405,15 @@ window.LANGBIANG_PRODUCTS = [
     placeholder: true,
     name: "Measured Grade 5 Titanium Race Hardware Kit",
     category: "Bolt Kits",
-    short: "Measured Grade 5 titanium race hardware kit by application, torque, shoulder, washer, and heat exposure.",
+    short: "Measured Grade 5 titanium hardware kit by application, torque, shoulder, and washer stack.",
     stock: "Fitment request",
     image: "/assets/images/product-bench.webp",
     fitment: "By measured thread, length, shoulder, washer, torque, and application",
     material: "Grade 5 Titanium / Ti-6Al-4V",
     treatment: "Raw titanium or anodized finish by batch",
-    options: "Measured hardware kits for race builds and selected replacement points",
+    options: "Measured hardware kits and selected replacement points",
     chainSize: "Not applicable",
-    useCase: "Race builds, selected weight-saving points, corrosion control",
+    useCase: "Application, torque, shoulder, washer stack, and quantity",
     compatibility:
       "Verify pitch, length, shoulder, washer stack, torque, heat exposure, and application before installation.",
     badges: ["Grade 5 Ti", "Measured", "Race Kit", "Quote"],
@@ -424,9 +421,9 @@ window.LANGBIANG_PRODUCTS = [
       "Bike fitment": "By measured thread, length, shoulder, washer, torque, and application",
       Material: "Grade 5 Titanium / Ti-6Al-4V",
       "Finish / treatment": "Raw titanium or anodized finish by batch",
-      Options: "Measured hardware kits for race builds and selected replacement points",
+      Options: "Measured hardware kits and selected replacement points",
       "Chain size": "Not applicable",
-      "Use case": "Race builds, selected weight-saving points, corrosion control",
+      "Use case": "Application, torque, shoulder, washer stack, and quantity",
       "Compatibility notes": "Verify pitch, length, shoulder, washer stack, torque, heat exposure, and application"
     }
   }
