@@ -5,8 +5,6 @@ const products = [
     category: "Front Sprockets",
     short:
       "Front sprocket for direct chain load, tooth wear, mud grinding, hard acceleration, and repeated racing abuse.",
-    price: 480000,
-    priceNote: "from",
     stock: "Batch slots open",
     image: "assets/products/front-sprocket-scm440.png",
     fitment: "By bike model, year, spline, and chain-size program",
@@ -34,8 +32,6 @@ const products = [
     category: "Rear Sprockets",
     short:
       "Steel rear sprocket for riders and fleets that choose durability, hard abuse, and predictable replacement over weight saving.",
-    price: 780000,
-    priceNote: "from",
     stock: "Made by batch",
     image: "assets/images/product-bench.webp",
     fitment: "By bike model, year, hub pattern, and chain-size program",
@@ -63,8 +59,6 @@ const products = [
     category: "Rear Sprockets",
     short:
       "Lightweight race rear sprocket for reduced rotating mass, sharper response, and premium race builds.",
-    price: 890000,
-    priceNote: "from",
     stock: "Made by batch",
     image: "assets/products/rear-sprocket-7075.png",
     fitment: "By bike model, year, hub pattern, and chain-size program",
@@ -92,8 +86,6 @@ const products = [
     category: "Drivetrain Protection",
     short:
       "Chain control and drivetrain protection for mud, rocks, altered gearing, and rental-fleet use.",
-    price: 720000,
-    priceNote: "placeholder",
     stock: "Prototype queue",
     image: "assets/images/field-test.webp",
     fitment: "By bike model, swingarm mount, rear sprocket diameter, and chain size",
@@ -121,8 +113,6 @@ const products = [
     category: "Brake Rotors",
     short:
       "Brake rotor program for mud, heat, braking bite, flatness control, and predictable replacement.",
-    price: 980000,
-    priceNote: "from",
     stock: "Sample stock",
     image: "assets/products/brake-rotor.png",
     fitment: "Front / rear, model-specific diameter and bolt pattern",
@@ -150,8 +140,6 @@ const products = [
     category: "Race Hardware",
     short:
       "Optional race-build hardware for selected weight-saving points and corrosion control.",
-    price: 650000,
-    priceNote: "from",
     stock: "Selected stock",
     image: "assets/images/product-bench.webp",
     fitment: "By measured thread, length, shoulder, washer, torque, and application",
@@ -182,10 +170,7 @@ const state = {
 
 const qs = (selector, root = document) => root.querySelector(selector);
 const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-
-function formatPrice(value) {
-  return `VND ${new Intl.NumberFormat("en-US").format(value)}`;
-}
+const PRICE_LABEL = "Price on request";
 
 function getProduct(slug) {
   return products.find((product) => product.slug === slug);
@@ -239,8 +224,8 @@ function renderStore() {
     qs(".product-meta", card).textContent = product.category;
     qs("h3", card).textContent = product.name;
     qs("p", card).textContent = product.short;
-    qs(".price-row strong", card).textContent = formatPrice(product.price);
-    qs(".price-row span", card).textContent = product.priceNote;
+    qs(".price-row strong", card).textContent = PRICE_LABEL;
+    qs(".price-row span", card).textContent = "";
     qs("[data-view-details]", card).addEventListener("click", () => openProduct(product.slug));
     qs("[data-add-cart]", card).addEventListener("click", () => addToCart(product.slug));
     grid.append(card);
@@ -271,13 +256,14 @@ function openProduct(slug) {
             .join("")}
         </tbody>
       </table>
+      <p><strong>Price:</strong> ${PRICE_LABEL}</p>
       <p><strong>Material:</strong> ${product.material}</p>
       <p><strong>Heat treatment / finish:</strong> ${product.treatment}</p>
       <p><strong>Options:</strong> ${product.options}</p>
       <p><strong>Compatibility:</strong> ${product.compatibility}</p>
       <p class="warning-note">Warning: confirm fitment before installation.</p>
       <div class="detail-actions">
-        <button class="button button-primary" type="button" data-modal-add>Add to Cart</button>
+        <button class="button button-primary" type="button" data-modal-add>Add to Quote</button>
         <button class="button" type="button" data-modal-bulk>Request Bulk Quote</button>
         <button class="button" type="button" data-modal-b2b>B2B Inquiry</button>
       </div>
@@ -317,15 +303,11 @@ function prefillQuote(product, requestType) {
 
 function renderCart() {
   const count = state.cart.reduce((sum, item) => sum + item.qty, 0);
-  const total = state.cart.reduce((sum, item) => {
-    const product = getProduct(item.slug);
-    return sum + (product ? product.price * item.qty : 0);
-  }, 0);
 
   qsa("[data-cart-count]").forEach((badge) => {
     badge.textContent = count;
   });
-  qs("[data-cart-total]").textContent = formatPrice(total);
+  qs("[data-cart-total]").textContent = PRICE_LABEL;
 
   const list = qs("[data-cart-items]");
   list.innerHTML = "";
@@ -347,7 +329,7 @@ function renderCart() {
       <img src="${product.image}" alt="${product.name}">
       <div>
         <h3>${product.name}</h3>
-        <span>${formatPrice(product.price)}</span>
+        <span>${PRICE_LABEL}</span>
       </div>
       <div class="qty-controls" aria-label="Quantity controls for ${product.name}">
         <button type="button" aria-label="Decrease quantity" data-qty-minus>-</button>
@@ -444,7 +426,7 @@ function setupCartQuote() {
       .filter(Boolean)
       .join(", ");
     form.productNeeded.value = summary;
-    form.customRequest.value = "Official store invoice / fitment quote";
+    form.customRequest.value = "Product quote request";
     closeCart();
   });
 }

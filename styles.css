@@ -753,6 +753,10 @@ p {
   font-weight: 650;
 }
 
+.price-row span:empty {
+  display: none;
+}
+
 .store-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
