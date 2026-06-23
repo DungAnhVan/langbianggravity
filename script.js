@@ -231,13 +231,9 @@ function megaMenuMarkup() {
       ${productGroups
         .map(
           (group) => `
-            <section class="mega-group">
-              <h2>${group.name}</h2>
-              <p>${group.description}</p>
-              <ul>
-                ${group.links.map((link) => `<li><a href="${link.href}">${link.label}</a></li>`).join("")}
-              </ul>
-            </section>
+            <a class="mega-product-link" href="${group.href}">
+              <span>${group.name}</span>
+            </a>
           `
         )
         .join("")}
@@ -249,13 +245,7 @@ function mobileProductsMarkup() {
   return productGroups
     .map(
       (group) => `
-        <section class="mobile-product-group">
-          <h3>${group.name}</h3>
-          <p>${group.description}</p>
-          <ul>
-            ${group.links.map((link) => `<li><a href="${link.href}">${link.label}</a></li>`).join("")}
-          </ul>
-        </section>
+        <a class="mobile-product-link" href="${group.href}">${group.name}</a>
       `
     )
     .join("");

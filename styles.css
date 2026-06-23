@@ -294,58 +294,55 @@ p {
 .products-mega-inner {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1px;
-  padding-block: 24px;
+  gap: 12px;
+  padding-block: 20px;
 }
 
-.mega-group {
-  min-height: 230px;
-  border-left: 1px solid var(--line);
-  padding: 8px 24px 10px;
-}
-
-.mega-group:first-child {
-  border-left: 0;
-}
-
-.mega-group h2,
-.mobile-product-group h3 {
-  margin-bottom: 10px;
+.mega-product-link {
+  display: flex;
+  align-items: center;
+  min-height: 96px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  background: linear-gradient(135deg, rgba(238, 241, 235, 0.06), rgba(238, 241, 235, 0.018));
   color: var(--off-white);
-  font-size: 1.15rem;
+  font-size: 1.08rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  box-shadow: inset 0 0 0 1px rgba(238, 241, 235, 0.02);
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.mega-product-link:hover,
+.mega-product-link:focus-visible {
+  border-color: rgba(213, 255, 61, 0.42);
+  background: linear-gradient(135deg, rgba(213, 255, 61, 0.12), rgba(238, 241, 235, 0.04));
+  color: var(--lime);
+  transform: translateY(-2px);
+}
+
+.mega-product-link span {
+  display: block;
+}
+
+.mobile-product-link {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+  color: #eef1eb;
+  font-size: 1rem;
   font-weight: 900;
 }
 
-.mega-group p,
-.mobile-product-group p {
-  min-height: 68px;
-  margin-bottom: 16px;
-  color: #cdd5cc;
-  font-size: 0.92rem;
-  font-weight: 560;
+.mobile-product-link:first-child {
+  border-top: 0;
 }
 
-.mega-group ul,
-.mobile-product-group ul {
-  display: grid;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.mega-group a,
-.mobile-product-group a {
-  display: inline-flex;
-  color: #eef1eb;
-  font-size: 0.95rem;
-  font-weight: 850;
-}
-
-.mega-group a:hover,
-.mega-group a:focus-visible,
-.mobile-product-group a:hover,
-.mobile-product-group a:focus-visible {
+.mobile-product-link:hover,
+.mobile-product-link:focus-visible {
   color: var(--lime);
 }
 
@@ -1595,25 +1592,14 @@ textarea:focus {
   }
 
   .mobile-products-panel.is-open {
-    max-height: 980px;
+    max-height: 320px;
     border-color: var(--line);
     padding: 12px;
     opacity: 1;
   }
 
-  .mobile-product-group {
-    border-top: 1px solid var(--line);
-    padding: 14px 0;
-  }
-
-  .mobile-product-group:first-child {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .mobile-product-group p {
-    min-height: auto;
-    margin-bottom: 10px;
+  .mobile-product-link {
+    padding-inline: 4px;
   }
 
   .category-grid,
