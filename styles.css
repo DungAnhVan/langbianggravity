@@ -222,7 +222,12 @@ p {
   gap: 6px;
 }
 
-.site-nav a {
+.nav-product-group {
+  display: contents;
+}
+
+.site-nav a,
+.products-nav-toggle {
   border-radius: var(--radius);
   padding: 8px 10px;
   color: #d5dbd4;
@@ -231,10 +236,121 @@ p {
   transition: background 180ms ease, color 180ms ease;
 }
 
+.products-nav-toggle {
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.products-nav-toggle::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 180ms ease;
+}
+
+.products-nav-toggle[aria-expanded="true"]::after {
+  transform: translateY(2px) rotate(225deg);
+}
+
 .site-nav a:hover,
-.site-nav a:focus-visible {
+.site-nav a:focus-visible,
+.products-nav-toggle:hover,
+.products-nav-toggle:focus-visible {
   background: rgba(238, 241, 235, 0.08);
   color: var(--off-white);
+}
+
+.products-mega-menu {
+  position: fixed;
+  top: 76px;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.025) 1px, transparent 1px),
+    rgba(8, 10, 9, 0.97);
+  background-size: 64px 64px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.48);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-14px);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.products-mega-menu.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.products-mega-inner {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  padding-block: 24px;
+}
+
+.mega-group {
+  min-height: 230px;
+  border-left: 1px solid var(--line);
+  padding: 8px 24px 10px;
+}
+
+.mega-group:first-child {
+  border-left: 0;
+}
+
+.mega-group h2,
+.mobile-product-group h3 {
+  margin-bottom: 10px;
+  color: var(--off-white);
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+
+.mega-group p,
+.mobile-product-group p {
+  min-height: 68px;
+  margin-bottom: 16px;
+  color: #cdd5cc;
+  font-size: 0.92rem;
+  font-weight: 560;
+}
+
+.mega-group ul,
+.mobile-product-group ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.mega-group a,
+.mobile-product-group a {
+  display: inline-flex;
+  color: #eef1eb;
+  font-size: 0.95rem;
+  font-weight: 850;
+}
+
+.mega-group a:hover,
+.mega-group a:focus-visible,
+.mobile-product-group a:hover,
+.mobile-product-group a:focus-visible {
+  color: var(--lime);
+}
+
+.mobile-products-panel {
+  display: none;
 }
 
 .cart-button,
@@ -674,6 +790,28 @@ p {
 
 .store-section {
   background: #111713;
+}
+
+.products-catalogue {
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.025) 1px, transparent 1px),
+    #111713;
+  background-size: 80px 80px;
+}
+
+.product-group-section {
+  padding-top: 78px;
+  scroll-margin-top: 108px;
+}
+
+.product-group-section + .product-group-section {
+  margin-top: 28px;
+}
+
+.product-group-head {
+  max-width: 760px;
+  margin-bottom: 24px;
 }
 
 .store-grid {
@@ -1252,6 +1390,51 @@ textarea:focus {
   .site-nav.is-open {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nav-product-group {
+    display: grid;
+    grid-column: 1 / -1;
+  }
+
+  .products-nav-toggle {
+    width: 100%;
+    text-align: left;
+  }
+
+  .products-mega-menu {
+    display: none;
+  }
+
+  .mobile-products-panel {
+    display: grid;
+    max-height: 0;
+    overflow: hidden;
+    border: 1px solid transparent;
+    opacity: 0;
+    transition: max-height 220ms ease, opacity 180ms ease, border-color 180ms ease, padding 180ms ease;
+  }
+
+  .mobile-products-panel.is-open {
+    max-height: 980px;
+    border-color: var(--line);
+    padding: 12px;
+    opacity: 1;
+  }
+
+  .mobile-product-group {
+    border-top: 1px solid var(--line);
+    padding: 14px 0;
+  }
+
+  .mobile-product-group:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .mobile-product-group p {
+    min-height: auto;
+    margin-bottom: 10px;
   }
 
   .category-grid,

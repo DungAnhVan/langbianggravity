@@ -36,7 +36,18 @@
       </button>
       <nav id="site-nav" class="site-nav" data-nav>
         <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
+        <div class="nav-product-group">
+          <button
+            class="products-nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="products-mega-menu"
+            data-products-menu-toggle
+          >
+            Products
+          </button>
+          <div class="mobile-products-panel" data-products-mobile-panel></div>
+        </div>
         <a href="b2b.html">B2B</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -44,6 +55,13 @@
         Quote <span data-cart-count>0</span>
       </button>
     </header>
+
+    <div
+      id="products-mega-menu"
+      class="products-mega-menu"
+      data-products-mega
+      aria-hidden="true"
+    ></div>
 
     <button class="mobile-cart-button" type="button" data-cart-open>
       Quote <span data-cart-count>0</span>

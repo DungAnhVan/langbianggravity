@@ -1,4 +1,5 @@
 const products = window.LANGBIANG_PRODUCTS || [];
+const productGroups = window.LANGBIANG_PRODUCT_GROUPS || [];
 const PRICE_LABEL = "Price on request";
 const CART_KEY = "lg-cart";
 const PENDING_QUOTE_KEY = "lg-pending-quote";
@@ -12,6 +13,10 @@ const qsa = (selector, root = document) => Array.from(root.querySelectorAll(sele
 
 function getProduct(slug) {
   return products.find((product) => product.slug === slug);
+}
+
+function productGroupProducts(groupSlug) {
+  return products.filter((product) => product.group === groupSlug);
 }
 
 function loadCart() {
@@ -111,6 +116,96 @@ function renderStore() {
     const fitment = qs("[data-request-fitment]", card);
     if (fitment) fitment.addEventListener("click", () => prefillQuote(product, "Request fitment"));
     grid.append(card);
+  });
+}
+
+function productCard(product, template) {
+  const card = template.content.firstElementChild.cloneNode(true);
+  const img = qs("img", card);
+  img.src = product.image;
+  img.alt = product.name;
+  qs(".stock-badge", card).textContent = product.stock;
+  qs(".product-meta", card).textContent = product.category;
+  qs("h3", card).textContent = product.name;
+  qs("p", card).textContent = product.short;
+  const material = qs("[data-product-material]", card);
+  if (material) material.textContent = `Material: ${product.material}`;
+  qs(".price-row strong", card).textContent = PRICE_LABEL;
+  const priceNote = qs(".price-row span", card);
+  if (priceNote) priceNote.textContent = "";
+  qs("[data-view-details]", card).addEventListener("click", () => openProduct(product.slug));
+  qs("[data-add-cart]", card).addEventListener("click", () => addToCart(product.slug));
+  return card;
+}
+
+function renderProductSections() {
+  const root = qs("[data-product-sections]");
+  const template = qs("#store-card-template");
+  if (!root || !template) return;
+
+  productGroups.forEach((group) => {
+    const section = document.createElement("section");
+    section.id = group.slug;
+    section.className = "product-group-section shell";
+    section.innerHTML = `
+      <div class="product-group-head">
+        <p class="eyebrow">${group.name}</p>
+        <h2>${group.name}</h2>
+        <p>${group.description}</p>
+      </div>
+      <div class="store-grid"></div>
+    `;
+
+    const grid = qs(".store-grid", section);
+    productGroupProducts(group.slug).forEach((product) => {
+      grid.append(productCard(product, template));
+    });
+    root.append(section);
+  });
+}
+
+function megaMenuMarkup() {
+  return `
+    <div class="products-mega-inner shell">
+      ${productGroups
+        .map(
+          (group) => `
+            <section class="mega-group">
+              <h2>${group.name}</h2>
+              <p>${group.description}</p>
+              <ul>
+                ${group.links.map((link) => `<li><a href="${link.href}">${link.label}</a></li>`).join("")}
+              </ul>
+            </section>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function mobileProductsMarkup() {
+  return productGroups
+    .map(
+      (group) => `
+        <section class="mobile-product-group">
+          <h3>${group.name}</h3>
+          <p>${group.description}</p>
+          <ul>
+            ${group.links.map((link) => `<li><a href="${link.href}">${link.label}</a></li>`).join("")}
+          </ul>
+        </section>
+      `
+    )
+    .join("");
+}
+
+function renderProductNavigation() {
+  qsa("[data-products-mega]").forEach((menu) => {
+    menu.innerHTML = megaMenuMarkup();
+  });
+  qsa("[data-products-mobile-panel]").forEach((panel) => {
+    panel.innerHTML = mobileProductsMarkup();
   });
 }
 
@@ -256,9 +351,21 @@ function setupNavigation() {
   const nav = qs("[data-nav]");
   const toggle = qs("[data-nav-toggle]");
   if (!header || !nav || !toggle) return;
+  const productToggle = qs("[data-products-menu-toggle]");
+  const megaMenu = qs("[data-products-mega]");
+  const mobilePanel = qs("[data-products-mobile-panel]");
+  const mobileQuery = window.matchMedia("(max-width: 1080px)");
 
   const syncHeader = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
+
+  const closeProductsMenu = () => {
+    productToggle?.setAttribute("aria-expanded", "false");
+    megaMenu?.classList.remove("is-open");
+    megaMenu?.setAttribute("aria-hidden", "true");
+    mobilePanel?.classList.remove("is-open");
+    document.body.classList.remove("products-menu-open");
   };
 
   syncHeader();
@@ -268,6 +375,31 @@ function setupNavigation() {
     const isOpen = nav.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", String(isOpen));
     document.body.classList.toggle("nav-open", isOpen);
+    if (!isOpen) closeProductsMenu();
+  });
+
+  productToggle?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = productToggle.getAttribute("aria-expanded") === "true";
+
+    if (mobileQuery.matches) {
+      const nextState = !isOpen;
+      productToggle.setAttribute("aria-expanded", String(nextState));
+      mobilePanel?.classList.toggle("is-open", nextState);
+      megaMenu?.classList.remove("is-open");
+      megaMenu?.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("products-menu-open");
+      return;
+    }
+
+    const nextState = !megaMenu?.classList.contains("is-open");
+    nav.classList.remove("is-open");
+    toggle.setAttribute("aria-expanded", "false");
+    document.body.classList.remove("nav-open");
+    productToggle.setAttribute("aria-expanded", String(nextState));
+    megaMenu?.classList.toggle("is-open", nextState);
+    megaMenu?.setAttribute("aria-hidden", String(!nextState));
+    document.body.classList.toggle("products-menu-open", nextState);
   });
 
   qsa(".site-nav a").forEach((link) => {
@@ -275,7 +407,24 @@ function setupNavigation() {
       nav.classList.remove("is-open");
       toggle.setAttribute("aria-expanded", "false");
       document.body.classList.remove("nav-open");
+      closeProductsMenu();
     });
+  });
+
+  qsa("[data-products-mega] a, [data-products-mobile-panel] a").forEach((link) => {
+    link.addEventListener("click", closeProductsMenu);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!megaMenu?.classList.contains("is-open")) return;
+    if (header.contains(event.target) || megaMenu.contains(event.target)) return;
+    closeProductsMenu();
+  });
+
+  window.addEventListener("resize", closeProductsMenu);
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeProductsMenu();
   });
 }
 
@@ -338,7 +487,9 @@ function setupCartQuote() {
 }
 
 function init() {
+  renderProductNavigation();
   renderStore();
+  renderProductSections();
   renderCart();
   setupNavigation();
   setupForms();

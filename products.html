@@ -12,7 +12,7 @@
     <meta property="og:title" content="Langbiang Gravity Products" />
     <meta
       property="og:description"
-      content="Six dirt bike hard-part product families with fitment-based quote capability."
+      content="Dirt bike hard-part product groups with fitment-based quote capability."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://langbianggravity.com/products.html" />
@@ -36,7 +36,18 @@
       </button>
       <nav id="site-nav" class="site-nav" data-nav>
         <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
+        <div class="nav-product-group">
+          <button
+            class="products-nav-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="products-mega-menu"
+            data-products-menu-toggle
+          >
+            Products
+          </button>
+          <div class="mobile-products-panel" data-products-mobile-panel></div>
+        </div>
         <a href="b2b.html">B2B</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -44,6 +55,13 @@
         Quote <span data-cart-count>0</span>
       </button>
     </header>
+
+    <div
+      id="products-mega-menu"
+      class="products-mega-menu"
+      data-products-mega
+      aria-hidden="true"
+    ></div>
 
     <button class="mobile-cart-button" type="button" data-cart-open>
       Quote <span data-cart-count>0</span>
@@ -55,14 +73,20 @@
           <p class="eyebrow">Product catalogue</p>
           <h1>Race-abuse hard parts.</h1>
           <p>
-            Six focused product families for sprockets, drivetrain protection, braking wear, and selected race hardware.
+            Focused product lanes for sprockets, bolts, disc rotors, clutch covers, and selected race hardware.
             Pricing is by request after fitment, quantity, finishing, batch size, and dealer program are confirmed.
           </p>
         </div>
       </section>
 
-      <section class="store-section section-pad">
-        <div class="shell store-grid" data-store-grid></div>
+      <section class="products-catalogue section-pad" data-product-sections>
+        <div class="shell section-heading">
+          <p class="eyebrow">Product groups</p>
+          <h2>Four catalogue lanes.</h2>
+          <p>
+            Sprocket, Bolt, Disc Rotor, and Clutch Cover programs are organized by fitment and use case.
+          </p>
+        </div>
       </section>
 
       <section class="engineering-section section-pad">
