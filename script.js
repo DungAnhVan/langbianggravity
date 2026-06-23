@@ -4,7 +4,7 @@ const products = [
     name: "42CrMo4 Race Steel Front Sprocket",
     category: "Front Sprockets",
     short:
-      "Front sprocket built for direct chain load, tooth wear, mud grinding, hard acceleration, and repeated racing abuse.",
+      "Front sprocket for direct chain load, tooth wear, mud grinding, hard acceleration, and repeated racing abuse.",
     price: 480000,
     priceNote: "from",
     stock: "Batch slots open",
@@ -17,7 +17,7 @@ const products = [
     useCase: "Motocross, enduro, rental fleet, race starts, hill climbs",
     compatibility:
       "Confirm bike model, year, spline profile, retaining plate, chain width, and case clearance before ordering.",
-    badges: ["42CrMo4", "Race Steel", "Front Load", "Built for Abuse"],
+    badges: ["42CrMo4", "Race Steel", "Front Load", "Chain Load"],
     specs: {
       "Bike fitment": "By model, year, spline, and chain-size program",
       Material: "42CrMo4 Cr-Mo alloy steel",
@@ -91,7 +91,7 @@ const products = [
     name: "Off-road Chain Guide",
     category: "Drivetrain Protection",
     short:
-      "Chain control and drivetrain protection for mud, rocks, altered gearing, and rental-fleet punishment.",
+      "Chain control and drivetrain protection for mud, rocks, altered gearing, and rental-fleet use.",
     price: 720000,
     priceNote: "placeholder",
     stock: "Prototype queue",
@@ -120,7 +120,7 @@ const products = [
     name: "Race Brake Rotor",
     category: "Brake Rotors",
     short:
-      "Brake rotor program for mud, heat, braking bite, flatness control, and predictable race-abuse replacement.",
+      "Brake rotor program for mud, heat, braking bite, flatness control, and predictable replacement.",
     price: 980000,
     priceNote: "from",
     stock: "Sample stock",
@@ -149,7 +149,7 @@ const products = [
     name: "Grade 5 Titanium Race Hardware Kit",
     category: "Race Hardware",
     short:
-      "Optional race-build hardware for riders who count grams, care about corrosion resistance, and want clean premium detail.",
+      "Optional race-build hardware for selected weight-saving points and corrosion control.",
     price: 650000,
     priceNote: "from",
     stock: "Selected stock",
