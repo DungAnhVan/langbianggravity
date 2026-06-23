@@ -1,5 +1,6 @@
 const products = window.LANGBIANG_PRODUCTS || [];
 const productGroups = window.LANGBIANG_PRODUCT_GROUPS || [];
+const fitments = window.LANGBIANG_FITMENTS || [];
 const PRICE_LABEL = "Price on request";
 const CART_KEY = "lg-cart";
 const PENDING_QUOTE_KEY = "lg-pending-quote";
@@ -13,6 +14,18 @@ const qsa = (selector, root = document) => Array.from(root.querySelectorAll(sele
 
 function getProduct(slug) {
   return products.find((product) => product.slug === slug);
+}
+
+function getFitment(sku) {
+  return fitments.find((fitment) => fitment.sku === sku);
+}
+
+function getFitmentProduct(fitment) {
+  return fitment ? getProduct(fitment.productSlug) : null;
+}
+
+function lineFitments(line) {
+  return fitments.filter((fitment) => fitment.line === line);
 }
 
 function productGroupProducts(groupSlug) {
@@ -38,23 +51,38 @@ function saveCart() {
   renderCart();
 }
 
-function addToCart(slug) {
-  const item = state.cart.find((cartItem) => cartItem.slug === slug);
+function cartItemKey(item) {
+  return item.sku ? `sku:${item.sku}` : `product:${item.slug}`;
+}
+
+function addCartEntry(entry) {
+  const key = cartItemKey(entry);
+  const item = state.cart.find((cartItem) => cartItemKey(cartItem) === key);
   if (item) {
     item.qty += 1;
   } else {
-    state.cart.push({ slug, qty: 1 });
+    state.cart.push({ ...entry, qty: 1 });
   }
   saveCart();
   openCart();
 }
 
-function changeQty(slug, delta) {
-  const item = state.cart.find((cartItem) => cartItem.slug === slug);
+function addToCart(slug) {
+  addCartEntry({ slug });
+}
+
+function addFitmentToCart(sku) {
+  const fitment = getFitment(sku);
+  if (!fitment) return;
+  addCartEntry({ slug: fitment.productSlug, sku });
+}
+
+function changeQty(key, delta) {
+  const item = state.cart.find((cartItem) => cartItemKey(cartItem) === key);
   if (!item) return;
   item.qty += delta;
   if (item.qty <= 0) {
-    state.cart = state.cart.filter((cartItem) => cartItem.slug !== slug);
+    state.cart = state.cart.filter((cartItem) => cartItemKey(cartItem) !== key);
   }
   saveCart();
 }
@@ -62,6 +90,8 @@ function changeQty(slug, delta) {
 function quoteSummary() {
   return state.cart
     .map((item) => {
+      const fitment = item.sku ? getFitment(item.sku) : null;
+      if (fitment) return `${item.qty} x ${fitment.sku} - ${fitment.product}`;
       const product = getProduct(item.slug);
       return product ? `${item.qty} x ${product.name}` : "";
     })
@@ -240,6 +270,136 @@ function renderProductNavigation() {
   });
 }
 
+function normalizeValue(value) {
+  return String(value || "").trim().toLowerCase();
+}
+
+function fieldMatches(value, query) {
+  const normalizedQuery = normalizeValue(query);
+  if (!normalizedQuery) return true;
+  return normalizeValue(value).includes(normalizedQuery);
+}
+
+function yearMatches(value, query) {
+  const normalizedQuery = normalizeValue(query);
+  if (!normalizedQuery) return true;
+  if (fieldMatches(value, query)) return true;
+
+  const queryYear = normalizedQuery.match(/\d{4}/)?.[0];
+  const range = String(value || "").match(/(\d{4})\D+(\d{4})/);
+  if (!queryYear || !range) return false;
+
+  const year = Number(queryYear);
+  const start = Number(range[1]);
+  const end = Number(range[2]);
+  return year >= Math.min(start, end) && year <= Math.max(start, end);
+}
+
+function fitmentMatches(fitment, filters) {
+  return (
+    fieldMatches(fitment.brand, filters.brand) &&
+    fieldMatches(fitment.model, filters.model) &&
+    yearMatches(fitment.year, filters.year) &&
+    fieldMatches(fitment.type, filters.type)
+  );
+}
+
+function fitmentCard(fitment) {
+  const product = getFitmentProduct(fitment);
+  const card = document.createElement("article");
+  card.className = "fitment-result-card";
+  card.innerHTML = `
+    <div class="fitment-result-media">
+      <img src="${product?.image || "/assets/images/product-bench.webp"}" alt="${fitment.product}">
+    </div>
+    <div class="fitment-result-body">
+      <p class="product-meta">${fitment.sku}</p>
+      <h3>${fitment.product}</h3>
+      <dl>
+        <div><dt>Brand</dt><dd>${fitment.brand}</dd></div>
+        <div><dt>Model</dt><dd>${fitment.model}</dd></div>
+        <div><dt>Year</dt><dd>${fitment.year}</dd></div>
+        <div><dt>Type</dt><dd>${fitment.type}</dd></div>
+        <div><dt>Material</dt><dd>${fitment.material}</dd></div>
+        ${
+          fitment.position
+            ? `<div><dt>Position</dt><dd>${fitment.position}</dd></div>`
+            : ""
+        }
+        ${
+          fitment.application
+            ? `<div><dt>Application</dt><dd>${fitment.application}</dd></div>`
+            : ""
+        }
+        ${
+          fitment.toothCount
+            ? `<div><dt>Tooth count</dt><dd>${fitment.toothCount}</dd></div>`
+            : ""
+        }
+        ${fitment.diameter ? `<div><dt>Diameter</dt><dd>${fitment.diameter}</dd></div>` : ""}
+      </dl>
+      <div class="price-row">
+        <strong>${PRICE_LABEL}</strong>
+      </div>
+      <div class="store-actions">
+        <button class="button button-compact" type="button" data-view-fitment="${fitment.sku}">View Details</button>
+        <button class="button button-compact button-dark" type="button" data-add-fitment="${fitment.sku}">Add to Quote</button>
+      </div>
+    </div>
+  `;
+
+  qs("[data-view-fitment]", card).addEventListener("click", () => openFitment(fitment.sku));
+  qs("[data-add-fitment]", card).addEventListener("click", () => addFitmentToCart(fitment.sku));
+  return card;
+}
+
+function renderFitmentResults(form, resultsRoot) {
+  const line = form.dataset.productLine;
+  const filters = {
+    brand: form.elements.brand?.value,
+    model: form.elements.model?.value,
+    year: form.elements.year?.value,
+    type: form.elements.type?.value
+  };
+  const results = lineFitments(line).filter((fitment) => fitmentMatches(fitment, filters));
+
+  resultsRoot.innerHTML = "";
+
+  if (!results.length) {
+    const empty = document.createElement("div");
+    empty.className = "fitment-empty";
+    empty.innerHTML = `
+      <p>No exact fitment listed yet. Send bike model and year for confirmation.</p>
+      <a class="button button-primary" href="/contact/#contact">Request Fitment</a>
+    `;
+    resultsRoot.append(empty);
+    return;
+  }
+
+  results.forEach((fitment) => {
+    resultsRoot.append(fitmentCard(fitment));
+  });
+}
+
+function setupFitmentSearches() {
+  qsa("[data-fitment-search]").forEach((form) => {
+    const resultsRoot = qs("[data-fitment-results]", form.closest("[data-fitment-block]") || document);
+    if (!resultsRoot) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      renderFitmentResults(form, resultsRoot);
+    });
+
+    qsa("input, select", form).forEach((field) => {
+      field.addEventListener("input", () => renderFitmentResults(form, resultsRoot));
+      field.addEventListener("change", () => renderFitmentResults(form, resultsRoot));
+    });
+
+    renderFitmentResults(form, resultsRoot);
+  });
+}
+
 function openProduct(slug) {
   const product = getProduct(slug);
   const dialog = qs("[data-product-dialog]");
@@ -289,6 +449,76 @@ function openProduct(slug) {
   }
 }
 
+function openFitment(sku) {
+  const fitment = getFitment(sku);
+  const product = getFitmentProduct(fitment);
+  const dialog = qs("[data-product-dialog]");
+  const detail = qs("[data-product-detail]");
+  if (!fitment || !dialog || !detail) return;
+
+  const image = product?.image || "/assets/images/product-bench.webp";
+  const chainSize =
+    fitment.chainSize ||
+    (product?.chainSize && product.chainSize !== "Not applicable" ? product.chainSize : "");
+  const rows = [
+    ["SKU", fitment.sku],
+    ["Product", fitment.product],
+    ["Category", product?.category],
+    ["Brand", fitment.brand],
+    ["Model", fitment.model],
+    ["Year", fitment.year],
+    ["Type", fitment.type],
+    ["Material", fitment.material],
+    ["Finish / treatment", product?.treatment],
+    ["Chain size", chainSize],
+    ["Use case", product?.useCase],
+    ["Options", product?.options],
+    ["Position", fitment.position],
+    ["Application", fitment.application],
+    ["Tooth count", fitment.toothCount],
+    ["Diameter", fitment.diameter],
+    ["Compatibility notes", product?.compatibility]
+  ].filter(([, value]) => value);
+
+  detail.innerHTML = `
+    <div class="product-detail-media">
+      <img src="${image}" alt="${fitment.product}">
+    </div>
+    <div class="product-detail-content">
+      <p class="eyebrow">${fitment.sku}</p>
+      <h2>${fitment.product}</h2>
+      <p>${fitment.detail}</p>
+      <div class="detail-badges">
+        <span>${fitment.brand}</span>
+        <span>${fitment.model}</span>
+        <span>${fitment.material}</span>
+      </div>
+      <table class="spec-table">
+        <tbody>
+          ${rows.map(([label, value]) => `<tr><th>${label}</th><td>${value}</td></tr>`).join("")}
+        </tbody>
+      </table>
+      <p><strong>Price:</strong> ${PRICE_LABEL}</p>
+      <p class="warning-note">Confirm bike model, model year, and fitment details before installation.</p>
+      <div class="detail-actions">
+        <button class="button button-primary" type="button" data-modal-add-fitment>Add to Quote</button>
+        <button class="button" type="button" data-modal-fitment>Request Fitment</button>
+        <button class="button" type="button" data-modal-b2b>Dealer / Fleet Inquiry</button>
+      </div>
+    </div>
+  `;
+
+  qs("[data-modal-add-fitment]", detail).addEventListener("click", () => addFitmentToCart(fitment.sku));
+  qs("[data-modal-fitment]", detail).addEventListener("click", () => prefillFitmentQuote(fitment, "Request fitment"));
+  qs("[data-modal-b2b]", detail).addEventListener("click", () => prefillFitmentQuote(fitment, "Dealer / fleet inquiry"));
+
+  if (typeof dialog.showModal === "function") {
+    dialog.showModal();
+  } else {
+    dialog.setAttribute("open", "");
+  }
+}
+
 function closeProduct() {
   const dialog = qs("[data-product-dialog]");
   if (!dialog) return;
@@ -302,6 +532,25 @@ function closeProduct() {
 function prefillQuote(product, requestType) {
   const fields = {
     productNeeded: product.name,
+    customRequest: requestType,
+    quantity: "10"
+  };
+  closeProduct();
+
+  if (applyQuoteFields(fields)) {
+    qs("#contact")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    return;
+  }
+
+  storePendingQuote(fields);
+  window.location.href = "/contact/#contact";
+}
+
+function prefillFitmentQuote(fitment, requestType) {
+  const fields = {
+    productNeeded: `${fitment.sku} - ${fitment.product}`,
+    bikeModel: `${fitment.brand} ${fitment.model}`,
+    modelYear: fitment.year,
     customRequest: requestType,
     quantity: "10"
   };
@@ -338,25 +587,32 @@ function renderCart() {
   }
 
   state.cart.forEach((item) => {
-    const product = getProduct(item.slug);
-    if (!product) return;
+    const fitment = item.sku ? getFitment(item.sku) : null;
+    const product = fitment ? getFitmentProduct(fitment) : getProduct(item.slug);
+    if (!product && !fitment) return;
+
+    const key = cartItemKey(item);
+    const title = fitment ? fitment.product : product.name;
+    const meta = fitment ? fitment.sku : PRICE_LABEL;
+    const image = product?.image || "/assets/images/product-bench.webp";
 
     const row = document.createElement("article");
     row.className = "cart-item";
     row.innerHTML = `
-      <img src="${product.image}" alt="${product.name}">
+      <img src="${image}" alt="${title}">
       <div>
-        <h3>${product.name}</h3>
+        <h3>${title}</h3>
+        <span>${meta}</span>
         <span>${PRICE_LABEL}</span>
       </div>
-      <div class="qty-controls" aria-label="Quantity controls for ${product.name}">
+      <div class="qty-controls" aria-label="Quantity controls for ${title}">
         <button type="button" aria-label="Decrease quantity" data-qty-minus>-</button>
         <strong>${item.qty}</strong>
         <button type="button" aria-label="Increase quantity" data-qty-plus>+</button>
       </div>
     `;
-    qs("[data-qty-minus]", row).addEventListener("click", () => changeQty(product.slug, -1));
-    qs("[data-qty-plus]", row).addEventListener("click", () => changeQty(product.slug, 1));
+    qs("[data-qty-minus]", row).addEventListener("click", () => changeQty(key, -1));
+    qs("[data-qty-plus]", row).addEventListener("click", () => changeQty(key, 1));
     list.append(row);
   });
 }
@@ -524,10 +780,15 @@ function init() {
   renderCart();
   setupNavigation();
   setupForms();
+  setupFitmentSearches();
   setupCartQuote();
 
   qsa("[data-open-product]").forEach((button) => {
     button.addEventListener("click", () => openProduct(button.dataset.openProduct));
+  });
+
+  qsa("[data-open-fitment]").forEach((button) => {
+    button.addEventListener("click", () => openFitment(button.dataset.openFitment));
   });
 
   qs("[data-dialog-close]")?.addEventListener("click", closeProduct);
