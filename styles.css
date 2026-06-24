@@ -1366,6 +1366,14 @@ p {
   background: #fffdf5;
 }
 
+.form-botcheck {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1417,6 +1425,20 @@ textarea:focus {
   margin: 14px 0 0;
   color: #294235;
   font-weight: 850;
+}
+
+.form-status[data-state="success"] {
+  color: #13582f;
+}
+
+.form-status[data-state="error"] {
+  color: #8e2e13;
+}
+
+.quote-form .button:disabled {
+  cursor: progress;
+  opacity: 0.72;
+  transform: none;
 }
 
 .site-footer {

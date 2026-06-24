@@ -107,8 +107,9 @@ function applyQuoteFields(fields) {
   const form = qs("[data-quote-form]");
   if (!form || !fields) return false;
   Object.entries(fields).forEach(([name, value]) => {
-    if (form.elements[name] && value) {
-      form.elements[name].value = value;
+    const field = form.elements.namedItem(name);
+    if (field && value) {
+      field.value = value;
     }
   });
   return true;
@@ -712,32 +713,57 @@ function setupForms() {
 
   applyPendingQuote();
 
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const data = new FormData(form);
-    const lines = [
-      "Langbiang Gravity fitment and quote request",
-      "",
-      `Name: ${data.get("name") || ""}`,
-      `Phone / WhatsApp / Zalo: ${data.get("phone") || ""}`,
-      `Email: ${data.get("email") || ""}`,
-      `Business type: ${data.get("businessType") || ""}`,
-      `Bike model: ${data.get("bikeModel") || ""}`,
-      `Model year: ${data.get("modelYear") || ""}`,
-      `Product needed: ${data.get("productNeeded") || ""}`,
-      `Front / rear need: ${data.get("frontRearNeed") || ""}`,
-      `Chain size: ${data.get("chainSize") || ""}`,
-      `Tooth count: ${data.get("toothCount") || ""}`,
-      `Quantity: ${data.get("quantity") || ""}`,
-      `Use case: ${data.get("useCase") || ""}`,
-      `Custom request: ${data.get("customRequest") || ""}`,
-      "",
-      `Message: ${data.get("message") || ""}`
-    ];
-    const subject = encodeURIComponent("Langbiang Gravity fitment and quote request");
-    const body = encodeURIComponent(lines.join("\n"));
-    if (status) status.textContent = "Email draft opened. Attach drawing or sample photo before sending if needed.";
-    window.location.href = `mailto:sales@langbianggravity.com?subject=${subject}&body=${body}`;
+    const accessKey = form.elements.namedItem("access_key")?.value;
+    const submitButton = qs("button[type='submit']", form);
+    const originalLabel = submitButton?.textContent;
+
+    if (!accessKey || accessKey === "YOUR_WEB3FORMS_ACCESS_KEY") {
+      if (status) {
+        status.dataset.state = "error";
+        status.textContent = "Add the Web3Forms access key before live submissions.";
+      }
+      return;
+    }
+
+    if (status) {
+      status.dataset.state = "pending";
+      status.textContent = "Sending request...";
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || "Web3Forms submission failed");
+      }
+
+      form.reset();
+      if (status) {
+        status.dataset.state = "success";
+        status.textContent = "Request sent. We will confirm fitment and pricing by reply.";
+      }
+    } catch {
+      if (status) {
+        status.dataset.state = "error";
+        status.textContent = "Request could not be sent. Check the access key or try again.";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    }
   });
 }
 
