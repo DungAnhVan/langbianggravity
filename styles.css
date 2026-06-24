@@ -3,13 +3,13 @@
   --black: #080a09;
   --graphite: #101412;
   --graphite-2: #171d1a;
-  --steel: #7f8983;
-  --titanium: #d1d8d0;
+  --steel: #9aa49d;
+  --titanium: #dbe2da;
   --off-white: #eef1eb;
   --paper: #f4f2ea;
-  --muted: #c4ccc4;
-  --line: rgba(238, 241, 235, 0.12);
-  --line-strong: rgba(238, 241, 235, 0.34);
+  --muted: #d2dad2;
+  --line: rgba(238, 241, 235, 0.16);
+  --line-strong: rgba(238, 241, 235, 0.42);
   --orange: #ff6a1a;
   --lime: #b8ff2d;
   --blue: #28a7ff;
@@ -33,7 +33,7 @@ body {
   background: var(--black);
   color: var(--off-white);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
+  line-height: 1.56;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -111,6 +111,9 @@ h2,
 h3 {
   line-height: 0.95;
   letter-spacing: 0;
+  color: var(--off-white);
+  text-wrap: balance;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.28);
 }
 
 h1 {
@@ -133,7 +136,8 @@ h3 {
 
 p {
   color: var(--titanium);
-  font-weight: 500;
+  font-weight: 560;
+  line-height: 1.58;
 }
 
 .button {
@@ -147,7 +151,7 @@ p {
   padding: 12px 18px;
   background: rgba(238, 241, 235, 0.04);
   color: var(--off-white);
-  font-weight: 800;
+  font-weight: 850;
   cursor: pointer;
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, color 180ms ease;
 }
@@ -230,9 +234,9 @@ p {
 .products-nav-toggle {
   border-radius: var(--radius);
   padding: 8px 10px;
-  color: #d5dbd4;
-  font-size: 0.88rem;
-  font-weight: 850;
+  color: #eef1eb;
+  font-size: 0.9rem;
+  font-weight: 900;
   transition: background 180ms ease, color 180ms ease;
 }
 
@@ -410,8 +414,8 @@ p {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(8, 10, 9, 0.96) 0%, rgba(8, 10, 9, 0.80) 36%, rgba(8, 10, 9, 0.28) 70%),
-    linear-gradient(0deg, rgba(8, 10, 9, 1) 0%, rgba(8, 10, 9, 0.18) 44%),
+    linear-gradient(90deg, rgba(8, 10, 9, 0.98) 0%, rgba(8, 10, 9, 0.82) 40%, rgba(8, 10, 9, 0.34) 76%),
+    linear-gradient(0deg, rgba(8, 10, 9, 1) 0%, rgba(8, 10, 9, 0.20) 48%),
     url("assets/images/hero-test-rig.webp") center / cover no-repeat;
 }
 
@@ -425,9 +429,9 @@ p {
 .hero-copy {
   max-width: 650px;
   margin-bottom: 28px;
-  color: var(--off-white);
+  color: #f4f6f1;
   font-size: 1.24rem;
-  font-weight: 600;
+  font-weight: 700;
   line-height: 1.48;
 }
 
@@ -462,9 +466,9 @@ p {
 
 .hero-metrics dd {
   margin: 0;
-  color: #cdd5cc;
+  color: #dce3dc;
   font-size: 0.96rem;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .two-column,
@@ -485,7 +489,15 @@ p {
   margin-bottom: 42px;
 }
 
+.section-heading p {
+  color: #dbe2da;
+  font-size: 1.04rem;
+  font-weight: 620;
+}
+
 .page-hero {
+  position: relative;
+  overflow: hidden;
   padding-top: 150px;
   border-bottom: 1px solid var(--line);
   background:
@@ -495,8 +507,44 @@ p {
   background-size: 80px 80px, 80px 80px, auto;
 }
 
+.page-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.page-hero .shell {
+  position: relative;
+  z-index: 1;
+}
+
+.products-hero {
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(8, 10, 9, 0.96) 0%, rgba(8, 10, 9, 0.74) 48%, rgba(8, 10, 9, 0.52) 100%),
+    linear-gradient(0deg, rgba(8, 10, 9, 0.94), rgba(8, 10, 9, 0.34)),
+    url("assets/images/product-bench.webp") right center / cover no-repeat;
+}
+
+.products-hero::before {
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.72;
+}
+
 .page-hero h1 {
   max-width: 900px;
+}
+
+.page-hero p:not(.eyebrow),
+.product-line-hero p:not(.eyebrow) {
+  color: #f0f4ef;
 }
 
 .page-hero .section-heading {
@@ -552,7 +600,7 @@ p {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 22px;
-  background: rgba(8, 10, 9, 0.72);
+  background: rgba(8, 10, 9, 0.82);
   transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
@@ -575,9 +623,9 @@ p {
 .category-card p {
   min-height: 84px;
   margin-bottom: 18px;
-  color: #cdd5cc;
-  font-size: 0.98rem;
-  font-weight: 560;
+  color: #dbe2da;
+  font-size: 1rem;
+  font-weight: 620;
   line-height: 1.52;
 }
 
@@ -617,7 +665,7 @@ p {
 .conversion-layout p {
   max-width: 610px;
   font-size: 1.12rem;
-  font-weight: 560;
+  font-weight: 620;
 }
 
 .ratio-panel {
@@ -664,8 +712,9 @@ p {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: var(--black);
-  box-shadow: var(--shadow);
+  background: rgba(8, 10, 9, 0.92);
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.56);
+  backdrop-filter: blur(10px);
 }
 
 .technical-figure img {
@@ -686,9 +735,9 @@ p {
   display: grid;
   place-items: center;
   background: #0c0f0d;
-  color: #d5dcd4;
+  color: #eef1eb;
   font-size: 0.92rem;
-  font-weight: 850;
+  font-weight: 900;
 }
 
 .engineering-section {
@@ -824,7 +873,6 @@ p {
   background-size: 80px 80px;
 }
 
-.product-line-hero,
 .fitment-section {
   background:
     linear-gradient(90deg, rgba(238, 241, 235, 0.03) 1px, transparent 1px),
@@ -834,11 +882,68 @@ p {
 }
 
 .product-line-hero {
+  position: relative;
+  min-height: 650px;
+  overflow: hidden;
   padding-top: 150px;
   border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(8, 10, 9, 0.98) 0%, rgba(8, 10, 9, 0.82) 46%, rgba(8, 10, 9, 0.64) 100%),
+    linear-gradient(0deg, rgba(8, 10, 9, 0.98), rgba(8, 10, 9, 0.34)),
+    var(--product-hero-image, url("assets/images/product-bench.webp")) var(--product-hero-position, center) / var(--product-hero-size, cover) no-repeat,
+    #111713;
+}
+
+.product-line-hero::before,
+.product-line-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.product-line-hero::before {
+  z-index: 0;
+  background:
+    radial-gradient(circle at 78% 46%, rgba(238, 241, 235, 0.18), transparent 34%),
+    linear-gradient(90deg, rgba(238, 241, 235, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.025) 1px, transparent 1px);
+  background-size: auto, 80px 80px, 80px 80px;
+  opacity: 0.88;
+}
+
+.product-line-hero::after {
+  z-index: 0;
+  background: linear-gradient(180deg, transparent 0%, rgba(8, 10, 9, 0.78) 100%);
+}
+
+.product-line-hero-sprockets {
+  --product-hero-image: url("assets/images/field-test.webp");
+  --product-hero-position: center;
+  --product-hero-size: cover;
+}
+
+.product-line-hero-brake {
+  --product-hero-image: url("assets/products/brake-rotor.png");
+  --product-hero-position: right 12% center;
+  --product-hero-size: min(640px, 58vw) auto;
+}
+
+.product-line-hero-cnc {
+  --product-hero-image: url("assets/images/cnc-inspection.webp");
+  --product-hero-position: center;
+  --product-hero-size: cover;
+}
+
+.product-line-hero-bolts {
+  --product-hero-image: url("assets/images/product-bench.webp");
+  --product-hero-position: center;
+  --product-hero-size: cover;
 }
 
 .product-line-hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.04fr) minmax(360px, 0.96fr);
   gap: 56px;
@@ -888,11 +993,13 @@ p {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 18px;
-  background: rgba(8, 10, 9, 0.78);
+  background: rgba(8, 10, 9, 0.86);
 }
 
 .fitment-form label {
   color: var(--off-white);
+  font-size: 0.9rem;
+  font-weight: 900;
 }
 
 .fitment-results {
@@ -908,7 +1015,8 @@ p {
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #0b0e0c;
+  background: #0c100e;
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.28);
 }
 
 .fitment-result-media {
@@ -950,17 +1058,17 @@ p {
 }
 
 .fitment-result-body dt {
-  color: #aeb8af;
-  font-size: 0.8rem;
-  font-weight: 850;
+  color: #d0d8d1;
+  font-size: 0.82rem;
+  font-weight: 900;
   text-transform: uppercase;
 }
 
 .fitment-result-body dd {
   margin: 0;
   color: var(--off-white);
-  font-size: 0.93rem;
-  font-weight: 650;
+  font-size: 0.95rem;
+  font-weight: 700;
 }
 
 .fitment-empty {
@@ -1013,8 +1121,8 @@ p {
 
 .product-subgroup-head p {
   margin-bottom: 0;
-  color: #cfd7ce;
-  font-weight: 600;
+  color: #dbe2da;
+  font-weight: 650;
 }
 
 .store-grid {
@@ -1058,7 +1166,7 @@ p {
   border: 1px solid rgba(184, 255, 45, 0.44);
   border-radius: 999px;
   padding: 6px 10px;
-  background: rgba(8, 10, 9, 0.8);
+  background: rgba(8, 10, 9, 0.9);
   color: var(--lime);
   font-size: 0.72rem;
   font-weight: 900;
@@ -1075,7 +1183,7 @@ p {
   min-height: 22px;
   margin-bottom: 12px;
   color: var(--orange);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 900;
   text-transform: uppercase;
 }
@@ -1735,6 +1843,32 @@ textarea:focus {
 
   .hero-copy {
     max-width: 350px;
+  }
+
+  .page-hero,
+  .products-hero,
+  .product-line-hero {
+    min-height: auto;
+    padding-top: 124px;
+  }
+
+  .products-hero {
+    background:
+      linear-gradient(90deg, rgba(8, 10, 9, 0.97) 0%, rgba(8, 10, 9, 0.84) 72%, rgba(8, 10, 9, 0.68) 100%),
+      linear-gradient(0deg, rgba(8, 10, 9, 0.96), rgba(8, 10, 9, 0.48)),
+      url("assets/images/product-bench.webp") 64% center / cover no-repeat;
+  }
+
+  .product-line-hero {
+    background:
+      linear-gradient(90deg, rgba(8, 10, 9, 0.98) 0%, rgba(8, 10, 9, 0.88) 72%, rgba(8, 10, 9, 0.74) 100%),
+      linear-gradient(0deg, rgba(8, 10, 9, 1), rgba(8, 10, 9, 0.52)),
+      var(--product-hero-image, url("assets/images/product-bench.webp")) center / cover no-repeat,
+      #111713;
+  }
+
+  .product-line-hero::before {
+    opacity: 0.52;
   }
 
   .hero-section {
