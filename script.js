@@ -789,6 +789,90 @@ function setupCartQuote() {
   });
 }
 
+function setupSprocketMotion() {
+  const revealItems = qsa("[data-reveal]");
+  if (revealItems.length) {
+    document.documentElement.classList.add("js-reveal");
+    const revealItem = (item) => item.classList.add("is-visible");
+    const isInViewport = (item) => {
+      const rect = item.getBoundingClientRect();
+      return rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+    };
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              revealItem(entry.target);
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18, rootMargin: "0px 0px -8% 0px" }
+      );
+
+      revealItems.forEach((item) => {
+        if (isInViewport(item)) {
+          revealItem(item);
+          return;
+        }
+        revealObserver.observe(item);
+      });
+    } else {
+      revealItems.forEach(revealItem);
+    }
+  }
+
+  const scene = qs("[data-sprocket-motion]");
+  if (!scene) return;
+
+  const steps = qsa("[data-motion-step]", scene);
+  const progressBar = qs("[data-motion-progress]", scene);
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (reducedMotion) {
+    scene.style.setProperty("--motion-rotate", "0deg");
+    scene.style.setProperty("--motion-scale", "1");
+    scene.style.setProperty("--motion-scan-top", "50%");
+    progressBar?.style.setProperty("transform", "scaleY(1)");
+    steps.forEach((step, index) => step.classList.toggle("is-active", index === 0));
+    return;
+  }
+
+  let ticking = false;
+  const clamp = (value, min, max) => Math.min(Math.max(value, min), max);
+
+  const syncMotion = () => {
+    const rect = scene.getBoundingClientRect();
+    const viewportHeight = window.innerHeight || 1;
+    const travel = Math.max(rect.height - viewportHeight, 1);
+    const progress = clamp(-rect.top / travel, 0, 1);
+    const activeIndex = clamp(Math.floor(progress * steps.length), 0, Math.max(steps.length - 1, 0));
+
+    scene.style.setProperty("--motion-rotate", `${(-12 + progress * 74).toFixed(2)}deg`);
+    scene.style.setProperty("--motion-scale", (1 + progress * 0.12).toFixed(3));
+    scene.style.setProperty("--motion-scan-top", `${(12 + progress * 76).toFixed(2)}%`);
+    progressBar?.style.setProperty("transform", `scaleY(${progress.toFixed(4)})`);
+
+    steps.forEach((step, index) => {
+      step.classList.toggle("is-active", index === activeIndex);
+    });
+
+    ticking = false;
+  };
+
+  const requestSync = () => {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(syncMotion);
+  };
+
+  syncMotion();
+  window.addEventListener("scroll", requestSync, { passive: true });
+  window.addEventListener("resize", requestSync);
+}
+
 function init() {
   renderProductNavigation();
   renderStore();
@@ -798,6 +882,7 @@ function init() {
   setupForms();
   setupFitmentSearches();
   setupCartQuote();
+  setupSprocketMotion();
 
   qsa("[data-open-product]").forEach((button) => {
     button.addEventListener("click", () => openProduct(button.dataset.openProduct));
