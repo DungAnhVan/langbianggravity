@@ -2883,6 +2883,19 @@ textarea:focus {
   font-weight: 660;
 }
 
+.sprocket-guide-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  grid-column: 2;
+}
+
+.sprocket-guide-links a {
+  border-bottom: 2px solid currentColor;
+  color: #eef1eb;
+  font-weight: 900;
+}
+
 .sprocket-finder-reveal {
   position: relative;
   background:
@@ -2954,6 +2967,216 @@ textarea:focus {
   font-weight: 900;
 }
 
+.guide-page {
+  background: #080a09;
+}
+
+.guide-hero {
+  min-height: 760px;
+  display: grid;
+  align-items: center;
+  padding-top: 150px;
+  background:
+    linear-gradient(128deg, rgba(255, 47, 31, 0.24) 0 12%, transparent 12.3%),
+    radial-gradient(circle at 78% 18%, rgba(255, 106, 26, 0.2), transparent 32%),
+    linear-gradient(90deg, rgba(238, 241, 235, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.026) 1px, transparent 1px),
+    #080a09;
+  background-size: auto, auto, 68px 68px, 68px 68px, auto;
+}
+
+.guide-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 0.72fr);
+  gap: 52px;
+  align-items: center;
+}
+
+.guide-hero-copy .hero-copy {
+  max-width: 680px;
+  color: #e8eee6;
+  font-weight: 720;
+}
+
+.guide-hero-visual {
+  position: relative;
+  display: grid;
+  min-height: 520px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(238, 241, 235, 0.16);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(145deg, rgba(255, 106, 26, 0.2), transparent 42%),
+    radial-gradient(circle, rgba(238, 241, 235, 0.1), transparent 60%),
+    rgba(10, 13, 11, 0.92);
+  box-shadow: 0 34px 96px rgba(0, 0, 0, 0.46);
+}
+
+.guide-hero-visual::before,
+.guide-hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 28px;
+  border: 1px solid rgba(255, 106, 26, 0.18);
+  border-radius: 50%;
+}
+
+.guide-hero-visual::after {
+  inset: 78px;
+  border-color: rgba(238, 241, 235, 0.12);
+}
+
+.guide-hero-visual img {
+  position: relative;
+  z-index: 1;
+  width: min(440px, 86%);
+  filter: drop-shadow(0 28px 52px rgba(0, 0, 0, 0.56));
+}
+
+.guide-hero-visual div {
+  position: absolute;
+  right: 22px;
+  bottom: 22px;
+  z-index: 2;
+  display: grid;
+  gap: 4px;
+  border: 1px solid rgba(238, 241, 235, 0.18);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  background: rgba(8, 10, 9, 0.82);
+}
+
+.guide-hero-visual span {
+  color: #ff7a2f;
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.guide-hero-visual strong {
+  color: #eef1eb;
+  font-size: 1rem;
+}
+
+.guide-ratio-section {
+  background:
+    linear-gradient(0deg, rgba(238, 241, 235, 0.035) 1px, transparent 1px),
+    #0b0f0d;
+  background-size: 100% 46px;
+  border-top: 1px solid rgba(238, 241, 235, 0.16);
+  border-bottom: 1px solid rgba(238, 241, 235, 0.16);
+}
+
+.guide-ratio-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.guide-ratio-layout p {
+  max-width: 620px;
+  color: #dfe7df;
+  font-weight: 680;
+}
+
+.ratio-table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(238, 241, 235, 0.16);
+  border-radius: var(--radius);
+  background: rgba(8, 10, 9, 0.82);
+}
+
+.ratio-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+}
+
+.ratio-table th,
+.ratio-table td {
+  border-bottom: 1px solid rgba(238, 241, 235, 0.12);
+  padding: 16px 18px;
+  text-align: left;
+}
+
+.ratio-table th {
+  color: #ff7a2f;
+  font-size: 0.78rem;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.ratio-table td {
+  color: #eef1eb;
+  font-weight: 800;
+}
+
+.ratio-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.guide-decision-section {
+  background:
+    linear-gradient(115deg, transparent 0 74%, rgba(255, 47, 31, 0.14) 74.2% 75%, transparent 75.4%),
+    #080a09;
+}
+
+.guide-decision-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.guide-decision-grid article {
+  min-height: 360px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(238, 241, 235, 0.16);
+  border-radius: var(--radius);
+  padding: 26px;
+  background:
+    linear-gradient(135deg, rgba(255, 106, 26, 0.16), transparent 42%),
+    rgba(11, 15, 13, 0.9);
+}
+
+.guide-decision-grid span {
+  color: #ff7a2f;
+  font-weight: 950;
+  text-transform: uppercase;
+}
+
+.guide-decision-grid h2 {
+  font-size: 2.15rem;
+}
+
+.guide-decision-grid p {
+  margin: 0;
+  color: #dfe7df;
+  font-weight: 680;
+}
+
+.guide-finder-section {
+  background:
+    radial-gradient(circle at 22% 20%, rgba(255, 106, 26, 0.18), transparent 30%),
+    #0b0f0d;
+  border-top: 1px solid rgba(238, 241, 235, 0.16);
+  border-bottom: 1px solid rgba(238, 241, 235, 0.16);
+}
+
+.guide-faq-section {
+  background: #080a09;
+}
+
+.guide-faq-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: 44px;
+  align-items: start;
+}
+
 .js-reveal [data-reveal] {
   opacity: 0;
   transform: translateY(28px);
@@ -2993,6 +3216,9 @@ textarea:focus {
   .sprocket-tech-layout,
   .sprocket-model-grid,
   .sprocket-guide-layout,
+  .guide-hero-layout,
+  .guide-ratio-layout,
+  .guide-faq-layout,
   .sprocket-finder-panel {
     grid-template-columns: 1fr;
   }
@@ -3036,6 +3262,23 @@ textarea:focus {
 
   .sprocket-faq-list {
     grid-column: 1;
+  }
+
+  .sprocket-guide-links {
+    grid-column: 1;
+  }
+
+  .guide-hero {
+    min-height: auto;
+    padding-top: 128px;
+  }
+
+  .guide-hero-visual {
+    min-height: 460px;
+  }
+
+  .guide-decision-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -3135,8 +3378,35 @@ textarea:focus {
 
   .sprocket-spec-grid,
   .sprocket-guide-grid,
+  .guide-decision-grid,
   .sprocket-finder-form {
     grid-template-columns: 1fr;
+  }
+
+  .guide-hero {
+    padding-top: 84px;
+  }
+
+  .guide-hero-layout {
+    gap: 26px;
+  }
+
+  .guide-hero-copy h1 {
+    font-size: 3rem;
+  }
+
+  .guide-hero-visual {
+    min-height: 340px;
+  }
+
+  .guide-hero-visual div {
+    right: 14px;
+    bottom: 14px;
+    max-width: calc(100% - 28px);
+  }
+
+  .guide-decision-grid article {
+    min-height: 300px;
   }
 
   .sprocket-model-visual {
