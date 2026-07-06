@@ -408,6 +408,11 @@ p {
   display: none;
 }
 
+.sprocket-showcase-page .cart-button,
+.sprocket-showcase-page .mobile-cart-button {
+  display: none;
+}
+
 .nav-toggle {
   display: none;
   width: 42px;
@@ -911,6 +916,162 @@ p {
   background-size: 80px 80px;
 }
 
+.sprocket-program-section,
+.finder-gateway-section {
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.022) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.018) 1px, transparent 1px),
+    #111713;
+  background-size: 80px 80px;
+}
+
+.sprocket-program-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.sprocket-program-card {
+  overflow: hidden;
+  min-height: 360px;
+  border: 1px solid rgba(238, 241, 235, 0.2);
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 106, 26, 0.12), rgba(255, 106, 26, 0) 42%),
+    rgba(8, 10, 9, 0.9);
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.28);
+}
+
+.sprocket-program-card > img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid rgba(238, 241, 235, 0.16);
+  object-fit: cover;
+}
+
+.sprocket-program-card > div {
+  padding: 28px;
+}
+
+.sprocket-program-card span {
+  display: inline-flex;
+  min-width: 54px;
+  min-height: 42px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  border: 1px solid rgba(255, 106, 26, 0.5);
+  border-radius: var(--radius);
+  color: var(--orange);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.sprocket-program-card h3 {
+  max-width: 520px;
+  margin-bottom: 14px;
+  font-size: 1.9rem;
+}
+
+.sprocket-program-card p {
+  max-width: 620px;
+  margin-bottom: 24px;
+  color: #e0e7df;
+  font-size: 1.06rem;
+  font-weight: 680;
+}
+
+.sprocket-program-card ul {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sprocket-program-card li {
+  border-top: 1px solid rgba(238, 241, 235, 0.14);
+  padding-top: 10px;
+  color: var(--off-white);
+  font-weight: 850;
+}
+
+.finder-gateway-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(360px, 1.1fr);
+  gap: 44px;
+  align-items: start;
+}
+
+.finder-gateway-copy p {
+  max-width: 650px;
+  color: #e0e7df;
+  font-size: 1.08rem;
+  font-weight: 650;
+}
+
+.finder-gateway-points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.finder-gateway-points span {
+  display: inline-flex;
+  min-height: 42px;
+  align-items: center;
+  border: 1px solid rgba(238, 241, 235, 0.22);
+  border-radius: var(--radius);
+  padding: 9px 12px;
+  background: rgba(238, 241, 235, 0.07);
+  color: var(--off-white);
+  font-size: 0.92rem;
+  font-weight: 900;
+}
+
+.finder-gateway-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  border: 1px solid rgba(238, 241, 235, 0.2);
+  border-radius: var(--radius);
+  padding: 24px;
+  background: rgba(8, 10, 9, 0.92);
+  box-shadow: 0 18px 56px rgba(0, 0, 0, 0.28);
+}
+
+.finder-gateway-form .eyebrow,
+.finder-gateway-form h3,
+.finder-gateway-actions,
+.finder-gateway-note {
+  grid-column: 1 / -1;
+}
+
+.finder-gateway-form h3 {
+  margin-bottom: 4px;
+  font-size: 1.7rem;
+}
+
+.finder-gateway-form label {
+  color: var(--off-white);
+}
+
+.finder-gateway-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-top: 6px;
+}
+
+.finder-gateway-note {
+  margin: 0;
+  color: #dbe2da;
+  font-size: 0.94rem;
+  font-weight: 680;
+}
+
 .product-line-hero {
   position: relative;
   min-height: 650px;
@@ -948,9 +1109,13 @@ p {
 }
 
 .product-line-hero-sprockets {
-  --product-hero-image: url("assets/images/field-test.webp");
+  --product-hero-image: url("assets/products/sprocket-teeth-closeup.webp");
   --product-hero-position: center;
   --product-hero-size: cover;
+}
+
+.product-line-hero-sprockets .product-line-hero-grid {
+  grid-template-columns: minmax(0, 760px);
 }
 
 .product-line-hero-brake {
@@ -1812,6 +1977,7 @@ textarea:focus {
   }
 
   .category-grid,
+  .sprocket-program-grid,
   .feature-grid,
   .store-grid,
   .fitment-results {
@@ -1829,6 +1995,7 @@ textarea:focus {
   .lab-layout,
   .contact-layout,
   .product-line-hero-grid,
+  .finder-gateway-layout,
   .dialog-body {
     grid-template-columns: 1fr;
   }
@@ -1967,13 +2134,27 @@ textarea:focus {
   .hero-metrics,
   .ratio-panel,
   .category-grid,
+  .sprocket-program-grid,
   .b2b-cards,
   .feature-grid,
   .store-grid,
   .fitment-form,
+  .finder-gateway-form,
   .fitment-results,
   .form-grid {
     grid-template-columns: 1fr;
+  }
+
+  .sprocket-program-card {
+    min-height: auto;
+  }
+
+  .sprocket-program-card > div {
+    padding: 22px;
+  }
+
+  .finder-gateway-actions .button {
+    width: 100%;
   }
 
   .hero-metrics div {

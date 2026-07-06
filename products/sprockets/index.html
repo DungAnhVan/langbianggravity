@@ -16,7 +16,7 @@
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://langbianggravity.com/products/sprockets/" />
-    <meta property="og:image" content="https://langbianggravity.com/assets/products/rear-sprocket-7075.png" />
+    <meta property="og:image" content="https://langbianggravity.com/assets/products/sprocket-teeth-closeup.webp" />
     <meta name="theme-color" content="#080a09" />
     <link rel="icon" href="/assets/brand/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png" />
@@ -88,7 +88,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="sprocket-showcase-page">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
@@ -132,91 +132,132 @@
         <div class="shell product-line-hero-grid">
           <div>
             <p class="eyebrow">Sprockets</p>
-            <h1>Sprockets.</h1>
+            <h1>Langbiang Gravity Sprockets.</h1>
             <p class="hero-copy">
-              Front and rear sprockets by bike model, chain size, and tooth count.
+              Premium front and rear sprockets engineered around private fitment geometry, race materials,
+              and serious off-road service.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#fitment">Search Fitment</a>
-              <a class="button" href="/contact/#contact">Request Fitment</a>
+              <a class="button button-primary" href="https://sprocket.langbianggravity.com/finder">Open Sprocket Finder</a>
+              <a class="button" href="https://sprocket.langbianggravity.com/request">Request Fitment</a>
             </div>
           </div>
-          <figure class="technical-figure">
-            <img src="/assets/products/rear-sprocket-7075.png" alt="7075-T6 rear sprocket sample" />
-            <figcaption>
-              <span>42CrMo4</span>
-              <span>7075-T6</span>
-              <span>428 / 520</span>
-              <span>Price on request</span>
-            </figcaption>
-          </figure>
         </div>
       </section>
 
-      <section class="fact-strip-section section-pad">
-        <div class="shell fact-strip" aria-label="Sprocket product facts">
-          <span id="front-sprocket">Front</span>
-          <span id="rear-sprocket">Rear</span>
-          <span id="materials">42CrMo4</span>
-          <span>7075-T6</span>
-          <span>428 / 520</span>
-          <span>Tooth count</span>
-          <span>Price on request</span>
-        </div>
-      </section>
-
-      <section id="fitment" class="fitment-section section-pad" data-fitment-block>
+      <section class="sprocket-program-section section-pad">
         <div class="shell section-heading">
-          <p class="eyebrow">Sample SKU search</p>
-          <h2>Sample sprocket SKUs.</h2>
-          <p>Filter by brand, model, year, and type.</p>
+          <p class="eyebrow">Product positioning</p>
+          <h2>Two sprocket programs for serious off-road use.</h2>
+          <p>
+            Langbiang Gravity keeps the landing page focused on the product line, materials, and rider use cases.
+            Fitment lookup and support requests continue in the dedicated sprocket finder app.
+          </p>
         </div>
-        <div class="shell fitment-panel">
-          <form class="fitment-form" data-fitment-search data-product-line="sprockets">
+        <div class="shell sprocket-program-grid">
+          <article class="sprocket-program-card">
+            <img src="/assets/products/sprocket-rs-steel.webp" alt="RS Racing Steel sprocket program placeholder" />
+            <div>
+              <span>RS</span>
+              <h3>RS Racing Steel</h3>
+              <p>
+                42CrMo4 race steel for endurance, training, mud, torque-heavy riding, and long service life.
+              </p>
+              <ul>
+                <li>Front sprocket applications</li>
+                <li>Rear sprocket applications by request</li>
+                <li>Built for chain load, tooth wear, and rough service intervals</li>
+              </ul>
+            </div>
+          </article>
+          <article class="sprocket-program-card">
+            <img
+              src="/assets/products/sprocket-ra-aluminium.webp"
+              alt="RA Racing Aluminium 7075-T6 sprocket program placeholder"
+            />
+            <div>
+              <span>RA</span>
+              <h3>RA Racing Aluminium 7075-T6</h3>
+              <p>
+                Lightweight 7075-T6 rear sprockets for race-day response and reduced rotating mass.
+              </p>
+              <ul>
+                <li>Rear sprocket applications</li>
+                <li>Motocross and enduro race programs</li>
+                <li>Focused on sharp response, low weight, and clean tooth profiles</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="fitment" class="finder-gateway-section section-pad">
+        <div class="shell finder-gateway-layout">
+          <div class="finder-gateway-copy">
+            <p class="eyebrow">Fitment handoff</p>
+            <h2>Search fitment in the sprocket finder app.</h2>
+            <p>
+              Public LBG SKU guidance stays visible to riders and dealers. Private fitment geometry stays behind the
+              Langbiang Gravity sprocket workflow, with front and rear applications checked before production or purchase.
+            </p>
+            <div class="finder-gateway-points">
+              <span>Bike make</span>
+              <span>Model</span>
+              <span>Year</span>
+              <span>Model type</span>
+            </div>
+          </div>
+          <form class="finder-gateway-form" action="https://sprocket.langbianggravity.com/finder" method="get">
+            <p class="eyebrow">Open finder</p>
+            <h3>Start with bike details.</h3>
             <label>
-              Brand
-              <select name="brand">
-                <option value="">Any brand</option>
-                <option>Yamaha</option>
-                <option>KTM</option>
+              Make
+              <select name="make">
+                <option value="">Any make</option>
                 <option>Honda</option>
+                <option>Yamaha</option>
                 <option>Kawasaki</option>
-                <option>GasGas</option>
+                <option>KTM</option>
+                <option>Suzuki</option>
+                <option>Gas Gas</option>
+                <option>Husqvarna</option>
               </select>
             </label>
             <label>
               Model
-              <input name="model" type="text" placeholder="WR155R, 450 SX-F..." />
+              <input name="model" type="text" placeholder="CRF450R, YZ250F, KX250..." />
             </label>
             <label>
               Year
-              <input name="year" type="text" placeholder="2016, 2020-2026..." />
+              <input name="year" type="text" inputmode="numeric" placeholder="2024" />
             </label>
             <label>
-              Type
-              <select name="type">
-                <option value="">Any type</option>
-                <option>520 conversion</option>
-                <option>Race fitment</option>
-                <option>Front sprocket</option>
-                <option>Rear sprocket</option>
-              </select>
+              Model type
+              <input name="type" type="text" placeholder="SX-F, CRF-R, RM-Z..." />
             </label>
-            <button class="button button-primary" type="submit">Search Fitment</button>
+            <div class="finder-gateway-actions">
+              <button class="button button-primary" type="submit">Search Fitment</button>
+              <a class="button" href="https://sprocket.langbianggravity.com/finder">Open full finder</a>
+            </div>
+            <p class="finder-gateway-note">
+              Results open on sprocket.langbianggravity.com. This page stays as a product showcase.
+            </p>
           </form>
-          <div class="fitment-results" data-fitment-results></div>
         </div>
       </section>
 
       <section class="conversion-section section-pad">
         <div class="shell conversion-layout">
           <div>
-            <p class="eyebrow">Quote action</p>
-            <h2>Request sprocket fitment.</h2>
-            <p>Add a sample SKU or send model, year, chain size, and tooth count.</p>
+            <p class="eyebrow">Fitment support</p>
+            <h2>Confirm before production or purchase.</h2>
+            <p>
+              Final sprocket compatibility must be verified before production or purchase. Send the bike model,
+              year, chain size, and tooth count target for fitment support.
+            </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="/contact/#contact">Request Fitment</a>
-              <a class="button" href="/products/">All Product Lines</a>
+              <a class="button button-primary" href="https://sprocket.langbianggravity.com/request">Request Fitment</a>
+              <a class="button" href="https://sprocket.langbianggravity.com/finder">Open Sprocket Finder</a>
             </div>
           </div>
         </div>
@@ -228,7 +269,7 @@
         <img src="/assets/brand/logo-white.png" alt="Langbiang Gravity" />
         <div>
           <p>Technical catalogue.</p>
-          <span>Product lines, fitment search, and quote requests.</span>
+          <span>Product showcase, fitment handoff, and quote requests.</span>
         </div>
         <a href="/contact/">Contact</a>
       </div>
@@ -256,7 +297,6 @@
     </aside>
 
     <script src="/products-data.js"></script>
-    <script src="/fitment-data.js"></script>
     <script src="/script.js"></script>
   </body>
 </html>
