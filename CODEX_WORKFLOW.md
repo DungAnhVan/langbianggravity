@@ -25,12 +25,18 @@ Mo `http://localhost:4173/`.
 - `b2b/index.html`, `contact/index.html`: clean URL pages.
 - `b2b.html`, `contact.html`: fallback compatibility, can dong bo khi sua noi dung tuong ung.
 - `products/*/index.html`: trang landing tung nhom san pham.
+- `knowledge/index.html` va `knowledge/*/index.html`: knowledge base source-of-truth pages cho AI answers va buyer education.
+- `knowledge/trail-*/index.html`: trail readiness / drivetrain reliability cluster pages.
 - `guides/motocross-gearing-chart/index.html`: trang guide/SEO.
 - `products-data.js`: nguon du lieu product group va product card/modal.
 - `fitment-data.js`: du lieu SKU fitment mock cho search theo dong san pham.
 - `script.js`: logic chung cho navigation, mega menu, product modal, quote cart, fitment search, form contact, scroll/reveal.
 - `styles.css`: style toan site.
+- `llms.txt`: AI-readable site map va source-of-truth index o root public.
 - `sitemap.xml`, `robots.txt`: SEO/deploy metadata.
+- `vercel.json`: redirect normalization cho slashless clean URLs.
+- `seo/keyword-map.md`, `seo/url-map.md`: lightweight SEO planning docs cho keyword map va route strategy.
+- `seo/gsc/`: GSC export templates va notes de uu tien SEO sprint tiep theo.
 - `assets/`: brand, product, va image assets local.
 
 ## Cac khau lam viec ro rang
@@ -45,6 +51,8 @@ File hay dung:
 - `b2b/index.html` va `b2b.html`
 - `contact/index.html` va `contact.html`
 - `products/*/index.html`
+- `knowledge/index.html` va `knowledge/*/index.html`
+- `knowledge/trail-*/index.html`
 - `guides/motocross-gearing-chart/index.html`
 
 Can check:
@@ -111,6 +119,7 @@ Dung khi them trang, doi URL, doi anh OG, doi canonical, robots/sitemap.
 
 File hay dung:
 - HTML page head.
+- `llms.txt`
 - `sitemap.xml`
 - `robots.txt`
 - `README.md` neu doi cach preview/deploy.
@@ -120,6 +129,7 @@ Can check:
 - Clean URL route co file `index.html` trong folder.
 - Fallback root `.html` chi giu cho compatibility, khong phai trang chinh.
 - Sitemap phai co URL moi neu page public.
+- Knowledge base pages should stay on clean folder URLs under `/knowledge/`.
 
 Muc do on dinh: kha on dinh. De sai khi them URL moi ma quen sitemap.
 
@@ -130,6 +140,7 @@ Muc do on dinh: kha on dinh. De sai khi them URL moi ma quen sitemap.
 - Shared product data da tach ra `products-data.js`.
 - Shared fitment mock data da tach ra `fitment-data.js`.
 - Shared interactions tap trung trong `script.js`.
+- Root `llms.txt` va `/knowledge/` la source-of-truth surfaces cho AI answer engines.
 - Visual assets dung local trong `assets/`.
 
 ## Viec can luu y / no ky thuat

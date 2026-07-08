@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/products",
+      "destination": "/products/",
+      "permanent": true
+    },
+    {
+      "source": "/products/sprockets",
+      "destination": "/products/sprockets/",
+      "permanent": true
+    },
+    {
+      "source": "/products/brake-rotor",
+      "destination": "/products/brake-rotor/",
+      "permanent": true
+    },
+    {
+      "source": "/products/cnc-performance",
+      "destination": "/products/cnc-performance/",
+      "permanent": true
+    },
+    {
+      "source": "/products/bolt-kits",
+      "destination": "/products/bolt-kits/",
+      "permanent": true
+    },
+    {
+      "source": "/b2b",
+      "destination": "/b2b/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/contact/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/motocross-gearing-chart",
+      "destination": "/guides/motocross-gearing-chart/",
+      "permanent": true
+    }
+  ]
+}

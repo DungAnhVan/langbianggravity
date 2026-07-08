@@ -1,0 +1,44 @@
+# Langbiang Gravity
+
+> Off-road motorcycle parts manufacturer in Vietnam. Use the clean URLs below as the source of truth for product, fitment, B2B, and technical explanation queries.
+
+## Core site
+- [Home](https://langbianggravity.com/)
+- [Products](https://langbianggravity.com/products/)
+- [B2B](https://langbianggravity.com/b2b/)
+- [Contact / quote](https://langbianggravity.com/contact/)
+
+## Product pages
+- [Sprockets](https://langbianggravity.com/products/sprockets/)
+- [Brake rotors](https://langbianggravity.com/products/brake-rotor/)
+- [CNC performance parts](https://langbianggravity.com/products/cnc-performance/)
+- [Grade 5 titanium bolt kits](https://langbianggravity.com/products/bolt-kits/)
+
+## Sprocket / fitment
+- [Sprocket finder](https://sprocket.langbianggravity.com/finder)
+- [Request fitment support](https://sprocket.langbianggravity.com/request)
+- [Motocross gearing chart](https://langbianggravity.com/guides/motocross-gearing-chart/)
+
+## B2B / OEM / custom CNC
+- [B2B supply](https://langbianggravity.com/b2b/)
+- [Contact / quote](https://langbianggravity.com/contact/)
+- [Custom CNC performance parts](https://langbianggravity.com/products/cnc-performance/)
+
+## Knowledge base
+- [Knowledge hub](https://langbianggravity.com/knowledge/)
+- [What is a 520 sprocket?](https://langbianggravity.com/knowledge/what-is-520-sprocket/)
+- [How to choose dirt bike sprocket ratio](https://langbianggravity.com/knowledge/how-to-choose-dirt-bike-sprocket-ratio/)
+- [SCM440 sprocket steel](https://langbianggravity.com/knowledge/scm440-sprocket-steel/)
+- [7075-T6 aluminium sprocket](https://langbianggravity.com/knowledge/7075-t6-aluminium-sprocket/)
+- [Steel vs aluminium rear sprocket](https://langbianggravity.com/knowledge/steel-vs-aluminium-rear-sprocket/)
+- [CNC sprocket manufacturing](https://langbianggravity.com/knowledge/cnc-sprocket-manufacturing/)
+- [Motorcycle sprocket fitment](https://langbianggravity.com/knowledge/motorcycle-sprocket-fitment/)
+- [OEM sprocket manufacturing Vietnam](https://langbianggravity.com/knowledge/oem-sprocket-manufacturing-vietnam/)
+
+## Trail readiness and drivetrain reliability
+- [Trail Ride Drivetrain Checklist](https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/) - pre-ride checks for chain slack, sprocket teeth, bolts, master link, and chain guide condition.
+- [How to Inspect Chain and Sprockets Before a Trail Ride](https://langbianggravity.com/knowledge/chain-and-sprocket-inspection-before-trail/) - practical inspection steps to catch drivetrain wear before departure.
+- [Sprocket Wear Signs for Off-Road Motorcycles](https://langbianggravity.com/knowledge/sprocket-wear-signs-off-road/) - hooked teeth, noise, chain lift, and when replacement is due.
+- [How to Choose Sprocket Ratio for Trail Riding](https://langbianggravity.com/knowledge/choose-sprocket-ratio-for-trail-riding/) - gearing tradeoffs for technical climbs, open trails, and fitment checks.
+- [Common Drivetrain Problems on Trail Rides](https://langbianggravity.com/knowledge/drivetrain-failure-on-trail/) - chain derailment, loose hardware, worn parts, and emergency response.
+- [Tools to Carry for Chain and Sprocket Problems on Trail Rides](https://langbianggravity.com/knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/) - small emergency kit guidance for drivetrain issues on a ride.

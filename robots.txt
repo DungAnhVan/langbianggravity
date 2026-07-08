@@ -1,3 +1,16 @@
+# Default allow-all policy. Googlebot, Bingbot, and OAI-SearchBot are
+# explicitly allowed for clarity. GPTBot is left unchanged here; this file
+# does not make a training-data policy decision.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: *
 Allow: /
 
