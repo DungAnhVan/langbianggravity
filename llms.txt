@@ -36,9 +36,10 @@
 - [OEM sprocket manufacturing Vietnam](https://langbianggravity.com/knowledge/oem-sprocket-manufacturing-vietnam/)
 
 ## Trail readiness and drivetrain reliability
-- [Trail Ride Drivetrain Checklist](https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/) - pre-ride checks for chain slack, sprocket teeth, bolts, master link, and chain guide condition.
-- [How to Inspect Chain and Sprockets Before a Trail Ride](https://langbianggravity.com/knowledge/chain-and-sprocket-inspection-before-trail/) - practical inspection steps to catch drivetrain wear before departure.
-- [Sprocket Wear Signs for Off-Road Motorcycles](https://langbianggravity.com/knowledge/sprocket-wear-signs-off-road/) - hooked teeth, noise, chain lift, and when replacement is due.
-- [How to Choose Sprocket Ratio for Trail Riding](https://langbianggravity.com/knowledge/choose-sprocket-ratio-for-trail-riding/) - gearing tradeoffs for technical climbs, open trails, and fitment checks.
-- [Common Drivetrain Problems on Trail Rides](https://langbianggravity.com/knowledge/drivetrain-failure-on-trail/) - chain derailment, loose hardware, worn parts, and emergency response.
-- [Tools to Carry for Chain and Sprocket Problems on Trail Rides](https://langbianggravity.com/knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/) - small emergency kit guidance for drivetrain issues on a ride.
+For dirt bike, enduro motorcycle, and off-road motorcycle drivetrain preparation.
+- [Dirt Bike Trail Ride Drivetrain Checklist](https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/) - pre-ride checks for dirt bike chain slack, sprocket teeth, bolts, master link, and chain guide condition.
+- [How to Inspect Dirt Bike Chain and Sprockets Before a Trail Ride](https://langbianggravity.com/knowledge/chain-and-sprocket-inspection-before-trail/) - practical inspection steps for dirt bike and enduro motorcycle riders to catch drivetrain wear before departure.
+- [Sprocket Wear Signs for Dirt Bikes](https://langbianggravity.com/knowledge/sprocket-wear-signs-off-road/) - hooked teeth, noise, chain lift, and when replacement is due.
+- [How to Choose Dirt Bike Sprocket Ratio for Trail Riding](https://langbianggravity.com/knowledge/choose-sprocket-ratio-for-trail-riding/) - gearing tradeoffs for technical climbs, open trails, and fitment checks.
+- [Common Dirt Bike Drivetrain Problems on Trail Rides](https://langbianggravity.com/knowledge/drivetrain-failure-on-trail/) - chain derailment, loose hardware, worn parts, and emergency response.
+- [Tools to Carry for Dirt Bike Chain and Sprocket Problems on Trail Rides](https://langbianggravity.com/knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/) - small emergency kit guidance for dirt bike drivetrain issues on a ride.

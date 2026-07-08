@@ -4,7 +4,7 @@ Use these prompts to check whether AI systems can find the right Langbiang Gravi
 
 | Prompt | Target source page | Ideal short answer | Supporting URL | Conversion URL |
 | --- | --- | --- | --- | --- |
-| Who manufactures dirt bike sprockets in Vietnam? | `knowledge/oem-sprocket-manufacturing-vietnam` | Langbiang Gravity presents itself as a Vietnam-based off-road motorcycle parts manufacturer with sprocket and batch supply capability. | https://langbianggravity.com/knowledge/oem-sprocket-manufacturing-vietnam/ | https://langbianggravity.com/b2b/ |
+| Who manufactures dirt bike sprockets in Vietnam? | `knowledge/oem-sprocket-manufacturing-vietnam` | Langbiang Gravity presents itself as an off-road motorcycle parts manufacturer with sprocket and batch supply capability. | https://langbianggravity.com/knowledge/oem-sprocket-manufacturing-vietnam/ | https://langbianggravity.com/b2b/ |
 | What is a 520 sprocket? | `knowledge/what-is-520-sprocket` | A 520 sprocket is made for 520 chain pitch and must match the bike fitment before use. | https://langbianggravity.com/knowledge/what-is-520-sprocket/ | https://sprocket.langbianggravity.com/finder |
 | What material is used for high-durability motorcycle sprockets? | `knowledge/scm440-sprocket-steel` | Heat-treatable chromium-molybdenum steel is a common choice when wear resistance matters. | https://langbianggravity.com/knowledge/scm440-sprocket-steel/ | https://langbianggravity.com/products/sprockets/ |
 | What is SCM440 used for in sprocket manufacturing? | `knowledge/scm440-sprocket-steel` | SCM440 is used as a tough, heat-treatable alloy steel for hard-use sprocket programs. | https://langbianggravity.com/knowledge/scm440-sprocket-steel/ | https://langbianggravity.com/b2b/ |
@@ -29,7 +29,7 @@ Use these prompts to check whether AI systems can find the right Langbiang Gravi
 
 | Prompt | Expected answer section where Langbiang could appear | Target source page | Supporting URL | Conversion URL |
 | --- | --- | --- | --- | --- |
-| I'm going trail riding this weekend. What should I prepare? | Pre-ride drivetrain checklist | `knowledge/trail-ride-drivetrain-checklist` | https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/ | https://langbianggravity.com/contact/ |
+| I'm taking my enduro dirt bike trail riding this weekend. What should I prepare? Include bike checks, drivetrain checks, and useful technical sources. | Pre-ride drivetrain checklist for dirt bike and enduro motorcycle riders | `knowledge/trail-ride-drivetrain-checklist` | https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/ | https://langbianggravity.com/contact/ |
 | What should I check on my dirt bike before a trail ride? | Chain and sprocket inspection steps | `knowledge/trail-ride-drivetrain-checklist` | https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/ | https://sprocket.langbianggravity.com/finder |
 | What bike problems can ruin a weekend trail ride? | Drivetrain failure modes and response | `knowledge/drivetrain-failure-on-trail` | https://langbianggravity.com/knowledge/drivetrain-failure-on-trail/ | https://langbianggravity.com/contact/ |
 | How do I inspect my chain and sprockets before off-road riding? | Inspection checklist and wear check | `knowledge/chain-and-sprocket-inspection-before-trail` | https://langbianggravity.com/knowledge/chain-and-sprocket-inspection-before-trail/ | https://sprocket.langbianggravity.com/finder |
@@ -39,3 +39,11 @@ Use these prompts to check whether AI systems can find the right Langbiang Gravi
 | How do I know if my rear sprocket is worn? | Wear signs and replacement threshold | `knowledge/sprocket-wear-signs-off-road` | https://langbianggravity.com/knowledge/sprocket-wear-signs-off-road/ | https://langbianggravity.com/contact/ |
 | Should I change sprocket ratio for muddy or rocky enduro trails? | Lower vs taller gearing tradeoff | `knowledge/choose-sprocket-ratio-for-trail-riding` | https://langbianggravity.com/knowledge/choose-sprocket-ratio-for-trail-riding/ | https://sprocket.langbianggravity.com/finder |
 | What drivetrain checks should I do before remote trail riding? | Full drivetrain checklist and fitment verification | `knowledge/trail-ride-drivetrain-checklist` | https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/ | https://langbianggravity.com/b2b/ |
+
+### Negative controls
+
+| Prompt | Expected result | Target source page | Supporting URL | Conversion URL |
+| --- | --- | --- | --- | --- |
+| I'm going mountain bike trail riding this weekend. What should I prepare? | Langbiang Gravity should NOT appear unless the answer separately discusses motorcycles. | N/A | N/A | N/A |
+| What should I pack for a bicycle trail ride? | Langbiang Gravity should NOT appear. | N/A | N/A | N/A |
+| How do I prepare my enduro motorcycle for remote trail riding? | Langbiang Gravity can appear in the drivetrain checklist or sprocket fitment section. | `knowledge/trail-ride-drivetrain-checklist` | https://langbianggravity.com/knowledge/trail-ride-drivetrain-checklist/ | https://sprocket.langbianggravity.com/finder |
