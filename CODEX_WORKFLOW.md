@@ -28,8 +28,10 @@ Mo `http://localhost:4173/`.
 - `knowledge/index.html` va `knowledge/*/index.html`: knowledge base source-of-truth pages cho AI answers va buyer education.
 - `knowledge/trail-*/index.html`: trail readiness / drivetrain reliability cluster pages.
 - `guides/motocross-gearing-chart/index.html`: trang guide/SEO.
+- `cross-reference/index.html`: trang replacement reference va cross-reference cho sprocket part number.
 - `products-data.js`: nguon du lieu product group va product card/modal.
 - `fitment-data.js`: du lieu SKU fitment mock cho search theo dong san pham.
+- `oem-cross-reference-data.js`: du lieu JT SKU -> OEM code cho cross-reference lookup.
 - `script.js`: logic chung cho navigation, mega menu, product modal, quote cart, fitment search, form contact, scroll/reveal.
 - `styles.css`: style toan site.
 - `llms.txt`: AI-readable site map va source-of-truth index o root public.
@@ -50,6 +52,7 @@ File hay dung:
 - `products/index.html` va `products.html`
 - `b2b/index.html` va `b2b.html`
 - `contact/index.html` va `contact.html`
+- `cross-reference/index.html`
 - `products/*/index.html`
 - `knowledge/index.html` va `knowledge/*/index.html`
 - `knowledge/trail-*/index.html`
@@ -69,6 +72,7 @@ Dung khi them/sua product, group, SKU, material, options, hoac search result.
 File hay dung:
 - `products-data.js`
 - `fitment-data.js`
+- `oem-cross-reference-data.js`
 - Trang group lien quan trong `products/*/index.html` neu can copy landing page.
 
 Can check:
@@ -86,7 +90,7 @@ Dung khi sua cart quote, modal, fitment search, menu mobile/mega menu, form cont
 File hay dung:
 - `script.js`
 - HTML co `data-*` lien quan.
-- `products-data.js`, `fitment-data.js` neu logic doc data.
+- `products-data.js`, `fitment-data.js`, `oem-cross-reference-data.js` neu logic doc data.
 
 Can check:
 - Khong doi ten `data-*` neu chua sua ca HTML va JS.
@@ -139,6 +143,7 @@ Muc do on dinh: kha on dinh. De sai khi them URL moi ma quen sitemap.
 - Local preview bang `python -m http.server 4173`.
 - Shared product data da tach ra `products-data.js`.
 - Shared fitment mock data da tach ra `fitment-data.js`.
+- Shared replacement-reference alias data da tach ra `oem-cross-reference-data.js`.
 - Shared interactions tap trung trong `script.js`.
 - Root `llms.txt` va `/knowledge/` la source-of-truth surfaces cho AI answer engines.
 - Visual assets dung local trong `assets/`.
@@ -149,6 +154,7 @@ Muc do on dinh: kha on dinh. De sai khi them URL moi ma quen sitemap.
 - Quote hien la request/inquiry, khong phai ecommerce checkout.
 - README noi quote form mo `mailto:` draft, nhung HTML hien co dau hieu Web3Forms (`data-web3forms-form`). Khi lam form, phai doc `script.js` va contact page de xac nhan hanh vi thuc te truoc khi sua.
 - Mot so link ngoai tro toi `https://sprocket.langbianggravity.com/...`; khong tu y doi neu khong co yeu cau.
+- `/request/` is a private noindex route if the sprocket app publishes it. Do not add it to sitemap or public navigation.
 - `styles.css` lon, nen dung `rg "ten-class"` truoc khi doc/sua.
 
 ## Checklist truoc khi ket thuc mot viec

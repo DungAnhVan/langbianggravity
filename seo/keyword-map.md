@@ -25,6 +25,7 @@ This map prioritizes the main site first, then the sprocket subdomain. The goal 
 | Keyword cluster | Target URL | Search intent | Recommended title | Recommended H1 | Recommended internal links | CTA |
 | --- | --- | --- | --- | --- | --- | --- |
 | `KTM rear sprocket 520`, `Honda CRF rear sprocket 520`, `Yamaha YZ rear sprocket 520`, `Yamaha WR155R 520 conversion`, `Suzuki RMZ rear sprocket`, `dirt bike sprocket fitment`, `motorcycle sprocket finder` | `https://sprocket.langbianggravity.com/finder` and `https://sprocket.langbianggravity.com/fitment/[make-model-year]` | Verified fitment search and model-level long tail discovery | `Motorcycle Sprocket Finder | Langbiang Gravity` | `Find your sprocket fitment.` | `/products/sprockets/`, `/contact/`, `/b2b/` | `Search the finder` |
+| `OEM sprocket part number`, `sprocket part number lookup`, `JT SKU cross-reference`, `replacement reference`, `OEM code lookup` | `https://sprocket.langbianggravity.com/cross-reference/` | Replacement reference lookup and OEM alias mapping | `Sprocket Cross-Reference | Langbiang Gravity` | `OEM code -> JT SKU -> LBG SKU` | `/products/sprockets/`, `/contact/`, `/b2b/`, `https://sprocket.langbianggravity.com/finder` | `Search the cross-reference` |
 
 ## 5. Material / Engineering Proof
 

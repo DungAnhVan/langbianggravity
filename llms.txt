@@ -16,7 +16,7 @@
 
 ## Sprocket / fitment
 - [Sprocket finder](https://sprocket.langbianggravity.com/finder)
-- [Request fitment support](https://sprocket.langbianggravity.com/request)
+- [Sprocket cross-reference](https://sprocket.langbianggravity.com/cross-reference/)
 - [Motocross gearing chart](https://langbianggravity.com/guides/motocross-gearing-chart/)
 
 ## B2B / OEM / custom CNC

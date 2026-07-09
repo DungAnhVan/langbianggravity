@@ -1,6 +1,7 @@
 const products = window.LANGBIANG_PRODUCTS || [];
 const productGroups = window.LANGBIANG_PRODUCT_GROUPS || [];
 const fitments = window.LANGBIANG_FITMENTS || [];
+const oemCrossReferences = window.LANGBIANG_OEM_CROSS_REFERENCES || [];
 const PRICE_LABEL = "Price on request";
 const CART_KEY = "lg-cart";
 const PENDING_QUOTE_KEY = "lg-pending-quote";
@@ -286,6 +287,50 @@ function yearMatches(value, query) {
   return year >= Math.min(start, end) && year <= Math.max(start, end);
 }
 
+function normalizePartCode(value) {
+  return normalizeValue(value).replace(/[^a-z0-9]/g, "");
+}
+
+function crossReferenceCandidates(entry) {
+  const oemCodes = Array.isArray(entry.oemCodes)
+    ? entry.oemCodes
+    : entry.oemCodes
+      ? [entry.oemCodes]
+      : [];
+  return [entry.jtSku, entry.lbgSku, ...oemCodes].filter(Boolean);
+}
+
+function crossReferenceScore(entry, query) {
+  const normalizedQuery = normalizePartCode(query);
+  if (!normalizedQuery) return Number.POSITIVE_INFINITY;
+
+  const candidates = crossReferenceCandidates(entry).map((value) => normalizePartCode(value));
+  if (!candidates.length) return Number.POSITIVE_INFINITY;
+  if (candidates.some((value) => value === normalizedQuery)) return 0;
+  if (candidates.some((value) => value.startsWith(normalizedQuery))) return 1;
+  if (candidates.some((value) => value.includes(normalizedQuery))) return 2;
+  return Number.POSITIVE_INFINITY;
+}
+
+function matchedCrossReferenceCode(entry, query) {
+  const normalizedQuery = normalizePartCode(query);
+  const oemCodes = Array.isArray(entry.oemCodes)
+    ? entry.oemCodes
+    : entry.oemCodes
+      ? [entry.oemCodes]
+      : [];
+
+  if (!normalizedQuery) {
+    return oemCodes[0] || entry.jtSku || entry.lbgSku || "";
+  }
+
+  const codeMatch = oemCodes.find((code) => normalizePartCode(code).includes(normalizedQuery));
+  if (codeMatch) return codeMatch;
+  if (normalizePartCode(entry.jtSku).includes(normalizedQuery)) return entry.jtSku;
+  if (normalizePartCode(entry.lbgSku).includes(normalizedQuery)) return entry.lbgSku;
+  return oemCodes[0] || entry.jtSku || entry.lbgSku || "";
+}
+
 function fitmentMatches(fitment, filters) {
   return (
     fieldMatches(fitment.brand, filters.brand) &&
@@ -293,6 +338,51 @@ function fitmentMatches(fitment, filters) {
     yearMatches(fitment.year, filters.year) &&
     fieldMatches(fitment.type, filters.type)
   );
+}
+
+function searchCrossReferences(query) {
+  return oemCrossReferences
+    .map((entry, index) => ({
+      entry,
+      index,
+      score: crossReferenceScore(entry, query),
+      matchedCode: matchedCrossReferenceCode(entry, query)
+    }))
+    .filter((result) => Number.isFinite(result.score))
+    .sort((a, b) => a.score - b.score || a.index - b.index);
+}
+
+function crossReferenceCard(entry, matchedCode) {
+  const oemCodes = Array.isArray(entry.oemCodes)
+    ? entry.oemCodes
+    : entry.oemCodes
+      ? [entry.oemCodes]
+      : [];
+  const sequence = [matchedCode || oemCodes[0], entry.jtSku, entry.lbgSku].filter(Boolean).join(" -> ");
+
+  const card = document.createElement("article");
+  card.className = "fitment-result-card crossref-result-card";
+  card.innerHTML = `
+    <div class="fitment-result-body">
+      <p class="product-meta">${entry.status || "Replacement reference"}</p>
+      <h3>${entry.jtSku || matchedCode || "Cross-reference match"}</h3>
+      <p class="crossref-sequence">${sequence}</p>
+      <dl>
+        <div><dt>OEM code</dt><dd>${oemCodes.length ? oemCodes.join(", ") : "Add OEM aliases"}</dd></div>
+        <div><dt>JT SKU</dt><dd>${entry.jtSku || "Pending"}</dd></div>
+        <div><dt>LBG SKU</dt><dd>${entry.lbgSku || "Pending"}</dd></div>
+        ${entry.notes ? `<div><dt>Notes</dt><dd>${entry.notes}</dd></div>` : ""}
+      </dl>
+      <div class="price-row">
+        <strong>${entry.status || "Cross-reference"}</strong>
+      </div>
+      <div class="store-actions">
+        <a class="button button-compact" href="https://langbianggravity.com/products/sprockets/">View Sprockets</a>
+        <a class="button button-compact button-dark" href="https://langbianggravity.com/contact/#contact">Add Missing Alias</a>
+      </div>
+    </div>
+  `;
+  return card;
 }
 
 function fitmentCard(fitment) {
@@ -372,6 +462,49 @@ function renderFitmentResults(form, resultsRoot) {
   });
 }
 
+function renderCrossReferenceResults(form, resultsRoot) {
+  const query = form.elements.query?.value || "";
+  const normalizedQuery = normalizePartCode(query);
+  resultsRoot.innerHTML = "";
+
+  const empty = document.createElement("div");
+  empty.className = "fitment-empty";
+
+  if (!oemCrossReferences.length) {
+    empty.innerHTML = `
+      <p>Cross-reference structure is ready. Add JT SKU rows and OEM codes to publish matches.</p>
+      <a class="button button-primary" href="https://langbianggravity.com/contact/#contact">Send an Alias</a>
+    `;
+    resultsRoot.append(empty);
+    return;
+  }
+
+  if (!normalizedQuery) {
+    empty.innerHTML = `
+      <p>Enter an OEM code, JT SKU, or LBG SKU to resolve the replacement reference.</p>
+      <a class="button button-primary" href="https://langbianggravity.com/contact/#contact">Request Update</a>
+    `;
+    resultsRoot.append(empty);
+    return;
+  }
+
+  const results = searchCrossReferences(query);
+
+  if (!results.length) {
+    empty.innerHTML = `
+      <p>No cross-reference match yet for this code. Send the OEM code, JT SKU, and LBG SKU so the alias row can be added.</p>
+      <a class="button button-primary" href="https://langbianggravity.com/contact/#contact">Request Update</a>
+      <a class="button" href="https://langbianggravity.com/b2b/">B2B Support</a>
+    `;
+    resultsRoot.append(empty);
+    return;
+  }
+
+  results.forEach(({ entry, matchedCode }) => {
+    resultsRoot.append(crossReferenceCard(entry, matchedCode));
+  });
+}
+
 function setupFitmentSearches() {
   qsa("[data-fitment-search]").forEach((form) => {
     const resultsRoot = qs("[data-fitment-results]", form.closest("[data-fitment-block]") || document);
@@ -388,6 +521,25 @@ function setupFitmentSearches() {
     });
 
     renderFitmentResults(form, resultsRoot);
+  });
+}
+
+function setupCrossReferenceSearches() {
+  qsa("[data-oem-crossref-search]").forEach((form) => {
+    const resultsRoot = qs("[data-oem-crossref-results]", form.closest("[data-oem-crossref-block]") || document);
+    if (!resultsRoot) return;
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      renderCrossReferenceResults(form, resultsRoot);
+    });
+
+    qsa("input", form).forEach((field) => {
+      field.addEventListener("input", () => renderCrossReferenceResults(form, resultsRoot));
+      field.addEventListener("change", () => renderCrossReferenceResults(form, resultsRoot));
+    });
+
+    renderCrossReferenceResults(form, resultsRoot);
   });
 }
 
@@ -881,6 +1033,7 @@ function init() {
   setupNavigation();
   setupForms();
   setupFitmentSearches();
+  setupCrossReferenceSearches();
   setupCartQuote();
   setupSprocketMotion();
 

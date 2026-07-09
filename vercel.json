@@ -26,6 +26,11 @@
       "permanent": true
     },
     {
+      "source": "/cross-reference",
+      "destination": "/cross-reference/",
+      "permanent": true
+    },
+    {
       "source": "/b2b",
       "destination": "/b2b/",
       "permanent": true

@@ -3138,6 +3138,32 @@ textarea:focus {
   font-weight: 900;
 }
 
+.crossref-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: end;
+  border: 1px solid rgba(238, 241, 235, 0.18);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: rgba(238, 241, 235, 0.075);
+}
+
+.crossref-form label {
+  color: #eef1eb;
+}
+
+.crossref-results {
+  grid-column: 1 / -1;
+}
+
+.crossref-sequence {
+  margin: 0 0 18px;
+  color: #dfe7df;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
 .guide-page {
   background: #080a09;
 }
@@ -3450,6 +3476,14 @@ textarea:focus {
     grid-column: 1 / -1;
   }
 
+  .crossref-form {
+    grid-template-columns: 1fr;
+  }
+
+  .crossref-form .button {
+    grid-column: 1 / -1;
+  }
+
   .sprocket-guide-copy {
     position: static;
   }
@@ -3677,6 +3711,7 @@ textarea:focus {
   }
 
   .sprocket-finder-form .button,
+  .crossref-form .button,
   .sprocket-hero-actions .button {
     width: 100%;
   }
