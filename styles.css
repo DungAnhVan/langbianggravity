@@ -408,11 +408,6 @@ p {
   display: none;
 }
 
-.sprocket-showcase-page .cart-button,
-.sprocket-showcase-page .mobile-cart-button {
-  display: none;
-}
-
 .nav-toggle {
   display: none;
   width: 42px;
@@ -773,6 +768,15 @@ p {
 
 .engineering-section {
   background: var(--paper);
+  color: var(--black);
+}
+
+.engineering-section h1,
+.engineering-section h2,
+.engineering-section h3,
+.contact-section h1,
+.contact-section h2,
+.contact-section h3 {
   color: var(--black);
 }
 

@@ -472,8 +472,8 @@ function renderCrossReferenceResults(form, resultsRoot) {
 
   if (!oemCrossReferences.length) {
     empty.innerHTML = `
-      <p>Cross-reference structure is ready. Add JT SKU rows and OEM codes to publish matches.</p>
-      <a class="button button-primary" href="https://langbianggravity.com/contact/#contact">Send an Alias</a>
+      <p>Cross-reference data is being published. No OEM → JT → LBG mappings are searchable yet.</p>
+      <a class="button button-primary" href="https://langbianggravity.com/contact/#contact">Request a Lookup</a>
     `;
     resultsRoot.append(empty);
     return;
@@ -786,6 +786,11 @@ function setupNavigation() {
   const mobilePanel = qs("[data-products-mobile-panel]");
   const mobileQuery = window.matchMedia("(max-width: 1080px)");
 
+  const setNavToggleState = (isOpen) => {
+    toggle.setAttribute("aria-expanded", String(isOpen));
+    toggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  };
+
   const syncHeader = () => {
     header.classList.toggle("is-scrolled", window.scrollY > 24);
   };
@@ -799,11 +804,12 @@ function setupNavigation() {
   };
 
   syncHeader();
+  setNavToggleState(nav.classList.contains("is-open"));
   window.addEventListener("scroll", syncHeader, { passive: true });
 
   toggle.addEventListener("click", () => {
     const isOpen = nav.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", String(isOpen));
+    setNavToggleState(isOpen);
     document.body.classList.toggle("nav-open", isOpen);
     if (!isOpen) closeProductsMenu();
   });
@@ -824,7 +830,7 @@ function setupNavigation() {
 
     const nextState = !megaMenu?.classList.contains("is-open");
     nav.classList.remove("is-open");
-    toggle.setAttribute("aria-expanded", "false");
+    setNavToggleState(false);
     document.body.classList.remove("nav-open");
     productToggle.setAttribute("aria-expanded", String(nextState));
     megaMenu?.classList.toggle("is-open", nextState);
@@ -835,7 +841,7 @@ function setupNavigation() {
   qsa(".site-nav a").forEach((link) => {
     link.addEventListener("click", () => {
       nav.classList.remove("is-open");
-      toggle.setAttribute("aria-expanded", "false");
+      setNavToggleState(false);
       document.body.classList.remove("nav-open");
       closeProductsMenu();
     });
