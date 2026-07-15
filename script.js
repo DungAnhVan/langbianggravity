@@ -555,7 +555,7 @@ function openProduct(slug) {
     </div>
     <div class="product-detail-content">
       <p class="eyebrow">${product.category}</p>
-      <h2>${product.name}</h2>
+      <h2 id="product-dialog-title">${product.name}</h2>
       <p>${product.short}</p>
       <div class="detail-badges">
         ${product.badges.map((badge) => `<span>${badge}</span>`).join("")}
@@ -629,7 +629,7 @@ function openFitment(sku) {
     </div>
     <div class="product-detail-content">
       <p class="eyebrow">${fitment.sku}</p>
-      <h2>${fitment.product}</h2>
+      <h2 id="product-dialog-title">${fitment.product}</h2>
       <p>${fitment.detail}</p>
       <div class="detail-badges">
         <span>${fitment.brand}</span>
@@ -1031,6 +1031,41 @@ function setupSprocketMotion() {
   window.addEventListener("resize", requestSync);
 }
 
+function setupRotorCatalog() {
+  qsa("[data-rotor-catalog]").forEach((catalog) => {
+    const controls = qsa("[data-catalog-control]", catalog);
+    const sheets = qsa("[data-catalog-sheet]", catalog);
+    const pageIndex = qs("[data-catalog-index]", catalog);
+    const pageFromHash = () => {
+      if (window.location.hash === "#front-brake-rotor") return "front";
+      if (window.location.hash === "#rear-brake-rotor") return "rear";
+      return null;
+    };
+
+    const setPage = (page) => {
+      catalog.dataset.catalogPage = page;
+      controls.forEach((control) => {
+        control.setAttribute("aria-pressed", String(control.dataset.catalogPage === page));
+      });
+      sheets.forEach((sheet) => {
+        sheet.setAttribute("aria-hidden", String(sheet.dataset.catalogSheet !== page));
+      });
+      if (pageIndex) pageIndex.textContent = page === "front" ? "01" : "02";
+    };
+
+    controls.forEach((control) => {
+      control.addEventListener("click", () => setPage(control.dataset.catalogPage));
+    });
+
+    window.addEventListener("hashchange", () => {
+      const page = pageFromHash();
+      if (page) setPage(page);
+    });
+
+    setPage(pageFromHash() || catalog.dataset.catalogPage || "front");
+  });
+}
+
 function init() {
   renderProductNavigation();
   renderStore();
@@ -1042,6 +1077,7 @@ function init() {
   setupCrossReferenceSearches();
   setupCartQuote();
   setupSprocketMotion();
+  setupRotorCatalog();
 
   qsa("[data-open-product]").forEach((button) => {
     button.addEventListener("click", () => openProduct(button.dataset.openProduct));

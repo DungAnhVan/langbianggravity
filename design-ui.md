@@ -69,6 +69,17 @@ Typography: display heading 700–900 weight, letter spacing chặt; label/body 
 - Icon-only control phải có accessible name. Đường chấm và line-art phải `aria-hidden` nếu không truyền tải thông tin.
 - Tôn trọng `prefers-reduced-motion`; motion chỉ nên là parallax/translate nhẹ, không dùng chuyển động liên tục trên line-art.
 
+## Ứng dụng: Brake Rotor — catalogue stage
+
+Trang `/products/brake-rotor/` dùng khung blueprint như một **catalogue sản phẩm**, không phải hero dẫn tới nhiều section marketing.
+
+- Khung chính gồm copy kỹ thuật bên trái và một cuốn catalogue bên phải; mỗi lần chỉ ưu tiên một rotor.
+- Hai trang cố định: `01 / Front` và `02 / Rear`. Nút chọn phải đổi được nội dung copy, trạng thái `aria-pressed`, số trang và lớp catalogue đang hiển thị.
+- Cảm giác lật trang đến từ hai tờ xếp lớp, transform nhẹ quanh gáy trái và bóng giấy; reduced-motion phải bỏ transition này.
+- Mỗi trang chỉ dùng 3 dữ kiện dễ kiểm chứng: vị trí, đường kính tham chiếu và vật liệu. Không thêm fact strip, badge hoặc CTA phụ dưới khung.
+- Trang Brake Rotor kết thúc phần nội dung ngay sau catalogue. Không giữ fitment finder, card SKU, quote/conversion hay CTA dẫn xuống; footer chuẩn vẫn giữ.
+- Mobile xếp copy trước catalogue, không giữ hiệu ứng xoay có thể làm nội dung chồng nhau; catalog stage phải nằm sau copy trong normal document flow.
+
 ## Guardrails
 
 - Không dùng logo/pattern chữ của reference; tạo pattern LBG riêng hoặc dùng geometry sprocket.

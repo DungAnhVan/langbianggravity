@@ -1128,6 +1128,274 @@ p {
   --product-hero-size: min(640px, 58vw) auto;
 }
 
+.brake-rotor-hero {
+  min-height: 0;
+  padding: clamp(92px, 7vw, 120px) 0 clamp(42px, 4vw, 64px);
+  background: #f4f2ea;
+}
+
+.brake-rotor-hero::before,
+.brake-rotor-hero::after {
+  display: none;
+}
+
+.rotor-catalog {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  overflow: hidden;
+  border: 1px solid #252a27;
+  background: #080a09;
+  box-shadow: 22px 22px 0 #d9d7cf, 0 26px 70px rgba(8, 10, 9, 0.18);
+}
+
+.rotor-catalog-copy {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  min-height: 640px;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(38px, 4vw, 64px);
+  background:
+    linear-gradient(135deg, rgba(255, 106, 26, 0.14), transparent 32%),
+    linear-gradient(90deg, rgba(238, 241, 235, 0.035) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.025) 1px, transparent 1px),
+    #080a09;
+  background-size: auto, 32px 32px, 32px 32px, auto;
+}
+
+.rotor-catalog-copy .eyebrow {
+  color: var(--orange);
+}
+
+.rotor-catalog-copy-page {
+  max-width: 42ch;
+}
+
+.rotor-catalog[data-catalog-page="front"] [data-catalog-copy="rear"],
+.rotor-catalog[data-catalog-page="rear"] [data-catalog-copy="front"] {
+  display: none;
+}
+
+.rotor-catalog-copy h1 {
+  max-width: 11ch;
+  margin: 14px 0 20px;
+  color: #f4f2ea;
+  font-size: clamp(3rem, 4vw, 4.8rem);
+  line-height: 0.94;
+  letter-spacing: -0.065em;
+}
+
+.rotor-catalog-copy .hero-copy {
+  max-width: 43ch;
+  color: #cdd1ca;
+}
+
+.rotor-catalog-specs {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 18px;
+  margin: 30px 0 0;
+}
+
+.rotor-catalog-specs div {
+  padding-top: 10px;
+  border-top: 1px dashed rgba(244, 242, 234, 0.4);
+}
+
+.rotor-catalog-specs dt,
+.rotor-catalog-specs dd {
+  margin: 0;
+}
+
+.rotor-catalog-specs dt {
+  color: var(--orange);
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.rotor-catalog-specs dd {
+  margin-top: 5px;
+  color: #f0f4ef;
+  font-size: 0.84rem;
+  font-weight: 720;
+  line-height: 1.35;
+}
+
+.rotor-catalog-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-top: 34px;
+}
+
+.rotor-catalog-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.rotor-catalog-control {
+  min-width: 94px;
+  border: 1px solid rgba(238, 241, 235, 0.28);
+  border-radius: 0;
+  padding: 10px 12px;
+  color: #d9ddd5;
+  background: rgba(8, 10, 9, 0.56);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+  transition: border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.rotor-catalog-control span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--orange);
+  font-size: 0.6rem;
+}
+
+.rotor-catalog-control:hover,
+.rotor-catalog-control[aria-pressed="true"] {
+  border-color: var(--orange);
+  color: #080a09;
+  background: var(--orange);
+}
+
+.rotor-catalog-control[aria-pressed="true"] span {
+  color: #080a09;
+}
+
+.rotor-catalog-stage {
+  position: relative;
+  min-height: 640px;
+  padding: 30px;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(8, 10, 9, 0.14) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(8, 10, 9, 0.14) 1px, transparent 1px),
+    #c9cbca;
+  background-size: 28px 28px;
+}
+
+.rotor-catalog-stage::after {
+  content: "";
+  position: absolute;
+  inset: 15px;
+  pointer-events: none;
+  border: 1px solid rgba(8, 10, 9, 0.25);
+}
+
+.rotor-catalog-stage-label {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  z-index: 3;
+  margin: 0;
+  color: #252a27;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.rotor-catalog-book {
+  position: relative;
+  z-index: 1;
+  height: 580px;
+  perspective: 1800px;
+}
+
+.rotor-catalog-sheet {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border: 1px solid #202420;
+  background: #111713;
+  box-shadow: 14px 18px 0 rgba(8, 10, 9, 0.16), 0 24px 46px rgba(8, 10, 9, 0.28);
+  transform-origin: left center;
+  backface-visibility: hidden;
+  transition: transform 560ms cubic-bezier(0.2, 0.72, 0.2, 1), opacity 260ms ease;
+}
+
+.rotor-catalog-sheet img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.rotor-catalog-sheet::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(8, 10, 9, 0.04), rgba(8, 10, 9, 0.52));
+}
+
+.rotor-catalog-sheet[data-catalog-sheet="rear"] img {
+  transform: scaleX(-1) scale(1.04);
+  filter: grayscale(0.18) contrast(1.08);
+}
+
+.rotor-catalog-sheet-label {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  z-index: 1;
+  display: grid;
+  gap: 5px;
+  text-align: right;
+}
+
+.rotor-catalog-sheet-label span {
+  margin: 0;
+  color: #f4f2ea;
+  font-size: 0.64rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.rotor-catalog-sheet-label strong {
+  color: #ffb58e;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.rotor-catalog[data-catalog-page="front"] .rotor-catalog-sheet[data-catalog-sheet="front"] {
+  z-index: 2;
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.rotor-catalog[data-catalog-page="front"] .rotor-catalog-sheet[data-catalog-sheet="rear"] {
+  z-index: 1;
+  opacity: 0.56;
+  transform: translateX(18px) scale(0.97) rotateY(-4deg);
+}
+
+.rotor-catalog[data-catalog-page="rear"] .rotor-catalog-sheet[data-catalog-sheet="front"] {
+  z-index: 1;
+  opacity: 0;
+  transform: rotateY(-166deg);
+}
+
+.rotor-catalog[data-catalog-page="rear"] .rotor-catalog-sheet[data-catalog-sheet="rear"] {
+  z-index: 2;
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
 .product-line-hero-cnc {
   --product-hero-image: url("assets/images/cnc-inspection.webp");
   --product-hero-position: center;
@@ -2004,6 +2272,24 @@ textarea:focus {
     grid-template-columns: 1fr;
   }
 
+  .rotor-catalog {
+    grid-template-columns: 1fr;
+    row-gap: 1px;
+  }
+
+  .rotor-catalog-copy {
+    min-height: 0;
+    padding: 56px clamp(28px, 8vw, 68px);
+  }
+
+  .rotor-catalog-stage {
+    min-height: 0;
+  }
+
+  .rotor-catalog-book {
+    height: min(64vw, 500px);
+  }
+
   .contact-copy {
     position: static;
   }
@@ -2054,7 +2340,7 @@ textarea:focus {
   .mobile-cart-button {
     position: fixed;
     right: 14px;
-    bottom: 14px;
+    bottom: max(14px, env(safe-area-inset-bottom));
     z-index: 120;
     display: inline-flex;
     min-height: 40px;
@@ -2110,6 +2396,70 @@ textarea:focus {
       linear-gradient(0deg, rgba(8, 10, 9, 1), rgba(8, 10, 9, 0.52)),
       var(--product-hero-image, url("assets/images/product-bench.webp")) center / cover no-repeat,
       #111713;
+  }
+
+  .site-footer {
+    padding-bottom: max(92px, calc(78px + env(safe-area-inset-bottom)));
+  }
+
+  .brake-rotor-hero {
+    padding: 84px 0 42px;
+    background: #f4f2ea;
+  }
+
+  .rotor-catalog-copy {
+    min-height: 0;
+    padding: 42px 26px;
+  }
+
+  .rotor-catalog-copy h1 {
+    width: auto;
+    font-size: clamp(2.7rem, 13vw, 4rem);
+  }
+
+  .rotor-catalog-specs {
+    gap: 12px;
+    margin-top: 26px;
+  }
+
+  .rotor-catalog-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .rotor-catalog-controls {
+    width: 100%;
+  }
+
+  .rotor-catalog-control {
+    flex: 1;
+  }
+
+  .rotor-catalog-stage {
+    padding: 18px;
+  }
+
+  .rotor-catalog-stage::after {
+    inset: 8px;
+  }
+
+  .rotor-catalog-stage-label {
+    top: 12px;
+    right: 14px;
+    font-size: 0.58rem;
+  }
+
+  .rotor-catalog-book {
+    height: max(290px, min(96vw, 430px));
+  }
+
+  .rotor-catalog-sheet-label {
+    right: 14px;
+    bottom: 12px;
+  }
+
+  .rotor-catalog-sheet-label strong {
+    font-size: 0.64rem;
   }
 
   .product-line-hero::before {
@@ -3420,7 +3770,9 @@ textarea:focus {
   }
 
   .js-reveal [data-reveal],
-  .motion-step {
+  .motion-step,
+  .rotor-catalog-sheet,
+  .rotor-catalog-control {
     transition: none;
   }
 }
