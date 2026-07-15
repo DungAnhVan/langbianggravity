@@ -190,8 +190,11 @@
             </div>
           </div>
 
-          <div class="rotor-catalog-stage" aria-live="polite">
+          <div class="rotor-catalog-stage" aria-label="Brake rotor catalogue preview">
             <p class="rotor-catalog-stage-label">Brake Rotor / Product pages</p>
+            <p class="rotor-catalog-status" data-catalog-status aria-live="polite" aria-atomic="true">
+              Front catalogue page selected
+            </p>
             <div class="rotor-catalog-book">
               <article class="rotor-catalog-sheet" data-catalog-sheet="front">
                 <img
@@ -212,7 +215,7 @@
                   width="1254"
                   height="1254"
                   loading="lazy"
-                  alt="Rear motorcycle brake rotor shown in a technical blueprint illustration"
+                  alt="Rear rotor reference shown as a mirrored technical blueprint illustration"
                 />
                 <div class="rotor-catalog-sheet-label">
                   <span>02 / Rear rotor</span>
@@ -236,11 +239,6 @@
         <a href="/contact/">Contact</a>
       </div>
     </footer>
-
-    <dialog class="product-dialog" aria-labelledby="product-dialog-title" data-product-dialog>
-      <button class="dialog-close" type="button" aria-label="Close product details" data-dialog-close></button>
-      <div class="dialog-body" data-product-detail></div>
-    </dialog>
 
     <aside class="cart-drawer" aria-hidden="true" data-cart-drawer>
       <div class="cart-panel">

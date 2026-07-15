@@ -1036,6 +1036,7 @@ function setupRotorCatalog() {
     const controls = qsa("[data-catalog-control]", catalog);
     const sheets = qsa("[data-catalog-sheet]", catalog);
     const pageIndex = qs("[data-catalog-index]", catalog);
+    const status = qs("[data-catalog-status]", catalog);
     const pageFromHash = () => {
       if (window.location.hash === "#front-brake-rotor") return "front";
       if (window.location.hash === "#rear-brake-rotor") return "rear";
@@ -1051,6 +1052,7 @@ function setupRotorCatalog() {
         sheet.setAttribute("aria-hidden", String(sheet.dataset.catalogSheet !== page));
       });
       if (pageIndex) pageIndex.textContent = page === "front" ? "01" : "02";
+      if (status) status.textContent = `${page === "front" ? "Front" : "Rear"} catalogue page selected`;
     };
 
     controls.forEach((control) => {
