@@ -2932,8 +2932,7 @@ textarea:focus {
 }
 
 .sprocket-guide-copy {
-  position: sticky;
-  top: 110px;
+  position: relative;
 }
 
 .sprocket-guide-copy p {
@@ -3486,10 +3485,6 @@ textarea:focus {
 
   .crossref-form .button {
     grid-column: 1 / -1;
-  }
-
-  .sprocket-guide-copy {
-    position: static;
   }
 
   .sprocket-guide-grid {
