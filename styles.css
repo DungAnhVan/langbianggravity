@@ -876,6 +876,10 @@ p {
   filter: saturate(0.72) contrast(1.1);
 }
 
+.home-lineup-card--cnc .home-lineup-card__visual img {
+  filter: grayscale(1) invert(1) brightness(1.08) contrast(0.82) sepia(0.08);
+}
+
 .home-lineup-card__visual figcaption {
   position: absolute;
   z-index: 2;
