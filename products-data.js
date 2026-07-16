@@ -34,7 +34,7 @@ window.LANGBIANG_PRODUCT_GROUPS = [
       { label: "Clutch Cover", href: "/products/cnc-performance/#clutch-cover" },
       { label: "Water Pump Cover", href: "/products/cnc-performance/#water-pump-cover" },
       { label: "Engine Side Cover", href: "/products/cnc-performance/#engine-side-cover" },
-      { label: "Custom CNC Batch", href: "/products/cnc-performance/#fitment" }
+      { label: "Custom CNC Batch", href: "/b2b/" }
     ]
   },
   {

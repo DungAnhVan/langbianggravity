@@ -87,7 +87,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="cnc-performance-page">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
@@ -128,27 +128,54 @@
 
     <main id="main">
       <section class="product-line-hero product-line-hero-cnc section-pad">
-        <div class="shell product-line-hero-grid">
-          <div>
-            <p class="eyebrow">CNC Performance</p>
-            <h1>CNC motorcycle parts.</h1>
-            <p class="hero-copy">
-              CNC covers and billet parts by bike model, sample, drawing, and finish.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#fitment">Search Fitment</a>
-              <a class="button" href="/contact/#contact">Request Fitment</a>
+        <div class="shell">
+          <div class="cnc-bento">
+            <div class="cnc-bento-headline">
+              <p class="eyebrow">01 / CNC Performance</p>
+              <h1>Made to fit.<br /><span>Built to run.</span></h1>
+              <p class="hero-copy">
+                CNC covers and billet hard parts developed around the bike, the sample, and the job in front of it.
+              </p>
+            </div>
+
+            <div class="cnc-bento-context" aria-label="CNC program context">
+              <span>Product line</span>
+              <strong>CNC / 001</strong>
+              <span>Models · batches · finish</span>
+            </div>
+
+            <div class="cnc-bento-metric">
+              <span>Core program</span>
+              <strong>3</strong>
+              <p>cover formats<br />ready for fitment</p>
+            </div>
+
+            <figure class="cnc-bento-media">
+              <img src="/assets/images/cnc-inspection.webp" alt="CNC machined hard-part inspection" />
+              <figcaption>
+                <span>Inspection desk</span>
+                <strong>Billet / CNC / Fitment</strong>
+              </figcaption>
+            </figure>
+
+            <div class="cnc-bento-content">
+              <p class="eyebrow">Engineered around fitment</p>
+              <h2>Fitment is the starting point.</h2>
+              <p>
+                Confirm the model, cover profile, bolt pattern, sealing surface, and finish before production. Built for samples, drawings, replacement programs, and dealer batches.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="/contact/#contact">Start a Fitment Request</a>
+                <a class="button" href="/b2b/">Custom CNC Batch</a>
+              </div>
+            </div>
+
+            <div class="cnc-bento-material" aria-hidden="true">
+              <span>7075</span>
+              <span>6061</span>
+              <i></i>
             </div>
           </div>
-          <figure class="technical-figure">
-            <img src="/assets/images/cnc-inspection.webp" alt="CNC machined hard-part inspection" />
-            <figcaption>
-              <span>Billet</span>
-              <span>CNC</span>
-              <span>Fitment</span>
-              <span>Batch</span>
-            </figcaption>
-          </figure>
         </div>
       </section>
 
@@ -163,55 +190,13 @@
         </div>
       </section>
 
-      <section id="fitment" class="fitment-section section-pad" data-fitment-block>
-        <div class="shell section-heading">
-          <p class="eyebrow">Sample SKU search</p>
-          <h2>Sample CNC Performance SKUs.</h2>
-          <p>Filter by brand, model, year, and type.</p>
-        </div>
-        <div class="shell fitment-panel">
-          <form class="fitment-form" data-fitment-search data-product-line="cnc-performance">
-            <label>
-              Brand
-              <select name="brand">
-                <option value="">Any brand</option>
-                <option>Yamaha</option>
-                <option>KTM</option>
-                <option>Honda</option>
-                <option>Kawasaki</option>
-                <option>GasGas</option>
-              </select>
-            </label>
-            <label>
-              Model
-              <input name="model" type="text" placeholder="YZ250, EXC..." />
-            </label>
-            <label>
-              Year
-              <input name="year" type="text" placeholder="2005-2024 sample..." />
-            </label>
-            <label>
-              Type
-              <select name="type">
-                <option value="">Any type</option>
-                <option>Clutch cover</option>
-                <option>Water pump cover</option>
-                <option>Engine side cover</option>
-              </select>
-            </label>
-            <button class="button button-primary" type="submit">Search Fitment</button>
-          </form>
-          <div class="fitment-results" data-fitment-results></div>
-        </div>
-      </section>
-
       <section class="conversion-section section-pad">
         <div class="shell conversion-layout">
           <div>
             <p class="eyebrow">Quote action</p>
             <h2>Request CNC fitment.</h2>
             <p>
-              Add a sample SKU or send model, sample, drawing, and finish. For custom programs, see
+              Send model, sample, drawing, and finish to confirm the CNC program. For custom programs, see
               <a href="/b2b/">Custom CNC motorcycle parts</a>.
             </p>
             <div class="hero-actions">
@@ -228,7 +213,7 @@
         <img src="/assets/brand/logo-white.png" alt="Langbiang Gravity" />
         <div>
           <p>Technical catalogue.</p>
-          <span>Product lines, fitment search, and quote requests.</span>
+          <span>Product lines, CNC program details, and quote requests.</span>
         </div>
         <a href="/contact/">Contact</a>
       </div>

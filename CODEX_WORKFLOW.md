@@ -42,6 +42,8 @@ Mo `http://localhost:4173/`.
 - `assets/`: brand, product, va image assets local.
 - `assets/images/brake-rotor/`: source PDF va image assets cho UI Brake Rotor.
 - `assets/products/sprocket-editorial/`: Fusion visual va video teaser 15 giay cho `/products/sprockets/`.
+- `assets/products/bolt-kits/`: reserved Fusion exports for the Neo-Swiss Bolt Kits page; filename guidance is in its `README.md`.
+- `ui-design-cncper.md`: source-of-truth cho UI CNC Performance (palette blue, container hero 3 tang va checklist responsive).
 
 ## Cac khau lam viec ro rang
 
