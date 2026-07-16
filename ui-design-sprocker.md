@@ -37,7 +37,7 @@ Từ PDF, asset render/crop/tách nền trong suốt dùng trong UI là:
 - `lbg-r-mark-ii.webp`
 - `lbg-r-mark-iii.webp`
 
-Hero và video hiện lấy Mark III, chính diện không nghiêng; showcase hiển thị đủ cả ba phiên bản. `fusion-sprocket.webp` chỉ còn là placeholder legacy từ vòng dựng trước. Hero chỉ render nét design trên alpha trong suốt; vạch đỏ nằm phía sau và nhìn xuyên qua các khoảng rỗng của bản vẽ.
+Hero và video hiện lấy Mark III, chính diện không nghiêng; showcase hiển thị đủ cả ba phiên bản. `fusion-sprocket.webp` chỉ còn là placeholder legacy từ vòng dựng trước. Hero chỉ render nét design trên alpha trong suốt, không có nền trắng, không có circular backing; vạch đỏ nằm phía sau và nhìn xuyên qua các khoảng rỗng của bản vẽ.
 
 Khi có bản Fusion cập nhật:
 
@@ -56,7 +56,7 @@ Thông số hiện tại:
 - 1280 × 720, 24 fps.
 - Thời lượng đúng 15 giây.
 - Autoplay, muted, loop, playsinline.
-- Chuyển động: zoom và tilt nhẹ, orbit kỹ thuật, nhát đỏ, scan line.
+- Chuyển động: zoom/pan nhẹ, không tilt, orbit kỹ thuật, nhát đỏ, scan line.
 
 Sau khi thay visual Fusion, chạy lại generator để video lấy đúng Mark III mới.
 
@@ -67,7 +67,7 @@ Sau khi thay visual Fusion, chạy lại generator để video lấy đúng Mark
 Hero dùng grid ba vùng:
 
 1. Cột trái: kicker, headline condensed, mô tả ngắn và CTA.
-2. Trung tâm: Fusion sprocket, vòng orbit và nhát cắt đỏ.
+2. Trung tâm: nét Fusion sprocket trên alpha trong suốt, vòng orbit và nhát cắt đỏ ở phía sau.
 3. Cột phải: mục lục trang, video teaser 15 giây và ba thông số nhanh.
 
 Headline có ba nhịp `Race / Sprocket / System`; chữ `System` nghiêng màu đỏ để tạo cảm giác tốc độ. Trên tablet, vùng thông tin phải chuyển thành một hàng bên dưới. Trên mobile, mọi vùng xếp dọc.
@@ -83,7 +83,7 @@ Hai vật liệu được trình bày như hai spread editorial cân bằng:
 
 ### Fusion drawing showcase — Three marks / one rear system
 
-Ngay sau hero là showcase ba bản vẽ rear sprocket. Mỗi figure ghi rõ Mark và tên PDF nguồn, giúp team phân biệt phiên bản thiết kế khi review. Mark II được xử lý trên nền tối để tạo nhịp tương phản giữa ba bản vẽ linework.
+Ngay sau hero là showcase ba bản vẽ rear sprocket. Mỗi figure ghi rõ Mark và tên showcase tương ứng: TrussX, Hive, Voron. Mark II được xử lý trên nền tối để tạo nhịp tương phản giữa ba bản vẽ linework.
 
 ### Fitment Logic — Geometry decides fit
 
