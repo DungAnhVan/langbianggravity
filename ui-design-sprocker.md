@@ -121,6 +121,8 @@ FAQ được giữ để khớp nội dung dữ liệu có cấu trúc FAQPage, 
 
 Display typography dùng stack condensed hệ thống: Impact, Haettenschweiler, Arial Narrow. Body và control tiếp tục dùng font stack chung của site để không phát sinh request font ngoài.
 
+Header trên canvas sáng dùng `assets/brand/logo-black.png` để brand mark giữ tương phản và luôn nhìn thấy khi header sticky/scrolled. Footer nền tối dùng `assets/brand/logo-white.png`.
+
 ## 6. Motion và accessibility
 
 - Hero visual và nhát đỏ có entrance motion ngắn.

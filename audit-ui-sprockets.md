@@ -2,126 +2,161 @@
 
 Ngày kiểm tra: 2026-07-16  
 Route: `/products/sprockets/`  
-Phạm vi: visual design, information architecture, fitment handoff, responsive, accessibility, motion, performance và các phần lặp/thừa.
+Baseline: commit `2c5171d` — steel-only / kinetic editorial redesign  
+Phạm vi: visual design, hierarchy, content clarity, fitment conversion, responsive, accessibility, motion và performance.
 
 ## Kết luận nhanh
 
-Đây là một product showcase có direction thị giác rõ: nền graphite, accent đỏ/cyan, CAD sprocket, HUD và motion story tạo đúng cảm giác race-engineering. Header, skip link, FAQ native và form labels cơ bản đều hoạt động đúng; kiểm tra local không ghi nhận console error/warning và không có document-level horizontal overflow ở desktop/mobile.
+Phiên bản hiện tại có direction rõ hơn audit trước: light editorial canvas, typography motorsport, red accent và ba Fusion marks tạo cảm giác premium/technical. Product story cũng đã tập trung đúng vào 42CrMo4 racing steel và form finder đã có đủ Make / Model / Year / Model type.
 
-Điểm yếu chính nằm ở conversion và accessibility: trang quá dài cho một product page, nội dung “fitment/material/520” lặp qua nhiều section, form handoff thiếu trường `type` dù copy hứa có trường này, và reduced-motion làm mất phần lớn motion story khỏi màn hình.
+Các vấn đề cần ưu tiên hiện nay là lỗi nhận diện logo do dùng sai màu logo trên header/footer, contrast của màu đỏ chưa đủ cho text nhỏ và CTA, video autoplay chưa được xử lý theo reduced-motion, và phần “ba marks” chưa nói rõ đâu là concept progression/visual reference hay sản phẩm có thể mua. Ngoài ra page đang tải video teaser 2.2MB cùng nhiều ảnh below-the-fold ngay từ đầu.
 
 ## Findings
 
-### P1 — Reduced motion làm ẩn bước 02 và 03
+### P1 — Logo header/footer gần như biến mất vì dùng sai phiên bản màu
 
-Khi `prefers-reduced-motion: reduce`, `setupSprocketMotion()` chỉ set `.is-active` cho step đầu tiên rồi `return`. Trong CSS mặc định, `.motion-step` có `opacity: 0` và `pointer-events: none`; media query reduced-motion chỉ tắt transition, không đưa các step còn lại về trạng thái hiển thị.
-
-Rủi ro: người dùng đã chủ động tắt animation không thể nhìn thấy hai phần nội dung “Material choice” và “Fitment guidance”. Đây là mất nội dung, không chỉ là khác biệt thẩm mỹ.
+Header của page dùng nền sáng `#f8f8f6` nhưng vẫn render `/assets/brand/logo-white.png`. Footer dùng nền tối `#171717` nhưng lại render `/assets/brand/logo-black.png`. Hai logo có thể vẫn tồn tại trong DOM và có alt text, nhưng màu logo không phù hợp với nền nên brand mark không còn là điểm nhận diện nhìn thấy được.
 
 Evidence:
 
-- `script.js:990-997` — reduced-motion chỉ active index `0`.
-- `styles.css:3094-3117` — step inactive bị opacity `0`; chỉ step active được opacity `1`.
-- `styles.css:3778-3789` — reduced-motion chỉ tắt animation/transition.
+- `products/sprockets/index.html:163-164` — header dùng `logo-white.png`.
+- `products/sprockets/index.html:436-438` — footer dùng `logo-black.png`.
+- `styles.css:413-432` — header light theme.
+- `styles.css:1674-1677` — footer dark background.
 
-Đề xuất: trong reduced-motion hiển thị cả ba step theo layout tĩnh giống mobile, hoặc đổi motion story thành nhóm tab/button không animation để người dùng có thể chọn 01/02/03.
+Đề xuất: dùng `logo-black.png` cho header và `logo-white.png` cho footer, sau đó kiểm tra cả desktop/mobile ở trạng thái header scrolled.
 
-### P1 — Fitment promise không khớp với form thực tế
+### P1 — Contrast màu đỏ không đạt cho text nhỏ và CTA chính
 
-Page nhiều lần nói finder tìm theo make, model, year và model type. Signal trong finder cũng hiển thị `make / model / year / type / fitment link`, nhưng form thực tế tại section cuối chỉ có ba input: Make, Model và Year. Form submit tới external finder cũng chỉ gửi các field này; không có `type`.
+Màu `--kinetic-red: #ef1c25` trên canvas `#f8f8f6` có contrast khoảng `4.06:1`, thấp hơn ngưỡng WCAG AA `4.5:1` cho text thường. Màu này được dùng cho các label nhỏ `0.62–0.68rem`, số thứ tự, kicker và cả CTA có chữ trắng trên nền đỏ.
 
-Rủi ro: người dùng kỳ vọng lọc được model type nhưng không có cách nhập lựa chọn đó, dẫn tới kết quả rộng hơn hoặc phải nhập lại trong app kế tiếp.
-
-Evidence:
-
-- `products/sprockets/index.html:293` và `:406-409` — copy cam kết tìm theo model type.
-- `products/sprockets/index.html:444-474` — signal có `type` nhưng form chỉ render Make/Model/Year.
-- `products/sprockets/index.html:452` — form handoff sang `https://sprocket.langbianggravity.com/finder`.
-
-Đề xuất: thêm select `Model type` nếu finder backend hỗ trợ; hoặc bỏ `type` khỏi signal, FAQ và copy trên landing page nếu trường này chỉ xuất hiện ở bước sau. Nếu là bước sau, nói rõ “chọn type trong finder app” để expectation đúng.
-
-### P2 — Motion story quá dài và đẩy finder xuống rất sâu
-
-Desktop measurement cho thấy document cao khoảng `8,729px`; section motion story riêng có `min-height: 320vh`. Finder section bắt đầu khoảng `y=7,411px`, form khoảng `y=8,305px`. Hero có anchor “Find Your Sprocket” nên vẫn có đường tắt, nhưng người dùng đọc theo luồng tự nhiên phải đi qua một đoạn storytelling rất dài trước khi đến hành động chính.
-
-Rủi ro: scroll fatigue, giảm khả năng tiếp cận finder và làm product page giống campaign microsite hơn là catalogue có intent fitment rõ.
+Rủi ro: các label kỹ thuật và chữ trong CTA chính có thể khó đọc với người dùng low-vision hoặc màn hình ánh sáng kém. Heading lớn màu đỏ có thể vẫn đạt ngưỡng large text, nhưng không nên suy rộng điều đó cho microcopy.
 
 Evidence:
 
-- `styles.css:2882-2885` — motion story đặt `min-height: 320vh`.
-- Desktop runtime: `scrollHeight ≈ 8729px`; finder section tại `y ≈ 7411px`.
-- `products/sprockets/index.html:439` — chính copy cũng xác nhận “Scroll ends at the finder”.
+- `styles.css:413-416` — màu canvas, ink và red.
+- `styles.css:569-579` — CTA trắng trên nền đỏ.
+- `styles.css:989-999` và `:1471-1475` — label nhỏ dùng màu đỏ.
+- Contrast calculation: `#ef1c25` ↔ `#f8f8f6` ≈ `4.06:1`.
 
-Đề xuất: rút motion story còn khoảng 140–200vh, đưa một compact sticky/inline “Find fitment” CTA xuất hiện sau hero, hoặc đưa form finder lên trước technical narrative. Giữ animation như điểm nhấn nhưng không để nó là đường dẫn chính duy nhất.
+Đề xuất: dùng đỏ đậm hơn cho text trên nền sáng, ví dụ một token riêng cho small text; với button có thể dùng đỏ tối hơn hoặc nền ink + chữ trắng. Giữ đỏ hiện tại cho decoration/large headings nếu muốn bảo toàn art direction.
 
-### P2 — H1 desktop quá cao, chiếm vai trò poster nhiều hơn product index
+### P1 — Video autoplay vẫn chạy khi người dùng bật reduced motion
 
-Ở desktop runtime, H1 đo khoảng `584 × 572px` trong copy column rộng khoảng `584px`, tương đương khoảng tám dòng với font lớn và line-height `0.92`. Hình ảnh CAD, CTA và metrics bị đẩy thấp; người dùng phải đọc một headline rất cao trước khi thấy các thông tin scan nhanh.
-
-Evidence:
-
-- `styles.css:2659-2664` — H1 dùng `font-size: clamp(3.45rem, 5vw, 5.55rem)`.
-- Desktop runtime measurement: hero copy width `584px`, H1 height `572px`.
-
-Đề xuất: nới copy column hoặc tăng nhẹ max-width của H1, giảm font tối đa ở desktop khoảng 10–15%, giữ treatment hiện tại trên mobile nếu vẫn đúng art direction.
-
-### P2 — Visual và claim kỹ thuật lặp nhiều, tạo cảm giác “rác”/dàn trải
-
-Ba tầng nội dung cùng nói về gần như một nhóm claim: hero metrics nói `RS / RA / 520`, motion story nói material và fitment, Technical Product Stack lặp lại chain/material/SKU, sau đó Fitment Coverage và Fitment Guide tiếp tục nhắc lại front/rear/520. Cùng một asset `sprocket-cad-alpha.webp` cũng được dùng ở hero, motion machine và model visual (`:234`, `:256`, `:341`).
-
-Rủi ro: page dài nhưng lượng thông tin mới trên mỗi screen thấp; phần “technical” trông như nhiều phiên bản của một card thay vì một hierarchy rõ ràng.
-
-Đề xuất: chọn một section làm “technical proof” chính; gộp metrics + Technical Product Stack thành một comparison block; giữ Fitment Guide cho decision support. Dùng các asset có sẵn `sprocket-rs-steel.webp` và `sprocket-ra-aluminium.webp` cho material sections, thay vì lặp CAD chung.
-
-### P2 — External handoff chưa đủ rõ và thiếu trạng thái tại chỗ
-
-Hero, guide và finder có nhiều link sang `sprocket.langbianggravity.com`; form cũng submit trực tiếp sang domain đó trong cùng tab. Copy có nói “dedicated finder” nhưng label hành động chưa nhất quán: `Find Your Sprocket`, `Open Sprocket Finder`, `Open full finder`. Không có inline state cho việc form sẽ rời landing page, cũng không có validation UX cho year/model trước khi handoff.
+Video hero là `<video autoplay muted loop playsinline>` và được đặt `aria-hidden="true"`. Media query `prefers-reduced-motion` chỉ tắt animation của slash và hero image; không pause hoặc thay video bằng poster. Người dùng đã yêu cầu giảm chuyển động vẫn phải nhận motion từ teaser 15 giây.
 
 Evidence:
 
-- `products/sprockets/index.html:210`, `:429`, `:452`, `:477-478` — nhiều external destinations.
-- Các external link hiện không có `target`/context label bổ sung.
+- `products/sprockets/index.html:235-238` — video autoplay loop.
+- `styles.css:968-972` — reduced-motion chỉ tắt hai animation hero.
 
-Đề xuất: dùng một label thống nhất kiểu `Open fitment finder`, thêm microcopy “opens the dedicated finder app”, preserve query parameters như hiện tại, và validate nhẹ year/model nếu backend yêu cầu. Nếu mở tab mới, phải thêm `rel="noopener"` và thông báo rõ; nếu giữ cùng tab, vẫn nên cho biết người dùng sẽ rời trang này.
+Đề xuất: thêm JS kiểm tra `matchMedia('(prefers-reduced-motion: reduce)')` để pause video và giữ poster; hoặc bỏ autoplay và biến video thành nút play thật có controls/label. Nên cân nhắc `preload="none"` nếu video chỉ là visual decoration.
 
-### P3 — HUD, metrics và signal dùng nhiều chữ uppercase rất nhỏ
+### P2 — Ba Mark đang bị hiểu như ba product option, trong khi hierarchy chưa nói rõ trạng thái
 
-Các label như HUD, hero metrics và finder signal dùng cỡ khoảng `0.68–0.74rem`, font nặng và uppercase. Trên nền nhiều grid/gradient, các nhãn này dễ bị đọc như texture hơn là thông tin. Đây chưa phải lỗi contrast đã xác nhận, nhưng là điểm polish và scanability cần xem lại ở màn hình laptop nhỏ.
+Section hiển thị `Mark I / TrussX`, `Mark II / Hive`, `Mark III / Voron` dưới headline “Three marks. One rear system.” Hero dùng Mark III, nhưng section Materials lại dùng Mark I làm visual cho Racing Steel. Copy có “current showcase visual” nhưng không nói rõ Mark I/II là concept iteration, design study hay SKU có thể quote.
 
-Đề xuất: giảm số label trang trí, tăng cỡ các label mang thông tin thật, và chỉ giữ một cấp micro-label cho mỗi visual.
+Rủi ro: buyer có thể tưởng ba hình là ba rear sprocket variants hoặc ba lựa chọn đặt hàng; sự chuyển từ Mark III ở hero sang Mark I ở material card làm giảm cảm giác một sản phẩm đang được mô tả.
 
-### P3 — Cross-reference xuất hiện nhiều lần trong cùng một route
+Evidence:
 
-`Cross-reference OEM code(s)` xuất hiện ở hero, guide links và finder links; finder cũng có cả `Open full finder` lẫn button submit cùng đi tới app. Các entry point có thể hữu ích cho use case khác nhau, nhưng hiện chưa có hierarchy rõ nên tạo cảm giác CTA bị rải.
+- `products/sprockets/index.html:255-277` — ba marks và các tên TrussX/Hive/Voron.
+- `products/sprockets/index.html:296` — Mark I được dùng lại cho steel reference.
+- `products/sprockets/index.html:276` — Mark III được gọi là current showcase visual.
 
-Đề xuất: giữ một CTA chính ở hero và một nhóm secondary links ở cuối; trong guide chỉ giữ link nội bộ liên quan trực tiếp đến nội dung guide.
+Đề xuất: gắn nhãn rõ `Design study / not separate SKU`, `Current visual reference` và `Material reference`; hoặc chỉ dùng Mark III trong hero/material, giữ I/II ở một block “design evolution” riêng.
+
+### P2 — Payload video lớn và media below-the-fold chưa lazy-load
+
+Video teaser `sprocket-motion-15s.mp4` có kích thước khoảng `2.2MB` và được autoplay trong hero. Ba WebP showcase cộng thêm ảnh material được render trong HTML nhưng không có `loading="lazy"`, `width` hoặc `height` attributes. Với page thiên về editorial, visual nhiều là hợp lý, nhưng initial load đang phải trả thêm payload không cần thiết cho người chưa scroll.
+
+Evidence:
+
+- `assets/products/sprocket-editorial/sprocket-motion-15s.mp4` — khoảng `2,218,011 bytes`.
+- `products/sprockets/index.html:262-296` — ảnh showcase/material không khai báo lazy loading.
+- `products/sprockets/index.html:236` — video dùng `preload="metadata"` nhưng vẫn autoplay.
+
+Đề xuất: `loading="lazy"` cho ảnh từ showcase trở xuống, thêm kích thước intrinsic để tránh layout shift, dùng poster ở initial state và chỉ play video khi hero visible/connection phù hợp. Nếu cần autoplay, cung cấp một bản teaser nhẹ hơn hoặc giới hạn frame rate/duration.
+
+### P2 — Typography display quá lớn ở tablet và các section giữa
+
+Headline dùng Impact với line-height khoảng `0.8` và cỡ tối đa `8.8rem`; Fitment heading lên tới `11rem`. Breakpoint `max-width: 980px` chủ yếu đổi grid nhưng chưa giảm đáng kể cỡ heading; breakpoint mobile mới hạ về `clamp(4rem, 19vw, 6.3rem)`. Ở khoảng 721–980px, layout đã chuyển thành một cột nhưng display type vẫn rất lớn, khiến section title chiếm nhiều chiều cao và đẩy thông tin fitment xuống thấp.
+
+Evidence:
+
+- `styles.css:523-536` — hero H1 `clamp(4.6rem, 7.4vw, 8.8rem)` và `text-wrap: nowrap`.
+- `styles.css:1007-1017` — section headings tối đa `8.8rem`.
+- `styles.css:1344-1346` — Fitment heading tối đa `11rem`.
+- `styles.css:1680-1705` — tablet chỉ đổi column/ẩn stamp, chưa có scale type tương ứng.
+
+Đề xuất: thêm type scale riêng cho 721–980px, giảm line-height cực đoan ở heading nhiều dòng và cho hero H1 wrap tự nhiên sớm hơn. Giữ Impact treatment nhưng giảm “poster height” để scan thông tin nhanh hơn.
+
+### P2 — Mobile có nested horizontal scroller cho model families nhưng không có affordance rõ
+
+Model ticker dùng `white-space: nowrap` và ở mobile chuyển sang `overflow-x: auto`. Đây là horizontal scroll thứ hai bên trong vertical page; không có scrollbar styling hoặc chỉ dẫn rằng còn nội dung bên phải. `aria-label` trên `div` cũng không làm nó trở thành một region điều hướng rõ ràng cho mọi assistive technology.
+
+Evidence:
+
+- `products/sprockets/index.html:344` — ticker chứa năm motorcycle families.
+- `styles.css:1402-1412` — `white-space: nowrap`, `overflow: hidden` ở base.
+- `styles.css:1802-1805` — mobile đổi sang `overflow-x: auto`.
+
+Đề xuất: ưu tiên wrap thành hai hàng hoặc grid trên mobile. Nếu giữ ticker, thêm `role="region"`, tên rõ, `tabindex="0"` và cue thị giác nhẹ như “swipe for more”.
+
+### P2 — Finder form cho phép submit rỗng hoặc year không hợp lệ
+
+Form đã có đủ bốn field và đúng với FAQ, nhưng Make/Model/Year/Type đều không `required`; Year là `type="text"` với `inputmode="numeric"`. Người dùng có thể bấm submit khi chưa nhập gì hoặc nhập chuỗi không phải năm, sau đó bị handoff thẳng sang external finder bằng GET mà không có feedback tại chỗ.
+
+Evidence:
+
+- `products/sprockets/index.html:359-390` — form action external, field không có validation constraint.
+
+Đề xuất: quyết định rõ search rỗng có hợp lệ không. Nếu không, required tối thiểu Model/Year; đổi Year thành input có `pattern`/`min`/`max` hoặc validation inline. Thêm microcopy “opens the dedicated finder app” cạnh button để expectation về handoff rõ hơn.
+
+### P3 — Play icon là affordance giả
+
+Video có vòng tròn play bằng `<span>` nhưng không có button, không có pause control và không có tương tác click. Vì icon nằm giữa video, người dùng dễ hiểu đây là video có thể play/pause.
+
+Evidence: `products/sprockets/index.html:239-240` và `styles.css:751-765`.
+
+Đề xuất: hoặc biến thành control thật có accessible name và pause state, hoặc bỏ biểu tượng play và thay bằng nhãn nhỏ `15s loop / decorative visual`.
+
+### P3 — Hai CTA finder trong cùng luồng chưa cùng naming
+
+Hero dùng `Find your fitment`, form dùng `Open fitment finder`, outro dùng `Find your sprocket`; các label đều hợp lý riêng lẻ nhưng không tạo một verbal anchor nhất quán cho hành động chính.
+
+Evidence: `products/sprockets/index.html:212`, `:390`, `:431`.
+
+Đề xuất: thống nhất một primary label, ví dụ `Open fitment finder`, và dùng các biến thể còn lại cho secondary context hoặc heading, không dùng cả ba như action label.
 
 ## Các điểm đạt
 
-- Hero có CTA anchor tới `#find-your-sprocket`, không buộc người dùng phải tự tìm form ở cuối.
-- Form labels là label thật, select có option rõ; FAQ dùng native `<details>/<summary>` nên có keyboard semantics tốt.
-- Visual-only CAD được đặt trong vùng `aria-hidden="true"` với `alt=""`, phù hợp với vai trò trang trí.
-- Skip link, header navigation, Quote button và footer dùng đúng shared site pattern.
-- Mobile chuyển hero, motion steps và finder form sang một cột; runtime check không có document-level horizontal overflow.
-- `prefers-reduced-motion` đã được nhận diện trong JS và tắt animation hero; cần sửa thêm trạng thái visibility của các motion steps như P1 ở trên.
-- Local preview không ghi nhận console error/warning; các asset sprocket chính load thành công.
+- Steel-only message đã nhất quán trong visible page và ProductGroup JSON-LD; form đã bổ sung Model type.
+- Hero có navigation “On this page” tới Materials, Fitment logic và Finder; CTA không bị giấu trong footer.
+- Section có heading hierarchy rõ từ một H1 đến các H2/H3 có `aria-labelledby`; FAQ dùng native `<details>/<summary>`.
+- Các ảnh Fusion có alt text riêng cho Mark I/II/III; video decorative được `aria-hidden`.
+- Mobile có breakpoint riêng, chuyển hero thành một cột, form thành một cột và các finder links thành stack.
+- Light editorial palette và dark fitment section tạo nhịp thị giác rõ; `kinetic-model-ticker` là một điểm nhận diện mạnh cho nhóm model.
+- Local server trả 200 cho HTML, CSS, JS, video và hai logo asset chính.
 
 ## Trade-off theo design direction, chưa xem là lỗi bắt buộc
 
-HUD, grid, scan line, ring và motion CAD tạo ra một trải nghiệm branded rõ và phù hợp với race-engineering positioning. Cropping CAD/teeth ở mobile cũng là lựa chọn art direction có chủ ý; không nên loại bỏ nếu visual impact là mục tiêu. Các đề xuất trên ưu tiên làm rõ hierarchy và đường dẫn fitment, không phải làm trang thành catalogue phẳng.
+Typography Impact lớn, clip-path CTA, slash đỏ, monochrome Fusion drawings và ticker là lựa chọn art direction có chủ ý. Không nên làm chúng giống catalogue form thông thường. Các đề xuất ưu tiên làm rõ trạng thái sản phẩm, khả năng đọc và đường dẫn fitment trong khi vẫn giữ editorial motorsport character.
 
 ## Thứ tự đề xuất xử lý
 
-1. Sửa reduced-motion để mọi motion step vẫn nhìn thấy và đọc được.
-2. Đồng bộ promise `model type` với form/backend.
-3. Rút ngắn motion story hoặc thêm CTA finder cố định sau hero.
-4. Gộp các block claim lặp và thay một phần CAD bằng asset RS/RA chuyên biệt.
-5. Tinh chỉnh H1 desktop, external handoff copy và mật độ micro-label.
+1. Đổi logo header/footer về đúng màu.
+2. Sửa contrast token cho red text và CTA.
+3. Pause/disable video khi reduced-motion và giảm autoplay payload.
+4. Gắn nhãn rõ status của Mark I/II/III và thống nhất visual reference hiện tại.
+5. Lazy-load media below-the-fold, bổ sung dimensions và scale typography cho tablet.
+6. Làm rõ nested ticker và validation/handoff của finder form.
 
 ## Verification
 
-- Preview local: `python -m http.server 4176`.
-- Desktop: kiểm tra hero, H1 height, section order, motion story và vị trí finder.
-- Mobile breakpoint: kiểm tra tại viewport breakpoint `max-width: 720px`, form một cột, motion steps hiển thị và document width.
-- Interaction: kiểm tra anchor `Find Your Sprocket`, external finder/cross-reference destinations, native FAQ và motion active state khi scroll.
-- Static/runtime: kiểm tra `prefers-reduced-motion`, DOM controls, loaded images, console logs và overflow.
+- Preview local: `python -m http.server 4173`.
+- Static DOM/CSS inspection: `products/sprockets/index.html`, `styles.css`, `script.js`.
+- Asset inspection: ba Fusion WebP, video teaser, logo header/footer và file sizes.
+- HTTP smoke check: HTML/CSS/JS/video/logo assets đều trả `200`.
+- Contrast calculation: `#ef1c25` trên `#f8f8f6` ≈ `4.06:1`.
+- Browser automation không khả dụng trong phiên cập nhật này; responsive visual cần được re-check trực tiếp ở desktop, 980px, 720px và mobile sau khi xử lý P1/P2.
