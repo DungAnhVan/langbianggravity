@@ -60,7 +60,7 @@ Desktop dùng ba vùng:
 2. Khối copy và CTA ở giữa.
 3. Product visual bên phải.
 
-Rail hero phải hiển thị index section `01` ở đầu rail; nhóm nhãn kỹ thuật `LG / 06` và `OFF-ROAD HARDWARE` nằm phía cuối rail.
+Hero phải hiển thị section index `01` theo cùng scale lớn và cùng trục dọc bên trái với các section number `02–05`; nhóm nhãn kỹ thuật `LG / 06` và `OFF-ROAD HARDWARE` nằm phía cuối rail.
 
 Ảnh sản phẩm phải nổi trực tiếp trên nền `--bolt-paper`. `.bolt-asset-grid` đang được ẩn; ảnh dùng `mix-blend-mode: multiply`, không có box, border hoặc drop shadow. Figcaption giữ vai trò technical label, không phải card caption.
 

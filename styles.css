@@ -7386,10 +7386,10 @@ textarea:focus {
 .bolt-editorial-page .cart-button { border: 1px solid var(--bolt-ink); border-radius: 0; background: transparent; color: var(--bolt-ink); font-size: 0.74rem; font-weight: 750; letter-spacing: 0.03em; }
 .bolt-editorial-main { overflow: hidden; }
 .bolt-editorial-hero { padding-top: 73px; border-bottom: 1px solid var(--bolt-rule); }
-.bolt-hero-grid { display: grid; grid-template-columns: 132px minmax(0, 0.88fr) minmax(430px, 1.12fr); min-height: min(780px, calc(100vh - 73px)); border-inline: 1px solid var(--bolt-rule); }
+.bolt-hero-grid { position: relative; display: grid; grid-template-columns: 132px minmax(0, 0.88fr) minmax(430px, 1.12fr); min-height: min(780px, calc(100vh - 73px)); border-inline: 1px solid var(--bolt-rule); }
 .bolt-rail { display: flex; flex-direction: column; justify-content: space-between; padding: 28px 18px; border-right: 1px solid var(--bolt-rule); color: var(--bolt-muted); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; writing-mode: vertical-rl; transform: rotate(180deg); }
-.bolt-rail-index { color: var(--bolt-ink); font-size: 0.78rem; }
 .bolt-rail-labels { display: flex; flex-direction: column; gap: 18px; }
+.bolt-hero-index { position: absolute; top: clamp(48px, 7vw, 110px); left: 0; z-index: 1; margin: 0; color: var(--bolt-signal); font-size: clamp(2.8rem, 5.8vw, 5.8rem); font-weight: 500; letter-spacing: -0.08em; line-height: 0.8; }
 .bolt-hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 110px) clamp(28px, 5vw, 72px); border-right: 1px solid var(--bolt-rule); }
 .bolt-kicker { margin: 0; color: var(--bolt-muted); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
 .bolt-kicker span { color: var(--bolt-signal); margin-right: 18px; }
@@ -7515,6 +7515,7 @@ textarea:focus {
   .bolt-editorial-hero { padding-top: 64px; }
   .bolt-hero-grid { grid-template-columns: 1fr; min-height: 0; border-inline: 0; }
   .bolt-rail { display: none; }
+  .bolt-hero-index { position: static; margin: 58px 0 -24px; font-size: 3.5rem; }
   .bolt-hero-copy { border-right: 0; padding: 58px 0 48px; }
   .bolt-hero-copy h1 { margin-block: 20px 25px; font-size: clamp(3.2rem, 14vw, 4.6rem); }
   .bolt-hero-actions { margin-top: 31px; }
@@ -7789,6 +7790,7 @@ textarea:focus {
 }
 
 .bolt-editorial-page .bolt-rail { animation: boltRailEnter 760ms 80ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bolt-editorial-page .bolt-hero-index { animation: boltHeroEnter 720ms 100ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 .bolt-editorial-page .bolt-hero-copy > * { animation: boltHeroEnter 720ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 .bolt-editorial-page .bolt-hero-copy > :nth-child(1) { animation-delay: 100ms; }
 .bolt-editorial-page .bolt-hero-copy > :nth-child(2) { animation-delay: 180ms; }
@@ -7843,6 +7845,7 @@ textarea:focus {
 
 @media (prefers-reduced-motion: reduce) {
   .bolt-editorial-page .bolt-rail,
+  .bolt-editorial-page .bolt-hero-index,
   .bolt-editorial-page .bolt-hero-copy > *,
   .bolt-editorial-page .bolt-asset-image,
   .bolt-editorial-page .bolt-asset-stage figcaption,
