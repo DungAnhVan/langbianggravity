@@ -175,7 +175,7 @@ Header vẫn có Quote toàn site; đây là điều hướng dùng chung, khôn
 - Hai control là button thật, không dùng `div` có click handler.
 - `aria-label` trên vùng điều khiển: `Choose a brake rotor catalogue page`.
 - State dùng `aria-pressed`; sheet không active có `aria-hidden="true"`.
-- Stage dùng `aria-live="polite"` để thay đổi Front/Rear được thông báo vừa phải.
+- Stage dùng `aria-label="Brake rotor catalogue preview"`; một status visually-hidden riêng dùng `aria-live="polite"` và `aria-atomic="true"` để thông báo thay đổi Front/Rear mà không announce toàn bộ vùng hình.
 - Texture grid, line-art inset và overlay là trang trí, không được thêm vào accessibility tree.
 - Tôn trọng `prefers-reduced-motion: reduce`: bỏ transition của `.rotor-catalog-sheet` và `.rotor-catalog-control`; state vẫn đổi ngay lập tức.
 - Tương phản tối thiểu: copy màu off-white trên nền `#080a09`; mô tả không thấp hơn màu `#cdd1ca`.
@@ -200,17 +200,47 @@ data-catalog-copy
 data-catalog-control
 data-catalog-sheet
 data-catalog-index
+data-catalog-status
 ```
+
+## Audit cập nhật — 2026-07-15
+
+Audit lại sau khi triển khai UI và polish accessibility trên route `/products/brake-rotor/`.
+
+### Đã đạt và đã xác minh
+
+- Main có đúng một catalogue section; footer nằm ngay sau nội dung catalogue.
+- Không còn fitment form, fitment result, product card, `Find by vehicle` hoặc product dialog trên route.
+- Front là state mặc định; Rear cập nhật đúng copy, index `02`, `aria-pressed`, `aria-hidden` và status text.
+- Deep-link `#front-brake-rotor` và `#rear-brake-rotor` chọn đúng state lúc load.
+- Desktop giữ split layout; tại viewport audit khoảng `1322px`, hai cột đo được khoảng `494px / 683px`, book cao khoảng `580px`.
+- Ở mobile audit, copy kết thúc trước stage trong normal flow; `copy bottom < stage top`, hai control có chiều rộng chạm được và document không có horizontal overflow.
+- Ở breakpoint tablet, layout chuyển thành một cột; document width vẫn nhỏ hơn viewport.
+- Front dùng `fetchpriority="high"`, Rear dùng `loading="lazy"`; asset render load đúng kích thước nguồn `1254 × 1254`.
+- Reduced-motion rule vẫn tồn tại cho sheet/control; không có timer tự chuyển trang.
+- Refresh và đổi state không phát sinh console error/warning.
+- Đã xử lý các điểm audit trước: status live riêng, alt Rear được ghi rõ là reference mirrored, và product dialog thừa đã được bỏ khỏi markup route.
+
+### Findings còn mở
+
+1. **P1 — Chưa có asset Rear thật.** Rear hiện vẫn dùng cùng blueprint asset, mirror/filter bằng CSS. Alt text đã ghi rõ đây là reference, nhưng người dùng nhìn caption vẫn có thể hiểu đây là geometry Rear đã xác minh. Khi có dữ liệu hình đúng, thay asset; nếu chưa có, cân nhắc thêm nhãn nhìn thấy được `Rear reference / visual placeholder`.
+2. **P2 — H1 desktop còn thiên về poster.** `max-width: 11ch` tạo heading khoảng 3 dòng ở desktop. Đây là đúng brief hiện tại và giữ chất editorial; nếu ưu tiên scan nhanh kiểu technical index, thử `13–15ch` hoặc giảm nhẹ font ở desktop. Chưa đổi vì đây là quyết định visual, không phải lỗi responsive.
+3. **P3 — OG/JSON-LD vẫn trỏ PNG nặng.** Page render dùng WebP khoảng `193KB`, trong khi OG/Product image dùng PNG khoảng `2.8MB`. Có thể giữ PNG để tương thích social, nhưng bước tối ưu tiếp theo là tạo social crop nhẹ hoặc xác nhận crawler hỗ trợ WebP.
+4. **P3 — Nhóm Front/Rear chưa có semantic group.** `.rotor-catalog-controls` hiện có `aria-label` nhưng chưa có `role="group"`. Nên thêm role này ở lần polish accessibility tiếp theo; không ảnh hưởng visual.
+
+### Kết luận audit
+
+UI hiện đạt mục tiêu catalogue kỹ thuật hai trang và các tiêu chí responsive/runtime chính. Không cần thêm section marketing, fitment finder, SKU grid hoặc CTA thứ ba. Bước nhỏ tiếp theo nên là thay asset Rear thật; sau đó mới cân nhắc `role="group"`, OG image và độ rộng H1.
 
 ## Checklist nghiệm thu
 
-- [ ] Main có đúng một section catalogue, sau đó là footer.
-- [ ] Không còn `#fitment`, `data-fitment-search`, `data-fitment-results`, product card hoặc CTA `Find by vehicle` trên route này.
-- [ ] Front là state mặc định; click Rear đổi đúng copy, sheet, số trang, `aria-pressed` và `aria-hidden`.
-- [ ] Link `/products/brake-rotor/#front-brake-rotor` và `#rear-brake-rotor` chọn đúng trang.
-- [ ] Desktop: hai cột cân bằng, text không đè lên ảnh hay control.
-- [ ] Tablet/mobile: copy nằm hoàn toàn trước stage; không có layer chồng lên vùng hình.
-- [ ] Mobile: không tràn ngang và nút Front/Rear dễ chạm.
-- [ ] Reduced motion: đổi state không có animation lật trang.
-- [ ] Asset Front tải ưu tiên; asset Rear lazy load hoặc dùng asset riêng đã tối ưu.
-- [ ] Không có lỗi JavaScript hoặc lỗi console sau refresh.
+- [x] Main có đúng một section catalogue, sau đó là footer.
+- [x] Không còn `#fitment`, `data-fitment-search`, `data-fitment-results`, product card hoặc CTA `Find by vehicle` trên route này.
+- [x] Front là state mặc định; click Rear đổi đúng copy, sheet, số trang, `aria-pressed` và `aria-hidden`.
+- [x] Link `/products/brake-rotor/#front-brake-rotor` và `#rear-brake-rotor` chọn đúng trang.
+- [x] Desktop: hai cột cân bằng, text không đè lên ảnh hay control.
+- [x] Tablet/mobile: copy nằm hoàn toàn trước stage; không có layer chồng lên vùng hình.
+- [x] Mobile: không tràn ngang và nút Front/Rear dễ chạm.
+- [x] Reduced motion: đổi state không có animation lật trang.
+- [x] Asset Front tải ưu tiên; asset Rear lazy load hoặc dùng asset reference lazy load.
+- [x] Không có lỗi JavaScript hoặc lỗi console sau refresh.

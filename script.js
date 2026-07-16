@@ -990,11 +990,12 @@ function setupSprocketMotion() {
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   if (reducedMotion) {
+    scene.classList.add("is-reduced-motion");
     scene.style.setProperty("--motion-rotate", "0deg");
     scene.style.setProperty("--motion-scale", "1");
     scene.style.setProperty("--motion-scan-top", "50%");
     progressBar?.style.setProperty("transform", "scaleY(1)");
-    steps.forEach((step, index) => step.classList.toggle("is-active", index === 0));
+    steps.forEach((step) => step.classList.add("is-active"));
     return;
   }
 
