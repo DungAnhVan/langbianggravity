@@ -115,7 +115,7 @@ Header vẫn có Quote toàn site; đây là điều hướng dùng chung, khôn
 - Mỗi sheet phủ kín book, nền xanh-đen `#111713`, viền `#202420`, bóng 14px/18px như tấm giấy xếp lớp.
 - Điểm xoay ở gáy trái: `transform-origin: left center`.
 - `backface-visibility: hidden` để không lộ mặt sau khi lật.
-- Asset chính: `/assets/images/brake-rotor-blueprint-hero.webp`, tỷ lệ nguồn `1254 × 1254`, `object-fit: cover`.
+- Asset catalogue hiện tại: Front dùng `/assets/images/brake-rotor/LBG-F-KR94.webp`; Rear dùng `/assets/images/brake-rotor/LBG-R-KR94.webp`. Cả hai render từ PDF A4 `1190 × 1684`; giữ `object-fit: cover` để đưa bản vẽ vào sheet vuông.
 - Có overlay gradient tối nhẹ từ trên xuống dưới để chữ nhãn ở góc dưới luôn đọc được.
 
 **Nhãn sheet**
@@ -142,8 +142,8 @@ Header vẫn có Quote toàn site; đây là điều hướng dùng chung, khôn
 
 ## Ảnh Front và Rear
 
-- Front dùng asset gốc với `fetchpriority="high"`.
-- Rear tái dùng asset nhưng mirror ngang `scaleX(-1) scale(1.04)` và chỉnh `grayscale(0.18) contrast(1.08)` để có cảm giác một trang khác mà không cần ảnh trùng lặp.
+- Front dùng `LBG-F-KR94.webp` với `fetchpriority="high"`; bản vẽ nền trắng được invert bằng CSS để khớp stage blueprint tối.
+- Rear dùng asset riêng `LBG-R-KR94.webp` với `loading="lazy"`; không mirror để giữ đúng geometry trong bản vẽ Rear. Alt/caption mô tả đúng asset đã cung cấp.
 - Cần alt riêng, mô tả đúng ngữ cảnh Front/Rear.
 - Nếu có asset Rear thật, có thể thay ảnh Rear; vẫn giữ framing, overlay, label và motion như trên.
 
@@ -187,7 +187,10 @@ Header vẫn có Quote toàn site; đây là điều hướng dùng chung, khôn
 | Markup route | `products/brake-rotor/index.html` |
 | State và đồng bộ Front/Rear | `setupRotorCatalog()` trong `script.js` |
 | Layout, sheet, breakpoint | `.rotor-catalog*` trong `styles.css` |
-| Asset catalogue | `assets/images/brake-rotor-blueprint-hero.webp` |
+| Asset catalogue Front | `assets/images/brake-rotor/LBG-F-KR94.webp` |
+| Asset catalogue Rear | `assets/images/brake-rotor/LBG-R-KR94.webp` |
+| PDF source Front | `assets/images/brake-rotor/LBG-F-KR94.pdf` |
+| PDF source Rear | `assets/images/brake-rotor/LBG-R-KR94.pdf` |
 | Ảnh OG dự phòng | `assets/images/brake-rotor-blueprint-hero.png` |
 | Nguyên tắc thiết kế tổng quát | `design-ui.md` |
 
@@ -216,21 +219,26 @@ Audit lại sau khi triển khai UI và polish accessibility trên route `/produ
 - Desktop giữ split layout; tại viewport audit khoảng `1322px`, hai cột đo được khoảng `494px / 683px`, book cao khoảng `580px`.
 - Ở mobile audit, copy kết thúc trước stage trong normal flow; `copy bottom < stage top`, hai control có chiều rộng chạm được và document không có horizontal overflow.
 - Ở breakpoint tablet, layout chuyển thành một cột; document width vẫn nhỏ hơn viewport.
-- Front dùng `fetchpriority="high"`, Rear dùng `loading="lazy"`; asset render load đúng kích thước nguồn `1254 × 1254`.
+- Front dùng `fetchpriority="high"`, Rear dùng `loading="lazy"`; cả hai asset render load đúng kích thước nguồn `1190 × 1684`.
 - Reduced-motion rule vẫn tồn tại cho sheet/control; không có timer tự chuyển trang.
 - Refresh và đổi state không phát sinh console error/warning.
-- Đã xử lý các điểm audit trước: status live riêng, alt Rear được ghi rõ là reference mirrored, và product dialog thừa đã được bỏ khỏi markup route.
+- Đã xử lý các điểm audit trước: status live riêng, product dialog thừa đã được bỏ khỏi markup route, và asset Rear thật đã được thêm vào.
+
+### Đã xử lý sau audit
+
+- Bổ sung `LBG-R-KR94.pdf` và các bản render WebP/PNG tương ứng.
+- Rear hiện dùng `LBG-R-KR94.webp` riêng, không mirror; giữ đúng geometry trong bản vẽ được cung cấp.
+- Front vẫn dùng `LBG-F-KR94.webp`; cả hai bản vẽ được invert bằng CSS để giữ nền sheet tối.
 
 ### Findings còn mở
 
-1. **P1 — Chưa có asset Rear thật.** Rear hiện vẫn dùng cùng blueprint asset, mirror/filter bằng CSS. Alt text đã ghi rõ đây là reference, nhưng người dùng nhìn caption vẫn có thể hiểu đây là geometry Rear đã xác minh. Khi có dữ liệu hình đúng, thay asset; nếu chưa có, cân nhắc thêm nhãn nhìn thấy được `Rear reference / visual placeholder`.
-2. **P2 — H1 desktop còn thiên về poster.** `max-width: 11ch` tạo heading khoảng 3 dòng ở desktop. Đây là đúng brief hiện tại và giữ chất editorial; nếu ưu tiên scan nhanh kiểu technical index, thử `13–15ch` hoặc giảm nhẹ font ở desktop. Chưa đổi vì đây là quyết định visual, không phải lỗi responsive.
-3. **P3 — OG/JSON-LD vẫn trỏ PNG nặng.** Page render dùng WebP khoảng `193KB`, trong khi OG/Product image dùng PNG khoảng `2.8MB`. Có thể giữ PNG để tương thích social, nhưng bước tối ưu tiếp theo là tạo social crop nhẹ hoặc xác nhận crawler hỗ trợ WebP.
-4. **P3 — Nhóm Front/Rear chưa có semantic group.** `.rotor-catalog-controls` hiện có `aria-label` nhưng chưa có `role="group"`. Nên thêm role này ở lần polish accessibility tiếp theo; không ảnh hưởng visual.
+1. **P2 — H1 desktop còn thiên về poster.** `max-width: 11ch` tạo heading khoảng 3 dòng ở desktop. Đây là đúng brief hiện tại và giữ chất editorial; nếu ưu tiên scan nhanh kiểu technical index, thử `13–15ch` hoặc giảm nhẹ font ở desktop. Chưa đổi vì đây là quyết định visual, không phải lỗi responsive.
+2. **P3 — OG/JSON-LD vẫn trỏ PNG nặng.** Page render dùng WebP khoảng `193KB`, trong khi OG/Product image dùng PNG khoảng `2.8MB`. Có thể giữ PNG để tương thích social, nhưng bước tối ưu tiếp theo là tạo social crop nhẹ hoặc xác nhận crawler hỗ trợ WebP.
+3. **P3 — Nhóm Front/Rear chưa có semantic group.** `.rotor-catalog-controls` hiện có `aria-label` nhưng chưa có `role="group"`. Nên thêm role này ở lần polish accessibility tiếp theo; không ảnh hưởng visual.
 
 ### Kết luận audit
 
-UI hiện đạt mục tiêu catalogue kỹ thuật hai trang và các tiêu chí responsive/runtime chính. Không cần thêm section marketing, fitment finder, SKU grid hoặc CTA thứ ba. Bước nhỏ tiếp theo nên là thay asset Rear thật; sau đó mới cân nhắc `role="group"`, OG image và độ rộng H1.
+UI hiện đạt mục tiêu catalogue kỹ thuật hai trang và các tiêu chí responsive/runtime chính. Không cần thêm section marketing, fitment finder, SKU grid hoặc CTA thứ ba. Bước nhỏ tiếp theo là cân nhắc `role="group"`, OG image và độ rộng H1.
 
 ## Checklist nghiệm thu
 

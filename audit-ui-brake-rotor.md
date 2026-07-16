@@ -1,114 +1,90 @@
 # UI/UX audit — Brake Rotor catalogue
 
-Ngày kiểm tra: 2026-07-15  
-Route: `/products/brake-rotor/`  
-Phạm vi: visual design, Front/Rear catalogue interaction, responsive, accessibility, asset/performance và các thành phần thừa.
+Ngày kiểm tra: 2026-07-16
+Route: `/products/brake-rotor/`
+Phạm vi: visual design, Front/Rear interaction, responsive, accessibility, conversion, asset/performance và phần thừa.
 
 ## Kết luận nhanh
 
-Trang đang đi đúng hướng catalogue kỹ thuật một màn hình: split-screen rõ, palette graphite/paper/orange nhất quán, Front/Rear là state dễ hiểu, không có section marketing thừa. Desktop, tablet và mobile không có document-level horizontal scroll; chuyển trang, hash deep-link và accessibility state cơ bản hoạt động.
+Route hiện tại đã gọn và đúng hướng catalogue kỹ thuật một màn hình: split layout rõ, Front/Rear là state dễ hiểu, copy và spec thay đổi theo state, còn visual Rear đã dùng asset Rear riêng thay vì mirror ảnh Front. Đây là một cải thiện quan trọng so với audit trước.
 
-Finding quan trọng nhất là ảnh Rear hiện vẫn là cùng asset với Front, chỉ mirror/filter bằng CSS. Với một catalogue kỹ thuật, điều này có thể làm người xem hiểu nhầm geometry thực tế của rotor Rear.
+Các việc còn đáng ưu tiên là bảo toàn toàn bộ bản vẽ trong frame, đưa CTA fitment/quote vào ngay catalogue, đồng bộ ảnh dùng cho social/structured data với asset đang hiển thị, và dọn một vài semantic/shared markup thừa.
 
 ## Findings
 
-### P1 — Visual Rear không phải asset Rear thực tế
+### P2 — Technical drawing đang bị ép crop bởi `object-fit: cover`
 
-Ảnh Front và Rear cùng trỏ tới `/assets/images/brake-rotor-blueprint-hero.webp`. State Rear chỉ dùng `scaleX(-1)`, scale và grayscale/contrast để tạo cảm giác là một trang khác. Cách này giữ được visual continuity nhưng không cung cấp thông tin kỹ thuật khác nhau; phần caption lại khẳng định rõ `REAR ROTOR`/`MOUNTING · CLEARANCE · HEAT`.
-
-Rủi ro: buyer có thể nghĩ hình đang thể hiện đúng bolt pattern, offset hoặc hình học Rear, trong khi đây chỉ là biến thể hình ảnh của cùng một rotor.
+Hai asset hiện tại có kích thước portrait `1190 × 1684`, nhưng sheet desktop có chiều cao cố định `580px` và ảnh được đặt `width: 100%`, `height: 100%`, `object-fit: cover`. Frame catalogue có tỷ lệ gần vuông/ngang hơn asset nguồn nên phần biên trên/dưới bị cắt. Với hình kỹ thuật, đây là rủi ro trực tiếp: nếu bản vẽ có thêm kích thước, callout hoặc vùng an toàn, thông tin có thể bị mất khỏi viewport.
 
 Evidence:
 
-- `products/brake-rotor/index.html:196-220` — hai sheet dùng cùng asset.
-- `styles.css:1344-1346` — Rear được mirror/filter bằng CSS.
-- `assets/images/brake-rotor-blueprint-hero.webp` — asset hiện có là ảnh dùng chung.
+- `products/brake-rotor/index.html:196-220` — Front/Rear dùng asset portrait và khai báo kích thước nguồn.
+- `styles.css:3862-3885` — book cao `580px`, sheet fill toàn frame, ảnh dùng `object-fit: cover`.
+- `assets/images/brake-rotor/LBG-F-KR94.webp` và `LBG-R-KR94.webp` — asset nguồn đều portrait.
 
-Đề xuất: ưu tiên asset Rear thật nếu có. Nếu chưa có, ghi rõ `Rear reference / visual placeholder` hoặc đổi caption để không tạo cảm giác đây là bản vẽ Rear đã xác minh.
+Đề xuất: dùng `object-fit: contain` trên sheet kỹ thuật, hoặc đổi book sang tỷ lệ portrait phù hợp; giữ nền/grid để phần khoảng trắng vẫn có chủ ý. Kiểm tra lại cả desktop, tablet và mobile sau khi đổi.
 
-### P2 — H1 desktop hơi quá dọc, làm layout mang tính poster hơn catalogue
+### P2 — Catalogue thiếu CTA chuyển đổi ngay trong nội dung chính
 
-H1 bị giới hạn `max-width: 11ch` với font tối đa `4.8rem`, nên ở desktop tạo khoảng 4 dòng: `Front / braking, / dialled to / the hub.`. Đây là chủ ý thiết kế có trong brief và tạo chất editorial mạnh, nhưng nó làm phần copy cao, giảm diện tích để người xem scan specs và khiến trang phụ thuộc nhiều vào scroll.
+Phần catalogue chỉ có hai nút chuyển Front/Rear. Người dùng muốn gửi thông tin fitment hoặc yêu cầu quote phải tự nhận ra nút `Quote` ở header hoặc đi xuống footer `Contact`; không có action nằm cạnh spec để nối từ “xem rotor” sang “gửi bike/bolt pattern”.
 
-Evidence:
+Đây có thể là lựa chọn đúng nếu brief chỉ muốn một product index tối giản, nhưng nó làm giảm khả năng chuyển đổi của product page. Nên có một CTA phụ như `Request rotor fitment` hoặc `Add to quote` ngay dưới controls, kèm một dòng giải thích ngắn về thông tin cần cung cấp.
 
-- `styles.css:1182-1189` — giới hạn chiều rộng và font H1.
-- Preview desktop: copy column khoảng 494px rộng, H1 khoảng 366×257px.
+Evidence: `products/brake-rotor/index.html:134-234` — nội dung catalogue và controls không có link/action fitment hoặc quote riêng.
 
-Đề xuất nếu muốn catalogue “technical index” hơn: nới H1 lên khoảng 13–15ch hoặc giảm nhẹ font ở desktop; giữ mobile hiện tại vì mobile đã xuống khoảng 3 dòng và vẫn rõ.
+### P2 — OG/Product image vẫn trỏ tới PNG legacy nặng và khác visual đang hiển thị
 
-### P2 — Live region chưa có status text rõ ràng cho screen reader
-
-`aria-live="polite"` đang đặt trên toàn bộ `.rotor-catalog-stage`, nhưng chuyển Front/Rear chủ yếu thay đổi CSS state, `aria-hidden` và hình ảnh. Screen reader có thể không nhận được thông báo ngắn, ổn định kiểu “Rear page selected”; `aria-pressed` trên button vẫn đúng nhưng chưa truyền đầy đủ ngữ cảnh thay đổi.
+Trang hiển thị hai WebP mới khoảng `55KB` và `42KB`, nhưng `og:image` và Product JSON-LD vẫn trỏ tới `brake-rotor-blueprint-hero.png` khoảng `2.8MB`. Preview chia sẻ vì vậy có thể khác catalogue hiện tại, đồng thời metadata tiếp tục tham chiếu asset nặng hơn nhiều.
 
 Evidence:
 
-- `products/brake-rotor/index.html:193-223` — stage live region bao quanh cả book.
-- `script.js:1045-1053` — state cập nhật attribute và page index.
+- `products/brake-rotor/index.html:19-22` và `:89` — OG/Product image dùng `brake-rotor-blueprint-hero.png`.
+- `products/brake-rotor/index.html:196-220` — visual thực tế dùng `LBG-F-KR94.webp` và `LBG-R-KR94.webp`.
+- Asset size local: PNG `2,802,301 bytes`; Front WebP `55,140 bytes`; Rear WebP `41,602 bytes`.
 
-Đề xuất: thêm một status element visually-hidden, ví dụ `Front catalogue page selected`/`Rear catalogue page selected`, và cập nhật nó trong `setPage()`. Có thể bỏ `aria-live` khỏi vùng hình ảnh để tránh announce nhiễu.
+Đề xuất: tạo một social crop nhẹ, hoặc dùng Front WebP nếu crawler/social workflow chấp nhận; đồng bộ Product/OG image với visual hiện tại.
 
-### P3 — Product dialog là markup thừa trên route catalogue
+### P3 — Nhóm Front/Rear nên expose semantic group rõ hơn
 
-Trang không có `data-open-product` hoặc `data-open-fitment`, nên người dùng không có đường nào mở product dialog. Dialog vẫn tồn tại trong DOM và shared script vẫn có logic modal, dù brief của route này chủ ý loại bỏ product cards/SKU detail.
-
-Evidence:
-
-- `products/brake-rotor/index.html:240-243` — dialog không có trigger trên page.
-- `products/brake-rotor/index.html:196-223` — catalogue không render product card/action.
-- `script.js:1082-1088` — chỉ gắn handler nếu trigger tồn tại.
-
-Đề xuất: giữ cart drawer dùng chung, nhưng có thể bỏ riêng `<dialog>` khỏi route này để DOM và contract rõ hơn. Không cần bỏ `products-data.js`/`script.js` vì navigation và Quote vẫn dùng shared data/logic.
-
-### P3 — OG/structured-data image đang dùng PNG nặng hơn nhiều so với page asset
-
-Page render bằng WebP khoảng 193KB, nhưng `og:image` và Product JSON-LD trỏ tới PNG khoảng 2.8MB. PNG có thể giữ vì compatibility của social preview, nhưng payload lớn hơn đáng kể và không đồng nhất với asset render chính.
-
-Evidence:
-
-- `products/brake-rotor/index.html:19-22` và `:89` — dùng PNG cho OG/Product image.
-- `products/brake-rotor/index.html:198` — page render dùng WebP.
-- Asset size: PNG khoảng 2,802,301 bytes; WebP khoảng 193,426 bytes.
-
-Đề xuất: dùng WebP cho structured data nếu workflow crawler cho phép; với OG, giữ PNG nếu cần tương thích nhưng nên tạo một bản social crop nhẹ hơn thay vì dùng ảnh vuông gốc 1254×1254.
-
-### P3 — Nhóm control nên có semantic group rõ hơn
-
-`aria-label="Choose a brake rotor catalogue page"` đang đặt trên một `div` generic. DOM snapshot vẫn đọc được label và hai button có tên rõ, nhưng nhóm control chưa được expose như một group semantic.
+`aria-label="Choose a brake rotor catalogue page"` hiện đặt trên `div` generic. Hai button đã có tên, `type="button"` và `aria-pressed` đúng, nhưng nhóm điều khiển chưa được expose rõ như một control group.
 
 Evidence: `products/brake-rotor/index.html:181-189`.
 
-Đề xuất: thêm `role="group"` cho `.rotor-catalog-controls`; giữ label hiện tại.
+Đề xuất: thêm `role="group"` hoặc dùng `fieldset/legend` nếu muốn label nhóm được đọc nhất quán hơn.
 
-## Các điểm đạt
+### P3 — Product dialog shared còn tồn tại dù route không có trigger
 
-- Front là state mặc định; Rear cập nhật đúng copy, index `02`, `aria-pressed` và `aria-hidden`.
-- Deep-link `/products/brake-rotor/#rear-brake-rotor` khởi tạo đúng Rear.
-- Hai control là button thật, vùng chạm mobile rộng và rõ state active màu orange.
-- Mobile chuyển đúng thứ tự copy → stage; tablet chuyển đúng layout một cột theo breakpoint.
-- Không có horizontal overflow ở responsive check; Quote cố định không che footer của route này.
-- Hình ảnh có `width`/`height`, Front có `fetchpriority="high"`, Rear có `loading="lazy"`.
-- Alt text Front/Rear khác nhau và mô tả đúng ngữ cảnh hiển thị.
-- `prefers-reduced-motion: reduce` tắt transition của sheet/control.
-- Header, skip link, nav toggle, Quote và footer giữ đúng hệ thống shared site.
-- Preview không có console warning/error; các ảnh local đều load thành công.
+Route catalogue không render product card hay `data-open-product`, nhưng shared dialog markup vẫn nằm trong DOM và shared script vẫn khởi tạo logic liên quan. Đây không gây lỗi trực tiếp, nhưng là phần thừa làm contract của route kém rõ và thêm một surface phải kiểm tra khi thay đổi shared UI.
 
-## Trade-off theo design brief, chưa xem là lỗi
+Evidence: phần dialog cuối `products/brake-rotor/index.html`; trigger product không xuất hiện trong route.
 
-Route cố ý chỉ có một catalogue section, không có fitment finder, SKU grid, CTA conversion hoặc marketing section thứ hai. Đây là đúng với brief `ui-brake-roto.md`; đường Quote vẫn tồn tại ở header như affordance dùng chung toàn site. Nếu mục tiêu conversion thay đổi, cần thêm một CTA rõ trong catalogue thay vì bắt người dùng tìm Quote ở header.
+Đề xuất: nếu route này tiếp tục là catalogue một màn hình, bỏ dialog riêng khỏi page; giữ cart drawer và shared navigation.
+
+## Các điểm đạt / lỗi cũ đã được xử lý
+
+- Front và Rear hiện dùng hai asset kỹ thuật riêng: `LBG-F-KR94.webp` và `LBG-R-KR94.webp`; không còn finding “Rear chỉ là ảnh Front mirror bằng CSS”.
+- State Front/Rear cập nhật copy, index, `aria-pressed`, `aria-hidden` và live status; `script.js` cập nhật `Front catalogue page selected` / `Rear catalogue page selected`.
+- Hash `#front-brake-rotor` và `#rear-brake-rotor` được xử lý trong `setupRotorCatalog()`.
+- Hình có `width`/`height`; Front có `fetchpriority="high"`, Rear có `loading="lazy"`.
+- Reduced-motion đã tắt transition của sheet/control.
+- Mobile chuyển copy trước, stage sau; controls mở rộng thành hai vùng bấm rõ.
+- Header, skip link, nav toggle, Quote drawer và footer dùng shared site pattern.
+
+## Trade-off theo design brief
+
+Trang cố ý chỉ có một catalogue section, không có SKU grid, fitment form hay marketing block dài. Điều này giữ được tính technical/editorial và tránh rác nội dung. Tuy nhiên, nếu mục tiêu business là tạo lead từ product page, nên thêm một CTA inline nhỏ thay vì bắt người dùng tìm `Quote` ở header.
 
 ## Thứ tự đề xuất xử lý
 
-1. Thay hoặc gắn nhãn rõ cho visual Rear placeholder.
-2. Bổ sung status text cho Front/Rear state change.
-3. Quyết định có bỏ product dialog thừa khỏi route hay không.
-4. Tối ưu OG/structured-data image.
-5. Nới H1 desktop và thêm `role="group"` nếu muốn polish tiếp.
+1. Đổi framing ảnh kỹ thuật để không crop bản vẽ.
+2. Thêm CTA fitment/quote ngay cạnh Front/Rear controls.
+3. Đồng bộ OG/Product image với asset hiện tại và tạo social crop nhẹ nếu cần.
+4. Thêm semantic group cho controls.
+5. Dọn product dialog shared nếu route không có kế hoạch dùng product modal.
 
 ## Verification
 
-- Preview local bằng `python -m http.server 4175`.
-- Desktop: kiểm tra layout split-screen, hero height, stage/book framing và footer.
-- Tablet/mobile: kiểm tra copy → stage flow, button sizing và document width.
-- Interaction: Front → Rear, `aria-pressed`, `aria-hidden`, index text và hash deep-link.
-- Static/runtime: image natural dimensions, local asset load, console logs, visible H1 và overflow.
+- Static inspection: `products/brake-rotor/index.html`, `styles.css`, `script.js` và asset brake rotor.
+- Local HTTP smoke check với `python -m http.server 4173`: `/`, `/products/brake-rotor/`, `/products/sprockets/`, CSS, JS và hai asset Front/Rear đều trả `200`.
+- Đã kiểm tra trực tiếp hai asset WebP để đối chiếu tỷ lệ portrait với frame hiện tại.
+- Browser automation không khả dụng trong phiên audit này; cần re-check trực quan ở desktop, khoảng 980px và mobile sau khi xử lý P2 crop.

@@ -4,9 +4,12 @@ from __future__ import annotations
 
 import argparse
 import math
+import shutil
+import subprocess
+import tempfile
 from pathlib import Path
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageOps
 
 try:
     import imageio_ffmpeg
@@ -15,7 +18,7 @@ except ImportError as exc:
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_SOURCE = ROOT / "assets/products/sprocket-editorial/lbg-r-mark-iii.webp"
+DEFAULT_SOURCE = ROOT / "assets/products/sprocket-editorial/LBG_R_Mark_III.pdf"
 DEFAULT_OUTPUT = ROOT / "assets/products/sprocket-editorial/sprocket-motion-15s.mp4"
 
 
@@ -69,12 +72,33 @@ def build_frame(source: Image.Image, frame: int, frame_count: int, size: tuple[i
     return Image.alpha_composite(canvas.convert("RGBA"), overlay).convert("RGB")
 
 
+def load_source(source_path: Path) -> Image.Image:
+    if source_path.suffix.lower() != ".pdf":
+        source = Image.open(source_path).convert("RGBA")
+    else:
+        renderer = shutil.which("pdftocairo")
+        if not renderer:
+            raise SystemExit("pdftocairo is required to render a Fusion PDF video source.")
+        with tempfile.TemporaryDirectory() as temp_dir:
+            base = Path(temp_dir) / "sprocket-video"
+            subprocess.run(
+                [renderer, "-png", "-r", "600", "-singlefile", str(source_path), str(base)],
+                check=True,
+                capture_output=True,
+            )
+            raster = Image.open(base.with_suffix(".png")).convert("RGB")
+            luminance = ImageOps.grayscale(raster)
+            alpha = luminance.point(lambda value: 255 - value)
+            source = Image.new("RGBA", raster.size, (18, 18, 18, 0))
+            source.putalpha(alpha)
+
+    alpha_box = source.getchannel("A").getbbox()
+    return source.crop(alpha_box) if alpha_box else source
+
+
 def generate(source_path: Path, output_path: Path, duration: int = 15, fps: int = 24) -> None:
     size = (1280, 720)
-    source = Image.open(source_path).convert("RGBA")
-    alpha_box = source.getchannel("A").getbbox()
-    if alpha_box:
-        source = source.crop(alpha_box)
+    source = load_source(source_path)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     frame_count = duration * fps

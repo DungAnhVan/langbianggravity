@@ -31,19 +31,19 @@ Nguồn chính thức là ba bản vẽ Fusion:
 - `LBG_R_Mark_II.pdf.pdf` = Langbiang Gravity / Rear / Mark II.
 - `LBG_R_Mark_III.pdf` = Langbiang Gravity / Rear / Mark III.
 
-Từ PDF, asset render/crop/tách nền trong suốt dùng trong UI là:
+Từ PDF, asset vector crop/tách nền trong suốt dùng trong UI là:
 
-- `lbg-r-mark-i.webp`
-- `lbg-r-mark-ii.webp`
-- `lbg-r-mark-iii.webp`
+- `lbg-r-mark-i.svg`
+- `lbg-r-mark-ii.svg`
+- `lbg-r-mark-iii.svg`
 
 Hero và video hiện lấy Mark III, chính diện không nghiêng; showcase hiển thị đủ cả ba phiên bản. `fusion-sprocket.webp` chỉ còn là placeholder legacy từ vòng dựng trước. Hero chỉ render nét design trên alpha trong suốt, không có nền trắng, không có circular backing; vạch đỏ nằm phía sau và nhìn xuyên qua các khoảng rỗng của bản vẽ.
 
 Khi có bản Fusion cập nhật:
 
 - Ghi đè PDF Mark tương ứng và giữ nguyên tên file.
-- Render lại PNG, chạy `tools/extract-sprocket-showcase.py` để crop WebP.
-- Nền giấy trắng được tách thành alpha trong bước crop WebP.
+- Chạy `tools/extract-sprocket-showcase.py` để export lại SVG crop tight.
+- UI dùng SVG nền trong suốt, không rasterize PDF ở 180 dpi.
 - Không bake nền, logo, chữ, glow hoặc shadow vào bản vẽ.
 
 ### Video teaser
@@ -52,7 +52,7 @@ Tên file: `assets/products/sprocket-editorial/sprocket-motion-15s.mp4`
 
 Thông số hiện tại:
 
-- H.264 / yuv420p.
+- H.264 / yuv420p, render trực tiếp từ PDF Mark III ở 600 dpi.
 - 1280 × 720, 24 fps.
 - Thời lượng đúng 15 giây.
 - Autoplay, muted, loop, playsinline.
@@ -141,7 +141,7 @@ Header trên canvas sáng dùng `assets/brand/logo-black.png` để brand mark g
 ## 8. Checklist khi nhận asset Fusion chính thức
 
 1. Ghi đè đúng PDF Mark tương ứng.
-2. Render/crop lại ba WebP bằng `tools/extract-sprocket-showcase.py`.
-3. Chạy lại `tools/generate-sprocket-video.py` để tạo MP4 mới từ Mark III.
+2. Export lại ba SVG bằng `tools/extract-sprocket-showcase.py`.
+3. Chạy lại `tools/generate-sprocket-video.py` để tạo MP4 mới từ PDF Mark III ở 600 dpi.
 4. Kiểm tra crop của visual tại desktop 1440 px và mobile 390 px.
 5. Kiểm tra video autoplay muted và loop trên trình duyệt thật.

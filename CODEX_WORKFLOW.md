@@ -40,6 +40,7 @@ Mo `http://localhost:4173/`.
 - `seo/keyword-map.md`, `seo/url-map.md`: lightweight SEO planning docs cho keyword map va route strategy.
 - `seo/gsc/`: GSC export templates va notes de uu tien SEO sprint tiep theo.
 - `assets/`: brand, product, va image assets local.
+- `assets/images/brake-rotor/`: source PDF va image assets cho UI Brake Rotor.
 - `assets/products/sprocket-editorial/`: Fusion visual va video teaser 15 giay cho `/products/sprockets/`.
 
 ## Cac khau lam viec ro rang

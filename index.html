@@ -47,7 +47,7 @@
     }
     </script>
   </head>
-  <body>
+  <body class="home-editorial-page">
     <a class="skip-link" href="#main">Skip to content</a>
 
     <header class="site-header" data-header>
@@ -92,102 +92,160 @@
     </button>
 
     <main id="main">
-      <section id="home" class="hero-section">
-        <div class="hero-media" role="img" aria-label="Muddy off-road motorcycle drivetrain and sprocket test rig"></div>
-        <div class="hero-content shell">
-          <p class="eyebrow">Langbiang Gravity</p>
-          <h1>Built for racing abuse.</h1>
-          <p class="hero-copy">
-            Sprockets, brake rotors, CNC covers, and Grade 5 titanium hardware for off-road riders, dealers, fleets, and OEM/custom fabrication.
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="/products/">View Products</a>
-            <a class="button button-secondary" href="/b2b/">Request OEM / dealer batch</a>
-            <a class="button button-secondary" href="/contact/">Request Fitment</a>
+      <section id="home" class="home-race-hero" aria-labelledby="home-hero-title">
+        <div class="home-race-hero__media" role="img" aria-label="Off-road motorcycle sprocket under workshop test"></div>
+        <div class="shell home-race-hero__grid">
+          <div class="home-race-hero__copy">
+            <p class="home-kicker">Off-road hard parts / Da Lat, Vietnam</p>
+            <h1 id="home-hero-title">Four lines.<br /><em>One race system.</em></h1>
+            <p class="home-race-hero__lead">
+              Fitment-led sprockets, brake rotors, CNC performance parts, and Grade 5 titanium bolt kits for riders, dealers, fleets, and OEM programs.
+            </p>
+            <div class="home-race-hero__actions">
+              <a class="home-editorial-cta" href="#product-lineup">View the line-up <span aria-hidden="true">↘</span></a>
+              <a class="home-editorial-link" href="/products/sprockets/#find-your-sprocket">Find sprocket fitment <span aria-hidden="true">↗</span></a>
+              <a class="home-editorial-link" href="/b2b/">Dealer / OEM supply <span aria-hidden="true">↗</span></a>
+            </div>
+            <dl class="home-race-hero__proof" aria-label="Core supply capabilities">
+              <div><dt>42CrMo4</dt><dd>Race steel</dd></div>
+              <div><dt>Verified</dt><dd>Fitment path</dd></div>
+              <div><dt>Quote-led</dt><dd>Batch supply</dd></div>
+            </dl>
           </div>
-          <dl class="hero-metrics" aria-label="Product capabilities">
-            <div>
-              <dt>42CrMo4 Race Steel</dt>
-              <dd>Front and rear sprockets for hard chain load and repeated abuse.</dd>
-            </div>
-            <div>
-              <dt>7075-T6 Race Aluminum</dt>
-              <dd>Lightweight rear sprockets for lower rotating mass and sharper response.</dd>
-            </div>
-            <div>
-              <dt>Quote-based Supply</dt>
-              <dd>Fitment, tooth count, quantity, batch size, and market are confirmed before pricing.</dd>
-            </div>
-          </dl>
+
+          <aside class="home-race-plate" aria-label="Four product lines">
+            <div class="home-race-plate__topline"><span>Starting grid</span><span>LBG / 04</span></div>
+            <div class="home-race-plate__number" aria-hidden="true">04</div>
+            <ol>
+              <li><span>01</span> Sprocket</li>
+              <li><span>02</span> Brake Rotor</li>
+              <li><span>03</span> CNC Performance</li>
+              <li><span>04</span> Bolt Kits</li>
+            </ol>
+            <span class="home-race-plate__status">Grid locked / fitment first</span>
+          </aside>
         </div>
       </section>
 
-      <section class="parts-section section-pad">
-        <div class="shell section-heading">
-          <p class="eyebrow">Product line</p>
-          <h2>Four hard-part lanes.</h2>
-          <p>
-            Sprockets, brake rotor programs, CNC covers, and Grade 5 titanium bolt kits by model fitment.
-          </p>
-          <p>
-            Technical notes live in the <a href="/knowledge/">knowledge base</a>.
-          </p>
-        </div>
-        <div class="shell category-grid">
-          <article class="category-card accent-orange">
-            <div class="category-index">01</div>
-            <h3>Sprockets</h3>
-            <p>Front and rear sprockets by bike model, chain size, and tooth count.</p>
-            <a href="/products/sprockets/">Open Sprockets</a>
-          </article>
-          <article class="category-card">
-            <div class="category-index">02</div>
-            <h3>Brake Rotor</h3>
-            <p>Front and rear brake rotors by bike model, diameter, and bolt pattern.</p>
-            <a href="/products/brake-rotor/">Open Brake Rotor</a>
-          </article>
-          <article class="category-card accent-blue">
-            <div class="category-index">03</div>
-            <h3>CNC Performance</h3>
-            <p>CNC covers by bike model, sample, drawing, and finish.</p>
-            <a href="/products/cnc-performance/">Open CNC Performance</a>
-          </article>
-          <article class="category-card accent-lime">
-            <div class="category-index">04</div>
-            <h3>Bolt Kits</h3>
-            <p>Grade 5 titanium hardware by application, thread, length, and torque check.</p>
-            <a href="/products/bolt-kits/">Open Bolt Kits</a>
-          </article>
-        </div>
-      </section>
-
-      <section class="b2b-section section-pad">
-        <div class="shell b2b-layout">
+      <section id="product-lineup" class="home-lineup" aria-labelledby="lineup-title">
+        <div class="shell home-lineup__heading">
+          <p class="home-section-index">01 / Product line-up</p>
           <div>
-            <p class="eyebrow">B2B supply</p>
-            <h2>Dealer, fleet, and batch programs.</h2>
-            <div class="hero-actions">
-              <a class="button button-primary" href="/b2b/">View B2B</a>
-              <a class="button" href="/contact/">Send Inquiry</a>
-            </div>
+            <h2 id="lineup-title">Pick your<br /><em>hard-part lane.</em></h2>
+            <p>Four focused routes. Each starts with the bike, the application, and the specification that actually decides fit.</p>
           </div>
-          <div class="b2b-cards">
-            <article>
-              <h3>Motorcycle shops</h3>
-              <p>Fast-moving sprocket and hard-part fitments, wholesale quantity, and repeat orders.</p>
-            </article>
-            <article>
-              <h3>Rental fleets</h3>
-              <p>42CrMo4 sprockets, chain guide protection, replacement intervals, and batch stock.</p>
-            </article>
-            <article>
-              <h3>Race teams</h3>
-              <p>Ratio tests, 7075-T6 rear sprockets, brake rotors, and optional titanium hardware.</p>
-            </article>
-            <article>
-              <h3>Dealers / distributors</h3>
-              <p>Regional fitment sheets, batch pricing, product packs, and export-ready documentation later.</p>
-            </article>
+          <span aria-hidden="true">LBG<br />RACE<br />GRID</span>
+        </div>
+
+        <div class="shell home-lineup__list">
+          <article class="home-lineup-card home-lineup-card--sprocket" data-reveal>
+            <a href="/products/sprockets/" aria-label="Open Sprocket product line">
+              <figure class="home-lineup-card__visual">
+                <img src="/assets/products/sprocket-editorial/lbg-r-mark-iii.svg?v=20260716-1938" alt="LBG-R Mark III rear sprocket" />
+                <figcaption>42CrMo4 / 520 platform</figcaption>
+              </figure>
+              <div class="home-lineup-card__panel">
+                <span class="home-lineup-card__index">01</span>
+                <div class="home-lineup-card__title">
+                  <p>Drive system</p>
+                  <h3>Sprocket</h3>
+                </div>
+                <dl>
+                  <div><dt>Fitment</dt><dd>Model / year / spline / hub</dd></div>
+                  <div><dt>Spec</dt><dd>Chain size / tooth count</dd></div>
+                </dl>
+                <span class="home-lineup-card__open">Open line <b aria-hidden="true">↗</b></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="home-lineup-card home-lineup-card--rotor" data-reveal>
+            <a href="/products/brake-rotor/" aria-label="Open Brake Rotor product line">
+              <figure class="home-lineup-card__visual">
+                <img src="/assets/images/brake-rotor/LBG-F-KR94-cutout.png" alt="LBG-F-KR94 front brake rotor" />
+                <figcaption>SUS420 / rotor program</figcaption>
+              </figure>
+              <div class="home-lineup-card__panel">
+                <span class="home-lineup-card__index">02</span>
+                <div class="home-lineup-card__title">
+                  <p>Braking system</p>
+                  <h3>Brake Rotor</h3>
+                </div>
+                <dl>
+                  <div><dt>Fitment</dt><dd>Diameter / bolt pattern</dd></div>
+                  <div><dt>Spec</dt><dd>Offset / caliper clearance</dd></div>
+                </dl>
+                <span class="home-lineup-card__open">Open line <b aria-hidden="true">↗</b></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="home-lineup-card home-lineup-card--cnc" data-reveal>
+            <a href="/products/cnc-performance/" aria-label="Open CNC Performance product line">
+              <figure class="home-lineup-card__visual home-lineup-card__visual--photo">
+                <img src="/assets/images/cnc-inspection.webp" alt="CNC inspection station for machined motorcycle parts" />
+                <figcaption>Billet / measured batch</figcaption>
+              </figure>
+              <div class="home-lineup-card__panel">
+                <span class="home-lineup-card__index">03</span>
+                <div class="home-lineup-card__title">
+                  <p>Machined protection</p>
+                  <h3>CNC Performance</h3>
+                </div>
+                <dl>
+                  <div><dt>Fitment</dt><dd>Model / sample / drawing</dd></div>
+                  <div><dt>Spec</dt><dd>Material / finish / quantity</dd></div>
+                </dl>
+                <span class="home-lineup-card__open">Open line <b aria-hidden="true">↗</b></span>
+              </div>
+            </a>
+          </article>
+
+          <article class="home-lineup-card home-lineup-card--bolts" data-reveal>
+            <a href="/products/bolt-kits/" aria-label="Open Bolt Kits product line">
+              <figure class="home-lineup-card__visual home-lineup-card__visual--photo">
+                <img src="/assets/images/product-bench.webp" alt="Titanium motorcycle hardware arranged on a workshop bench" />
+                <figcaption>Ti-6Al-4V / application-led</figcaption>
+              </figure>
+              <div class="home-lineup-card__panel">
+                <span class="home-lineup-card__index">04</span>
+                <div class="home-lineup-card__title">
+                  <p>Race hardware</p>
+                  <h3>Bolt Kits</h3>
+                </div>
+                <dl>
+                  <div><dt>Fitment</dt><dd>Thread / length / shoulder</dd></div>
+                  <div><dt>Spec</dt><dd>Washer stack / torque</dd></div>
+                </dl>
+                <span class="home-lineup-card__open">Open line <b aria-hidden="true">↗</b></span>
+              </div>
+            </a>
+          </article>
+        </div>
+      </section>
+
+      <section class="home-proof-rail" aria-labelledby="home-proof-title">
+        <div class="shell home-proof-rail__grid">
+          <header>
+            <p class="home-section-index">02 / How it moves</p>
+            <h2 id="home-proof-title">Fitment before fabrication.</h2>
+          </header>
+          <article><span>01</span><h3>Verify the bike</h3><p>Model, year, position, geometry, and use case start the request.</p></article>
+          <article><span>02</span><h3>Lock the spec</h3><p>Material, size, finish, quantity, and batch scope are confirmed.</p></article>
+          <article><span>03</span><h3>Quote the program</h3><p>Pricing follows the verified fitment and production requirement.</p></article>
+        </div>
+      </section>
+
+      <section class="home-b2b-band" aria-labelledby="home-b2b-title">
+        <div class="shell home-b2b-band__grid">
+          <p class="home-section-index">03 / Dealer · Fleet · OEM</p>
+          <div>
+            <h2 id="home-b2b-title">Build the next batch.</h2>
+            <p>Fitment sheets, repeat-order programs, custom fabrication, and direct technical review for trade buyers.</p>
+          </div>
+          <div class="home-b2b-band__actions">
+            <a class="home-editorial-cta" href="/b2b/">View B2B supply <span aria-hidden="true">↗</span></a>
+            <a class="home-editorial-link" href="/contact/">Send an inquiry <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </section>
