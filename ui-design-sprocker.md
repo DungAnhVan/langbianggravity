@@ -75,10 +75,11 @@ Headline có ba nhịp `Race / Sprocket / System`; chữ `System` nghiêng màu 
 
 ### Materials — Material follows load
 
-Hai vật liệu được trình bày như hai spread editorial cân bằng:
+Phiên bản hiện tại chỉ public một vật liệu đã sẵn sàng:
 
 - RS Racing Steel / 42CrMo4: endurance, hard service, mud và training volume.
-- RA Racing Aluminium / 7075-T6: race response và reduced rotating mass.
+
+RA Racing Aluminium / 7075-T6 chưa public ở phiên bản này; sẽ bổ sung sau khi dòng sản phẩm sẵn sàng.
 
 Ảnh là khối lớn grayscale; màu đỏ chỉ xuất hiện ở caption và tín hiệu nhấn. Thông số nằm trong các hàng tuyến tính, không dùng card.
 

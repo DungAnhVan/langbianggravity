@@ -1169,6 +1169,20 @@ p {
   padding-left: clamp(20px, 3vw, 48px);
 }
 
+.kinetic-material:only-child {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+  gap: clamp(20px, 3vw, 48px);
+  border-right: 0;
+  padding-right: 0;
+}
+
+.kinetic-material:only-child .kinetic-material__copy {
+  align-content: center;
+  padding-top: 0;
+}
+
 .kinetic-material figure {
   position: relative;
   margin: 0;
@@ -1726,6 +1740,10 @@ p {
   }
 
   .kinetic-materials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .kinetic-material:only-child {
     grid-template-columns: 1fr;
   }
 
