@@ -57,6 +57,7 @@ Thông số hiện tại:
 - Thời lượng đúng 15 giây.
 - Autoplay, muted, loop, playsinline.
 - Chuyển động: zoom/pan nhẹ, không tilt, orbit kỹ thuật, nhát đỏ, scan line.
+- Không có caption overlay trong khung video; đã bỏ `Geometry in motion` và `00:15 / concept loop`.
 
 Sau khi thay visual Fusion, chạy lại generator để video lấy đúng Mark III mới.
 
