@@ -979,6 +979,8 @@ p {
 }
 
 .home-lineup-card--bolts .home-lineup-card__visual img {
+  filter: grayscale(1) contrast(0.58) brightness(1.18);
+  opacity: 0.82;
   transform: translateY(-36px);
 }
 
