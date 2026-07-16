@@ -7726,9 +7726,103 @@ textarea:focus {
   aspect-ratio: 1;
   object-fit: contain;
   mix-blend-mode: multiply;
-  filter: contrast(1.08) drop-shadow(18px 22px 14px rgba(17, 21, 18, 0.24));
+  filter: contrast(1.08);
 }
+
+.bolt-asset-stage { background: var(--bolt-paper); }
+.bolt-asset-grid { display: none; }
 
 @media (max-width: 620px) {
   .bolt-asset-image { width: min(88%, 390px); }
+}
+
+/* Bolt kits motion — quiet Neo-Swiss grid reveals. */
+@keyframes boltHeroEnter {
+  from { opacity: 0; transform: translate3d(0, 26px, 0); }
+  to { opacity: 1; transform: translate3d(0, 0, 0); }
+}
+
+@keyframes boltRailEnter {
+  from { opacity: 0; transform: rotate(180deg) translateY(22px); }
+  to { opacity: 1; transform: rotate(180deg) translateY(0); }
+}
+
+@keyframes boltAssetEnter {
+  from { opacity: 0; transform: translate3d(34px, 0, 0) scale(0.94); }
+  to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+}
+
+@keyframes boltAssetFloat {
+  from { transform: translate3d(0, -3px, 0); }
+  to { transform: translate3d(0, 5px, 0); }
+}
+
+.bolt-editorial-page .bolt-rail { animation: boltRailEnter 760ms 80ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bolt-editorial-page .bolt-hero-copy > * { animation: boltHeroEnter 720ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bolt-editorial-page .bolt-hero-copy > :nth-child(1) { animation-delay: 100ms; }
+.bolt-editorial-page .bolt-hero-copy > :nth-child(2) { animation-delay: 180ms; }
+.bolt-editorial-page .bolt-hero-copy > :nth-child(3) { animation-delay: 270ms; }
+.bolt-editorial-page .bolt-hero-copy > :nth-child(4) { animation-delay: 350ms; }
+.bolt-editorial-page .bolt-asset-image {
+  animation:
+    boltAssetEnter 900ms 260ms cubic-bezier(0.22, 1, 0.36, 1) both,
+    boltAssetFloat 7s 1.3s ease-in-out infinite alternate;
+}
+.bolt-editorial-page .bolt-asset-stage figcaption { animation: boltHeroEnter 700ms 520ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bolt-editorial-page .bolt-hero-meta > * { animation: boltHeroEnter 620ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.bolt-editorial-page .bolt-hero-meta > :nth-child(1) { animation-delay: 420ms; }
+.bolt-editorial-page .bolt-hero-meta > :nth-child(2) { animation-delay: 480ms; }
+.bolt-editorial-page .bolt-hero-meta > :nth-child(3) { animation-delay: 540ms; }
+.bolt-editorial-page .bolt-hero-meta > :nth-child(4) { animation-delay: 600ms; }
+
+.js-reveal .bolt-editorial-page [data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 30px, 0);
+  transition:
+    opacity 680ms ease,
+    transform 760ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.js-reveal .bolt-editorial-page [data-bolt-motion="grid"] { transform: translate3d(-28px, 0, 0); }
+.js-reveal .bolt-editorial-page [data-bolt-motion="side"] { transform: translate3d(28px, 0, 0); }
+.js-reveal .bolt-editorial-page [data-bolt-motion="line"] { transform: translate3d(0, 18px, 0) scaleX(0.975); }
+.js-reveal .bolt-editorial-page [data-reveal].is-visible { opacity: 1; transform: translate3d(0, 0, 0) scaleX(1); }
+.bolt-editorial-page [data-bolt-delay="1"] { transition-delay: 40ms; }
+.bolt-editorial-page [data-bolt-delay="2"] { transition-delay: 110ms; }
+.bolt-editorial-page [data-bolt-delay="3"] { transition-delay: 180ms; }
+.bolt-editorial-page [data-bolt-delay="4"] { transition-delay: 250ms; }
+
+.bolt-editorial-page .bolt-section-heading { position: relative; border-top-color: transparent; }
+.bolt-editorial-page .bolt-section-heading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: var(--bolt-ink);
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 900ms 160ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.bolt-editorial-page .bolt-protocol .bolt-section-heading::before { background: var(--bolt-paper); }
+.js-reveal .bolt-editorial-page [data-reveal] .bolt-section-heading::before { transform: scaleX(0); }
+.bolt-editorial-page [data-reveal].is-visible .bolt-section-heading::before { transform: scaleX(1); }
+
+@media (prefers-reduced-motion: reduce) {
+  .bolt-editorial-page .bolt-rail,
+  .bolt-editorial-page .bolt-hero-copy > *,
+  .bolt-editorial-page .bolt-asset-image,
+  .bolt-editorial-page .bolt-asset-stage figcaption,
+  .bolt-editorial-page .bolt-hero-meta > * { animation: none; }
+
+  .js-reveal .bolt-editorial-page [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .bolt-editorial-page .bolt-section-heading::before { transform: scaleX(1); transition: none; }
 }
