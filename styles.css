@@ -7388,6 +7388,8 @@ textarea:focus {
 .bolt-editorial-hero { padding-top: 73px; border-bottom: 1px solid var(--bolt-rule); }
 .bolt-hero-grid { display: grid; grid-template-columns: 132px minmax(0, 0.88fr) minmax(430px, 1.12fr); min-height: min(780px, calc(100vh - 73px)); border-inline: 1px solid var(--bolt-rule); }
 .bolt-rail { display: flex; flex-direction: column; justify-content: space-between; padding: 28px 18px; border-right: 1px solid var(--bolt-rule); color: var(--bolt-muted); font-size: 0.64rem; font-weight: 700; letter-spacing: 0.08em; writing-mode: vertical-rl; transform: rotate(180deg); }
+.bolt-rail-index { color: var(--bolt-ink); font-size: 0.78rem; }
+.bolt-rail-labels { display: flex; flex-direction: column; gap: 18px; }
 .bolt-hero-copy { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 110px) clamp(28px, 5vw, 72px); border-right: 1px solid var(--bolt-rule); }
 .bolt-kicker { margin: 0; color: var(--bolt-muted); font-size: 0.68rem; font-weight: 750; letter-spacing: 0.08em; text-transform: uppercase; }
 .bolt-kicker span { color: var(--bolt-signal); margin-right: 18px; }
@@ -7700,6 +7702,35 @@ textarea:focus {
 .bolt-finder-form button:hover,
 .bolt-finder-form button:focus-visible { background: var(--bolt-signal); color: var(--bolt-ink); }
 .bolt-finder-form button span { color: inherit; }
+.bolt-editorial-page .fitment-result-card .product-meta { color: var(--bolt-muted); }
+.bolt-editorial-page .fitment-result-card .price-row strong { color: var(--bolt-ink); }
+.bolt-editorial-page .fitment-result-card .price-row span { color: var(--bolt-muted); }
+.bolt-editorial-page .fitment-result-card .button,
+.bolt-editorial-page .fitment-empty .button {
+  border-color: var(--bolt-rule);
+  background: var(--bolt-surface);
+  color: var(--bolt-ink);
+}
+.bolt-editorial-page .fitment-result-card .button:hover,
+.bolt-editorial-page .fitment-result-card .button:focus-visible,
+.bolt-editorial-page .fitment-empty .button:hover,
+.bolt-editorial-page .fitment-empty .button:focus-visible {
+  border-color: var(--bolt-signal);
+  background: var(--bolt-signal);
+  color: var(--bolt-ink);
+}
+.bolt-editorial-page .fitment-result-card .button-dark {
+  border-color: var(--bolt-ink);
+  background: var(--bolt-ink);
+  color: var(--bolt-paper);
+}
+.bolt-editorial-page .fitment-result-card .button-dark:hover,
+.bolt-editorial-page .fitment-result-card .button-dark:focus-visible {
+  border-color: var(--bolt-signal);
+  background: var(--bolt-signal);
+  color: var(--bolt-ink);
+}
+.bolt-editorial-page .fitment-empty p { color: var(--bolt-ink); }
 
 .bolt-editorial-outro { background: var(--bolt-signal); }
 .bolt-outro-grid h2,
