@@ -20,7 +20,7 @@ Evidence:
 
 - `products/brake-rotor/index.html:196-220` — Front/Rear dùng asset portrait và khai báo kích thước nguồn.
 - `styles.css:3862-3885` — book cao `580px`, sheet fill toàn frame, ảnh dùng `object-fit: cover`.
-- `assets/images/brake-rotor/LBG-F-KR94.webp` và `LBG-R-KR94.webp` — asset nguồn đều portrait.
+- `assets/products/brake-rotor/LBG-F-KR94.webp` và `LBG-R-KR94.webp` — asset nguồn đều portrait.
 
 Đề xuất: dùng `object-fit: contain` trên sheet kỹ thuật, hoặc đổi book sang tỷ lệ portrait phù hợp; giữ nền/grid để phần khoảng trắng vẫn có chủ ý. Kiểm tra lại cả desktop, tablet và mobile sau khi đổi.
 
@@ -34,11 +34,11 @@ Evidence: `products/brake-rotor/index.html:134-234` — nội dung catalogue và
 
 ### P2 — OG/Product image vẫn trỏ tới PNG legacy nặng và khác visual đang hiển thị
 
-Trang hiển thị hai WebP mới khoảng `55KB` và `42KB`, nhưng `og:image` và Product JSON-LD vẫn trỏ tới `brake-rotor-blueprint-hero.png` khoảng `2.8MB`. Preview chia sẻ vì vậy có thể khác catalogue hiện tại, đồng thời metadata tiếp tục tham chiếu asset nặng hơn nhiều.
+Trang hiển thị hai WebP mới khoảng `55KB` và `42KB`, nhưng `og:image` và Product JSON-LD vẫn trỏ tới `assets/products/brake-rotor/LBG-F-KR94.webp` khoảng `2.8MB`. Preview chia sẻ vì vậy có thể khác catalogue hiện tại, đồng thời metadata tiếp tục tham chiếu asset nặng hơn nhiều.
 
 Evidence:
 
-- `products/brake-rotor/index.html:19-22` và `:89` — OG/Product image dùng `brake-rotor-blueprint-hero.png`.
+- `products/brake-rotor/index.html:19-22` và `:89` — OG/Product image dùng `assets/products/brake-rotor/LBG-F-KR94.webp`.
 - `products/brake-rotor/index.html:196-220` — visual thực tế dùng `LBG-F-KR94.webp` và `LBG-R-KR94.webp`.
 - Asset size local: PNG `2,802,301 bytes`; Front WebP `55,140 bytes`; Rear WebP `41,602 bytes`.
 

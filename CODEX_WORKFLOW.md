@@ -41,7 +41,7 @@ Mo `http://localhost:4173/`.
 - `seo/gsc/`: GSC export templates va notes de uu tien SEO sprint tiep theo.
 - `seo/google-search-console-workflow.md`: quy trinh bat buoc sau moi lan sua page, doi URL, them page hoac them feature co the anh huong Search.
 - `assets/`: brand, product, va image assets local.
-- `assets/images/brake-rotor/`: source PDF va image assets cho UI Brake Rotor.
+- `assets/products/brake-rotor/`: source PDF va image assets cho UI Brake Rotor.
 - `assets/products/sprocket-editorial/`: Fusion visual va video teaser 15 giay cho `/products/sprockets/`.
 - `assets/products/bolt-kits/`: reserved Fusion exports for the Neo-Swiss Bolt Kits page; filename guidance is in its `README.md`.
 - `ui-design-bolt-kits.md`: source-of-truth cho UI Bolt Kits (palette titanium, Neo-Swiss grid, asset, motion va responsive rules).

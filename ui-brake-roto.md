@@ -115,7 +115,7 @@ Header vẫn có Quote toàn site; đây là điều hướng dùng chung, khôn
 - Mỗi sheet phủ kín book, nền xanh-đen `#111713`, viền `#202420`, bóng 14px/18px như tấm giấy xếp lớp.
 - Điểm xoay ở gáy trái: `transform-origin: left center`.
 - `backface-visibility: hidden` để không lộ mặt sau khi lật.
-- Asset catalogue hiện tại: Front dùng `/assets/images/brake-rotor/LBG-F-KR94.webp`; Rear dùng `/assets/images/brake-rotor/LBG-R-KR94.webp`. Cả hai render từ PDF A4 `1190 × 1684`; giữ `object-fit: cover` để đưa bản vẽ vào sheet vuông.
+- Asset catalogue hiện tại: Front dùng `/assets/products/brake-rotor/LBG-F-KR94.webp`; Rear dùng `/assets/products/brake-rotor/LBG-R-KR94.webp`. Cả hai render từ PDF A4 `1190 × 1684`; giữ `object-fit: cover` để đưa bản vẽ vào sheet vuông.
 - Có overlay gradient tối nhẹ từ trên xuống dưới để chữ nhãn ở góc dưới luôn đọc được.
 
 **Nhãn sheet**
@@ -187,11 +187,11 @@ Header vẫn có Quote toàn site; đây là điều hướng dùng chung, khôn
 | Markup route | `products/brake-rotor/index.html` |
 | State và đồng bộ Front/Rear | `setupRotorCatalog()` trong `script.js` |
 | Layout, sheet, breakpoint | `.rotor-catalog*` trong `styles.css` |
-| Asset catalogue Front | `assets/images/brake-rotor/LBG-F-KR94.webp` |
-| Asset catalogue Rear | `assets/images/brake-rotor/LBG-R-KR94.webp` |
-| PDF source Front | `assets/images/brake-rotor/LBG-F-KR94.pdf` |
-| PDF source Rear | `assets/images/brake-rotor/LBG-R-KR94.pdf` |
-| Ảnh OG dự phòng | `assets/images/brake-rotor-blueprint-hero.png` |
+| Asset catalogue Front | `assets/products/brake-rotor/LBG-F-KR94.webp` |
+| Asset catalogue Rear | `assets/products/brake-rotor/LBG-R-KR94.webp` |
+| PDF source Front | `assets/products/brake-rotor/LBG-F-KR94.pdf` |
+| PDF source Rear | `assets/products/brake-rotor/LBG-R-KR94.pdf` |
+| Ảnh OG dự phòng | `assets/products/assets/products/brake-rotor/LBG-F-KR94.webp` |
 | Nguyên tắc thiết kế tổng quát | `design-ui.md` |
 
 Giữ các data attribute sau nếu sửa markup để JavaScript không mất liên kết:
