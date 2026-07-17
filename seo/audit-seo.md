@@ -6,24 +6,24 @@
 
 ## Tóm tắt
 
-Website có nền tảng SEO kỹ thuật tốt: 28/28 file HTML có title, meta description, canonical, Open Graph URL/image, viewport và `lang="en"`; 27/28 có BreadcrumbList; 77 block JSON-LD đều parse được; không phát hiện local `href`/`src` bị hỏng.
+Website có nền tảng SEO kỹ thuật tốt: 28/28 file HTML có title, meta description, canonical, Open Graph URL/image, Twitter Card, viewport và `lang="en"`; 27/28 có BreadcrumbList; 77 block JSON-LD đều parse được; không phát hiện local `href`/`src` bị hỏng.
 
-Các việc nên ưu tiên trong sprint kế tiếp:
+Các việc còn nên ưu tiên trong sprint kế tiếp:
 
-1. Sửa cấu trúc heading tại trang Brake Rotor để chỉ còn một H1 cấp trang.
-2. Rút gọn các title và meta description bị dài, tránh bị cắt trên SERP.
-3. Xác minh route `/cross-reference/` thực sự được publish trên subdomain `sprocket.langbianggravity.com`, vì canonical và sitemap đang dùng subdomain trong khi source HTML nằm trong repo main site.
-4. Bổ sung dữ liệu GSC thật cho query, page indexing và sitemap để audit hiệu suất đầy đủ hơn.
+1. Xác minh route `/cross-reference/` thực sự được publish trên subdomain `sprocket.langbianggravity.com`, vì canonical và sitemap đang dùng subdomain trong khi source HTML nằm trong repo main site.
+2. Bổ sung dữ liệu GSC thật cho query, page indexing và sitemap để audit hiệu suất đầy đủ hơn.
+3. Chuẩn hóa dimensions/loading của ảnh và mở rộng các knowledge page còn mỏng theo intent.
 
 ## Những điểm đang đạt
 
 | Hạng mục | Kết quả | Nhận xét |
 | --- | ---: | --- |
 | HTML pages | 28 | Bao gồm 3 cặp clean URL/fallback `.html` |
-| Title | 28/28 | Không thiếu; một số title quá dài |
-| Meta description | 28/28 | Không thiếu; 3 description quá dài |
+| Title | 28/28 | Không thiếu; không còn title vượt 65 ký tự trong audit này |
+| Meta description | 28/28 | Không thiếu; không còn description vượt 160 ký tự trong audit này |
 | Canonical | 28/28 | Các fallback trỏ về clean URL tương ứng |
 | Open Graph URL/image | 28/28 | Có thông tin chia sẻ cơ bản |
+| Twitter Card + OG image alt | 28/28 | Có card metadata và alt text |
 | Viewport + `lang` | 28/28 | Có `viewport`, tất cả đang là `en` |
 | BreadcrumbList | 27/28 | Homepage không có breadcrumb là chấp nhận được |
 | JSON-LD syntax | 77/77 block hợp lệ | Chưa thay thế cho kiểm tra schema validator/rich results |
@@ -34,14 +34,10 @@ Các việc nên ưu tiên trong sprint kế tiếp:
 
 ## Findings và mức độ ưu tiên
 
-### P1 — Có 2 H1 trong trang Brake Rotor
+### Đã xử lý — Cấu trúc H1 trang Brake Rotor
 
-`products/brake-rotor/index.html` có hai H1 ở dòng 140 và 161:
+`products/brake-rotor/index.html` trước đây có hai H1 ở hai state front/rear. Đã thêm một H1 cấp trang `Off-road motorcycle brake rotors` và chuyển hai state headline thành H2. Cần giữ kiểm tra này khi chỉnh lại catalog state.
 
-- `Front braking, dialled to the hub.`
-- `Rear braking, measured at every mount.`
-
-Hai nội dung thuộc hai state/catalog slide nhưng đều tồn tại trong DOM. Nên giữ một H1 mô tả toàn trang, ví dụ `Off-road motorcycle brake rotors`, sau đó dùng H2 cho các state Front/Rear. Nếu giao diện cần giữ headline hiện tại, có thể chuyển một headline thành H2 và xác nhận state ẩn không bị đọc như heading chính.
 
 ### P1 — Cần xác minh host của Cross-reference
 
@@ -71,34 +67,26 @@ File `seo/gsc/Trang.csv` có một snapshot page-level đến khoảng 2026-07-0
 
 Sau khi có export đầy đủ, ưu tiên các page có impressions cao nhưng CTR thấp, rồi đối chiếu với query thực tế và canonical/indexing status.
 
-### P2 — Sáu title dài hơn ngưỡng khuyến nghị
+### Đã xử lý — Title dài hơn ngưỡng khuyến nghị
 
-Title không phải giới hạn cứng, nhưng các title dài dễ bị cắt trên SERP. Các trang cần rút gọn:
+Title không phải giới hạn cứng, nhưng các title dài dễ bị cắt trên SERP. Đã rút gọn 6 title được phát hiện trong pass trước:
 
-| Trang | Độ dài hiện tại |
+| Trang | Title sau khi rút gọn |
 | --- | ---: |
-| `guides/motocross-gearing-chart/` | 71 ký tự |
-| `products/bolt-kits/` | 68 ký tự |
-| `knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/` | 91 ký tự |
-| `knowledge/choose-sprocket-ratio-for-trail-riding/` | 75 ký tự |
-| `knowledge/drivetrain-failure-on-trail/` | 71 ký tự |
-| `knowledge/chain-and-sprocket-inspection-before-trail/` | 84 ký tự |
+| `guides/motocross-gearing-chart/` | `Motocross Gearing Chart for Dirt Bike Sprockets | Langbiang Gravity` |
+| `products/bolt-kits/` | `Titanium Motorcycle Bolt Kits | Langbiang Gravity` |
+| `knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/` | `Trail Tools for Dirt Bike Chain Problems | Langbiang Gravity` |
+| `knowledge/choose-sprocket-ratio-for-trail-riding/` | `Dirt Bike Sprocket Ratio for Trail Riding | Langbiang Gravity` |
+| `knowledge/drivetrain-failure-on-trail/` | `Dirt Bike Drivetrain Problems on Trail | Langbiang Gravity` |
+| `knowledge/chain-and-sprocket-inspection-before-trail/` | `Inspect Dirt Bike Chain and Sprockets | Langbiang Gravity` |
 
-Mục tiêu thực dụng: giữ keyword chính ở đầu title và đưa brand về cuối khi còn đủ không gian, thường khoảng 50–65 ký tự.
+### Đã xử lý — Meta description dài hơn khoảng hiển thị thông thường
 
-### P2 — Ba meta description dài hơn khoảng hiển thị thông thường
+Các description dài của homepage, trail checklist và trail tools đã được rút gọn còn dưới 160 ký tự, giữ benefit, đối tượng và CTA/fitment intent.
 
-| Trang | Độ dài hiện tại |
-| --- | ---: |
-| `index.html` | 178 ký tự |
-| `knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/` | 170 ký tự |
-| `knowledge/trail-ride-drivetrain-checklist/` | 162 ký tự |
+### Đã xử lý — Twitter Card metadata toàn site
 
-Nên rút gọn còn khoảng 140–160 ký tự, giữ benefit, đối tượng và CTA/fitment intent.
-
-### P2 — Thiếu Twitter Card metadata toàn site
-
-Không có file HTML nào trong 28 file khai báo `twitter:card`. Đây không phải lỗi ranking trực tiếp, nhưng làm giảm khả năng kiểm soát preview khi URL được chia sẻ trên X và một số công cụ dùng Twitter metadata làm fallback. Nên thêm tối thiểu:
+28 file HTML hiện khai báo `twitter:card`, `twitter:title`, `twitter:description` và `twitter:image`. Đây không phải lỗi ranking trực tiếp; vẫn nên kiểm tra preview thực tế trên production.
 
 ```html
 <meta name="twitter:card" content="summary_large_image" />
@@ -130,7 +118,7 @@ Nên mở rộng theo intent thay vì kéo dài chung chung:
 
 ## Structured data
 
-Đã kiểm tra và parse thành công 77 block JSON-LD. Các type chính gồm `Organization`, `WebSite`, `BreadcrumbList`, `TechArticle`, `Product`, `ProductGroup`, `FAQPage`, `Service` và `CollectionPage`.
+Đã kiểm tra và parse thành công 77 block JSON-LD. Các type chính gồm `Organization`, `WebSite`, `BreadcrumbList`, `TechArticle`, `Product`, `ProductGroup`, `FAQPage`, `Service` và `CollectionPage`. 14 `TechArticle` hiện có thêm `mainEntityOfPage`, `image` và `inLanguage`; `datePublished`/`dateModified` vẫn chưa thêm vì repo chưa có ngày xác thực.
 
 Điểm cần duy trì:
 
@@ -148,10 +136,10 @@ Sitemap hiện có 26 URL, gồm 25 clean public routes và `llms.txt`. Ba fallb
 
 ### Sprint 1 — technical cleanup
 
-1. Chuẩn hóa H1 trang Brake Rotor.
-2. Rút gọn 6 title và 3 meta description nêu trên.
+1. Đã chuẩn hóa H1 trang Brake Rotor.
+2. Đã rút gọn 6 title và 3 meta description nêu trên.
 3. Xác minh production host/canonical cho Cross-reference.
-4. Bổ sung Twitter Card và kiểm tra preview.
+4. Đã bổ sung Twitter Card; tiếp tục kiểm tra preview trên production.
 
 ### Sprint 2 — performance và content depth
 
@@ -169,10 +157,10 @@ Sitemap hiện có 26 URL, gồm 25 clean public routes và `llms.txt`. Ba fallb
 ## Checklist kiểm tra lại
 
 - [ ] Mỗi canonical URL trả đúng host và HTTP 200.
-- [ ] Mỗi page indexable có đúng một H1 cấp trang.
-- [ ] Title không bị cắt ở các query chính.
+- [x] Mỗi page indexable có đúng một H1 cấp trang trong static audit.
+- [x] Title và description không vượt ngưỡng audit nội bộ; vẫn cần kiểm tra theo query thực tế.
 - [ ] Description có unique copy và CTA phù hợp intent.
-- [ ] OG/Twitter preview đúng ảnh, title và URL.
+- [ ] OG/Twitter preview đúng ảnh, title và URL trên production.
 - [ ] Sitemap chỉ chứa canonical public URLs.
 - [ ] Rich Results Test/Schema Validator không báo lỗi.
 - [ ] Lighthouse kiểm tra LCP, CLS và ảnh below-the-fold.

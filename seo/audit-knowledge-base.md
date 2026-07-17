@@ -14,15 +14,16 @@ Knowledge base đã có nền tảng route và metadata khá sạch:
 - 15/15 canonical URL đã có trong `sitemap.xml` và `llms.txt`.
 - Không phát hiện local `href`/`src` hỏng trong các page knowledge.
 - Title và meta description đều unique trong cluster.
+- 15/15 page đã có Twitter Card và `og:image:alt`.
 
 Điểm yếu chính nằm ở content depth, entity/date signals và cấu trúc liên kết nội bộ:
 
-1. 14 article page không có `datePublished`, `dateModified`, `mainEntityOfPage`, `inLanguage` hoặc `image` trong structured data.
-2. 14 article page không link contextual sang article knowledge khác; chỉ knowledge hub link xuống các bài.
+1. 14 article page chưa có `datePublished` và `dateModified`; các entity field còn lại đã được bổ sung.
+2. 14 article page đã có block `Related technical pages` để link contextual sang article knowledge khác; cần tiếp tục theo dõi anchor quality và query overlap.
 3. 8 page dùng cùng skeleton H2: `Definition`, `Practical use`, `Material notes`, `Common mistakes`, `When to contact Langbiang Gravity`.
 4. 8/14 article page có dưới 200 từ nội dung chính; trung bình toàn cluster article là khoảng 184 từ/page.
 5. Hai page về sprocket ratio có intent gần nhau và cần phân ranh rõ để tránh cannibalization.
-6. Một số title/meta quá dài; toàn bộ knowledge base thiếu Twitter Card và `og:image:alt`.
+6. Shared OG images vẫn làm một số bài khó phân biệt khi được chia sẻ; title/meta dài đã được rút gọn trong pass này.
 
 ## Kiểm tra tổng quan
 
@@ -38,21 +39,20 @@ Knowledge base đã có nền tảng route và metadata khá sạch:
 | BreadcrumbList | 15/15 | Có breadcrumb JSON-LD |
 | TechArticle | 14/14 article | Syntax hợp lệ |
 | Article dates | 0/14 | Thiếu tín hiệu freshness |
-| Article image trong schema | 0/14 | Thiếu image property |
-| Twitter Card | 0/15 | Thiếu social metadata |
-| Article-to-article links trong main | 0/14 | Cluster chưa được nối ngang |
+| Article image trong schema | 14/14 | Đã trỏ về OG image hiện có |
+| `mainEntityOfPage` / `inLanguage` | 14/14 | Đồng nhất với canonical và HTML language |
+| Twitter Card | 15/15 | Đã có card, title, description và image |
+| `og:image:alt` | 15/15 | Đã có alt text mô tả |
+| Article-to-article links trong main | 14/14 | Đã thêm 2 contextual links/page |
 
 ## Findings ưu tiên cao
 
-### P1 — Bổ sung tín hiệu tác giả, ngày cập nhật và entity cho 14 article
+### P1 — Bổ sung ngày cập nhật và reviewer khi có dữ liệu xác thực
 
-Các `TechArticle` hiện có `headline`, `description`, `url`, `author` và `publisher`, nhưng không có:
+Các `TechArticle` hiện có `headline`, `description`, `url`, `mainEntityOfPage`, `image`, `inLanguage`, `author` và `publisher`. Vẫn chưa có:
 
 - `datePublished`;
 - `dateModified`;
-- `mainEntityOfPage`;
-- `inLanguage`;
-- `image`;
 - thông tin reviewer hoặc subject-matter owner.
 
 Điều này không làm page mất index, nhưng làm bài khó thể hiện freshness, provenance và entity clarity. Đặc biệt với các chủ đề kỹ thuật như SCM440, 7075-T6, fitment và drivetrain safety, người dùng cần biết nội dung được viết/cập nhật khi nào và ai chịu trách nhiệm.
@@ -61,29 +61,26 @@ Khuyến nghị:
 
 - thêm ngày publish và ngày sửa thật, không dùng ngày giả;
 - nếu có người phụ trách kỹ thuật, thêm `author` và `reviewedBy` bằng thông tin thật;
-- thêm `mainEntityOfPage` trỏ về canonical page;
-- thêm `image` cho article nếu page có ảnh đại diện thực sự;
-- dùng `inLanguage: "en"` đồng nhất với HTML;
+- duy trì `mainEntityOfPage`, `image` và `inLanguage: "en"` đồng nhất với canonical, OG image và HTML;
 - hiển thị ngày cập nhật trên giao diện nếu ngày đó được khai báo trong schema.
 
 Không nên thêm tên tác giả, chứng nhận, thông số hoặc claim sản xuất nếu chưa có nguồn nội bộ xác nhận.
 
-### P1 — Article page chưa có liên kết ngang trong topical cluster
+### P1 — Kiểm tra chất lượng liên kết ngang trong topical cluster
 
-`knowledge/index.html` link đến 14 article, nhưng trong `<main>` của từng article không có link contextual nào đến article knowledge khác. Các bài chủ yếu chỉ trỏ đến `/products/sprockets/`, `/b2b/`, `/contact/` và sprocket finder.
+`knowledge/index.html` link đến 14 article và mỗi article hiện có block `Related technical pages` với 2 link contextual mô tả đích. Các bài vẫn giữ commercial next steps như `/products/sprockets/`, `/b2b/`, `/contact/` và sprocket finder.
 
 Hệ quả:
 
-- người đọc khó chuyển từ câu hỏi này sang câu hỏi liên quan;
-- crawler nhận ít tín hiệu về quan hệ giữa các chủ đề;
-- authority của hub chưa được phân phối tốt xuống cluster;
-- các bài gần intent không có cơ chế tự phân biệt rõ.
+- cần kiểm tra anchor text và vị trí link sau khi publish;
+- cần theo dõi GSC để xem các bài gần intent có bị overlap query hay không;
+- cần tiếp tục mở rộng reading path bằng nội dung riêng, không chỉ thêm link.
 
-Mỗi article nên có 2–4 link nội dung liên quan, đặt ngay trong phần giải thích hoặc một block `Related technical pages` trước CTA. Link text nên mô tả đích, không hiển thị raw path như `/products/sprockets/`.
+Mỗi article hiện có 2 link nội dung liên quan trong block `Related technical pages` ở cuối bài. Link text mô tả đích; các raw path cũ ở CTA thương mại vẫn nên được đổi dần sang anchor text giàu ngữ nghĩa.
 
-Mapping đề xuất:
+Mapping cluster (đã triển khai + liên kết tiếp theo):
 
-| Page | Nên link đến |
+| Page | Liên kết trong cluster / next step |
 | --- | --- |
 | `what-is-520-sprocket` | `motorcycle-sprocket-fitment`, `steel-vs-aluminium-rear-sprocket`, `/products/sprockets/` |
 | `motorcycle-sprocket-fitment` | `what-is-520-sprocket`, sprocket finder, `how-to-choose-dirt-bike-sprocket-ratio` |
@@ -195,36 +192,19 @@ Mỗi page cần nêu rõ nó giải quyết bước nào trong path và link sa
 
 ## Metadata và social preview
 
-### Title cần rút gọn
+### Title đã rút gọn trong pass này
 
-Các title knowledge page dài hơn khoảng 65 ký tự:
+Các title knowledge page từng dài hơn khoảng 65 ký tự đã được rút gọn, ưu tiên giữ keyword chính ở đầu title và brand ở cuối khi còn đủ không gian. Cần chạy lại count sau mỗi lần đổi copy để tránh regressions.
 
-| Page | Độ dài |
-| --- | ---: |
-| `chain-and-sprocket-inspection-before-trail` | 84 |
-| `choose-sprocket-ratio-for-trail-riding` | 75 |
-| `drivetrain-failure-on-trail` | 71 |
-| `what-tools-to-carry-for-chain-and-sprocket-problems` | 91 |
+Các title hiện tại của nhóm này lần lượt tập trung vào `Inspect Dirt Bike Chain and Sprockets`, `Dirt Bike Sprocket Ratio for Trail Riding`, `Dirt Bike Drivetrain Problems on Trail` và `Trail Tools for Dirt Bike Chain Problems`.
 
-Ưu tiên giữ keyword chính ở đầu title. Brand có thể giữ ở cuối nếu còn đủ không gian; không cần lặp lại toàn bộ descriptor dài.
+### Meta description đã rút gọn trong pass này
 
-### Meta description cần rút gọn
-
-Hai description dài hơn khoảng 160 ký tự:
-
-| Page | Độ dài |
-| --- | ---: |
-| `trail-ride-drivetrain-checklist` | 162 |
-| `what-tools-to-carry-for-chain-and-sprocket-problems` | 170 |
-
-Nên đưa benefit chính và intent vào khoảng 140–160 ký tự. Description phải khác với đoạn hero nhưng trả lời cùng một query intent.
+Hai description trước đây dài hơn khoảng 160 ký tự đã được rút gọn. Nên giữ benefit chính và intent trong khoảng 140–160 ký tự; description phải khác với đoạn hero nhưng trả lời cùng một query intent.
 
 ### Social preview
 
-Knowledge base hiện thiếu:
-
-- `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` trên 15/15 page;
-- `og:image:alt` trên 15/15 page.
+Knowledge base hiện đã có `twitter:card`, `twitter:title`, `twitter:description`, `twitter:image` và `og:image:alt` trên 15/15 page.
 
 Ngoài ra, 8 article dùng cùng `sprocket-cad-alpha.webp` làm OG image và 5 article dùng cùng `field-test.webp`. Đây không phải lỗi index, nhưng làm các bài khó phân biệt khi được chia sẻ và giảm cơ hội cải thiện CTR social.
 
@@ -278,8 +258,8 @@ Việc cần làm tiếp là đồng bộ taxonomy trong cả ba nơi khi thêm 
 
 1. Viết lại outline 8 page đang dùng skeleton chung.
 2. Phân ranh hai page sprocket ratio.
-3. Thêm 2–4 contextual knowledge links vào từng article.
-4. Đổi raw path anchor thành descriptive anchor text.
+3. Đã thêm 2 contextual knowledge links vào từng article; tiếp tục kiểm tra anchor text trong production.
+4. Đổi raw path anchor trong các CTA còn lại thành descriptive anchor text.
 5. Ưu tiên mở rộng `motorcycle-sprocket-fitment` và `what-is-520-sprocket`.
 
 ### Sprint 2 — content depth và trust
@@ -291,8 +271,8 @@ Việc cần làm tiếp là đồng bộ taxonomy trong cả ba nơi khi thêm 
 
 ### Sprint 3 — metadata và đo lường
 
-1. Rút 4 title dài và 2 description dài.
-2. Bổ sung Twitter Card và `og:image:alt`.
+1. Đã rút 4 title dài và 2 description dài.
+2. Đã bổ sung Twitter Card và `og:image:alt`.
 3. Kiểm tra structured data trên production.
 4. Nạp GSC query/page/indexing export để theo dõi CTR, query overlap và index coverage.
 5. Đo organic landing page, scroll depth, finder clicks và quote starts theo từng cluster.
@@ -310,4 +290,3 @@ Việc cần làm tiếp là đồng bộ taxonomy trong cả ba nơi khi thêm 
 - [ ] JSON-LD có `mainEntityOfPage`, date, image và inLanguage khi các giá trị có thật.
 - [ ] URL đã thêm vào hub, sitemap, `llms.txt`, keyword map và url map.
 - [ ] Đã kiểm tra local route, production HTTP 200, canonical và structured data.
-
