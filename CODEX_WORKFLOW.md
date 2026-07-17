@@ -129,7 +129,7 @@ Dung khi them trang, doi URL, doi anh OG, doi canonical, robots/sitemap.
 
 File hay dung:
 - HTML page head.
-- `assets/images/hero-test-rig-social.webp` (shared 1200x630 social-preview image; use a new filename when refreshing Meta's cached preview).
+- `assets/images/hero-test-rig-social-hq.png` (shared 2400x1260 social-preview image; use a new filename when refreshing Meta's cached preview).
 - `llms.txt`
 - `sitemap.xml`
 - `robots.txt`
@@ -137,7 +137,7 @@ File hay dung:
 
 Can check:
 - Canonical dung domain `https://langbianggravity.com/`.
-- Moi trang public co `og:image` va `twitter:image` cung tro ve `assets/images/hero-test-rig-social.webp` 1200x630; khi refresh Facebook, doi filename asset thay vi chi doi query string.
+- Moi trang public co `og:image` va `twitter:image` cung tro ve `assets/images/hero-test-rig-social-hq.png` 2400x1260; khi refresh Facebook, doi filename asset thay vi chi doi query string.
 - Clean URL route co file `index.html` trong folder.
 - Fallback root `.html` chi giu cho compatibility, khong phai trang chinh.
 - Sitemap phai co URL moi neu page public.
