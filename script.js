@@ -13,6 +13,14 @@ const state = {
 const qs = (selector, root = document) => root.querySelector(selector);
 const qsa = (selector, root = document) => Array.from(root.querySelectorAll(selector));
 
+function productMedia(src, alt, className = "") {
+  if (src) {
+    return `<img${className ? ` class="${className}"` : ""} src="${src}" alt="${alt}">`;
+  }
+
+  return `<div class="media-placeholder${className ? ` ${className}` : ""}" role="img" aria-label="${alt}">Product visual pending</div>`;
+}
+
 function getProduct(slug) {
   return products.find((product) => product.slug === slug);
 }
@@ -391,7 +399,7 @@ function fitmentCard(fitment) {
   card.className = "fitment-result-card";
   card.innerHTML = `
     <div class="fitment-result-media">
-      <img src="${product?.image || "/assets/images/product-bench.webp"}" alt="${fitment.product}">
+      ${productMedia(product?.image, fitment.product)}
     </div>
     <div class="fitment-result-body">
       <p class="product-meta">${fitment.sku}</p>
@@ -551,7 +559,7 @@ function openProduct(slug) {
 
   detail.innerHTML = `
     <div class="product-detail-media">
-      <img src="${product.image}" alt="${product.name}">
+      ${productMedia(product.image, product.name, "product-detail-image")}
     </div>
     <div class="product-detail-content">
       <p class="eyebrow">${product.category}</p>
@@ -599,7 +607,6 @@ function openFitment(sku) {
   const detail = qs("[data-product-detail]");
   if (!fitment || !dialog || !detail) return;
 
-  const image = product?.image || "/assets/images/product-bench.webp";
   const chainSize =
     fitment.chainSize ||
     (product?.chainSize && product.chainSize !== "Not applicable" ? product.chainSize : "");
@@ -625,7 +632,7 @@ function openFitment(sku) {
 
   detail.innerHTML = `
     <div class="product-detail-media">
-      <img src="${image}" alt="${fitment.product}">
+      ${productMedia(product?.image, fitment.product, "product-detail-image")}
     </div>
     <div class="product-detail-content">
       <p class="eyebrow">${fitment.sku}</p>
@@ -737,12 +744,11 @@ function renderCart() {
     const key = cartItemKey(item);
     const title = fitment ? fitment.product : product.name;
     const meta = fitment ? fitment.sku : PRICE_LABEL;
-    const image = product?.image || "/assets/images/product-bench.webp";
 
     const row = document.createElement("article");
     row.className = "cart-item";
     row.innerHTML = `
-      <img src="${image}" alt="${title}">
+      ${productMedia(product?.image, title, "cart-item-image")}
       <div>
         <h3>${title}</h3>
         <span>${meta}</span>

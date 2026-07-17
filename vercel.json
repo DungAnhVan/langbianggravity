@@ -44,21 +44,6 @@
       "source": "/guides/motocross-gearing-chart",
       "destination": "/guides/motocross-gearing-chart/",
       "permanent": true
-    },
-    {
-      "source": "/assets/brand/logo12.png",
-      "destination": "/assets/brand/logo-black.png",
-      "permanent": true
-    },
-    {
-      "source": "/assets/products/brake-rotor.png",
-      "destination": "/assets/images/brake-rotor-blueprint-hero.webp?v=20260717-visual-refresh",
-      "permanent": true
-    },
-    {
-      "source": "/assets/products/sprocket-cad-alpha.webp",
-      "destination": "/assets/products/sprocket-hero-industrial.webp?v=20260717-visual-refresh",
-      "permanent": true
     }
   ]
 }

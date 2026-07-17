@@ -129,6 +129,7 @@ Dung khi them trang, doi URL, doi anh OG, doi canonical, robots/sitemap.
 
 File hay dung:
 - HTML page head.
+- `assets/images/hero-test-rig.webp` (shared 1200x630 social-preview image).
 - `llms.txt`
 - `sitemap.xml`
 - `robots.txt`
@@ -136,6 +137,7 @@ File hay dung:
 
 Can check:
 - Canonical dung domain `https://langbianggravity.com/`.
+- Moi trang public co `og:image` va `twitter:image` cung tro ve `assets/images/hero-test-rig.webp` 1200x630; cap nhat version query khi thay asset.
 - Clean URL route co file `index.html` trong folder.
 - Fallback root `.html` chi giu cho compatibility, khong phai trang chinh.
 - Sitemap phai co URL moi neu page public.

@@ -487,7 +487,7 @@ p {
   background:
     linear-gradient(90deg, rgba(9, 11, 10, 0.99) 0%, rgba(9, 11, 10, 0.94) 38%, rgba(9, 11, 10, 0.6) 72%, rgba(9, 11, 10, 0.86) 100%),
     linear-gradient(0deg, rgba(9, 11, 10, 0.98), rgba(9, 11, 10, 0.18) 62%),
-    url("assets/images/hero-test-rig.webp") center / cover no-repeat;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) center / cover no-repeat;
   filter: saturate(0.82) contrast(1.08);
 }
 
@@ -1131,7 +1131,7 @@ p {
   inset: 0;
   background:
     linear-gradient(90deg, rgba(9, 11, 10, 0.98), rgba(9, 11, 10, 0.7) 70%, rgba(9, 11, 10, 0.88)),
-    url("assets/images/field-test.webp") center / cover no-repeat;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) center / cover no-repeat;
   filter: saturate(0.7);
 }
 
@@ -1272,7 +1272,7 @@ p {
     background:
       linear-gradient(90deg, rgba(9, 11, 10, 0.96), rgba(9, 11, 10, 0.7)),
       linear-gradient(0deg, rgba(9, 11, 10, 1), rgba(9, 11, 10, 0.22) 68%),
-      url("assets/images/hero-test-rig.webp") 66% center / cover no-repeat;
+      linear-gradient(135deg, #101513 0%, #080a09 100%) 66% center / cover no-repeat;
   }
 
   .home-race-hero__copy h1 {
@@ -2925,7 +2925,7 @@ p {
   background:
     linear-gradient(90deg, rgba(8, 10, 9, 0.99) 0%, rgba(8, 10, 9, 0.86) 42%, rgba(8, 10, 9, 0.42) 78%),
     linear-gradient(0deg, rgba(8, 10, 9, 1) 0%, rgba(8, 10, 9, 0.24) 50%),
-    url("assets/images/hero-test-rig.webp") center / cover no-repeat;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) center / cover no-repeat;
 }
 
 .hero-content {
@@ -3066,7 +3066,7 @@ p {
   background:
     linear-gradient(90deg, rgba(8, 10, 9, 0.98) 0%, rgba(8, 10, 9, 0.8) 48%, rgba(8, 10, 9, 0.58) 100%),
     linear-gradient(0deg, rgba(8, 10, 9, 0.96), rgba(8, 10, 9, 0.42)),
-    url("assets/images/product-bench.webp") right center / cover no-repeat;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) right center / cover no-repeat;
 }
 
 .products-hero::before {
@@ -3451,7 +3451,7 @@ p {
 .b2b-section {
   background:
     linear-gradient(rgba(8, 10, 9, 0.93), rgba(8, 10, 9, 0.96)),
-    url("assets/images/field-test.webp") center / cover no-repeat fixed;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) center / cover no-repeat fixed;
 }
 
 .b2b-layout {
@@ -3670,7 +3670,7 @@ p {
   background:
     linear-gradient(90deg, rgba(8, 10, 9, 0.99) 0%, rgba(8, 10, 9, 0.86) 48%, rgba(8, 10, 9, 0.68) 100%),
     linear-gradient(0deg, rgba(8, 10, 9, 0.99), rgba(8, 10, 9, 0.42)),
-    var(--product-hero-image, url("assets/images/product-bench.webp")) var(--product-hero-position, center) / var(--product-hero-size, cover) no-repeat,
+    var(--product-hero-image, linear-gradient(135deg, #101513 0%, #080a09 100%)) var(--product-hero-position, center) / var(--product-hero-size, cover) no-repeat,
     #111713;
 }
 
@@ -3698,7 +3698,7 @@ p {
 }
 
 .product-line-hero-sprockets {
-  --product-hero-image: url("assets/products/sprocket-teeth-closeup.webp");
+  --product-hero-image: linear-gradient(135deg, #101513 0%, #080a09 100%);
   --product-hero-position: center;
   --product-hero-size: cover;
 }
@@ -4013,7 +4013,7 @@ p {
 }
 
 .product-line-hero-cnc {
-  --product-hero-image: url("assets/images/cnc-inspection.webp");
+  --product-hero-image: url("assets/products/cnc-performance/clutch-cover-design.webp");
   --product-hero-position: center;
   --product-hero-size: cover;
 }
@@ -4387,7 +4387,7 @@ p {
 }
 
 .product-line-hero-bolts {
-  --product-hero-image: url("assets/images/product-bench.webp");
+  --product-hero-image: linear-gradient(135deg, #101513 0%, #080a09 100%);
   --product-hero-position: center;
   --product-hero-size: cover;
 }
@@ -5107,6 +5107,75 @@ textarea:focus {
   background: #171d1a;
 }
 
+.media-placeholder,
+.lineup-card-media-placeholder,
+.process-board-visual-placeholder,
+.cnc-bento-media-placeholder,
+.guide-hero-visual-placeholder,
+.rotor-catalog-media-placeholder {
+  display: grid;
+  place-items: center;
+  border: 1px dashed rgba(238, 241, 235, 0.28);
+  background:
+    linear-gradient(135deg, rgba(238, 241, 235, 0.06), transparent 55%),
+    #151a17;
+  color: #aeb9af;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.fitment-result-media .media-placeholder {
+  width: 84%;
+  min-height: 160px;
+}
+
+.product-detail-media .media-placeholder {
+  width: 100%;
+  min-height: 520px;
+}
+
+.cart-item .media-placeholder {
+  width: 62px;
+  height: 62px;
+  border-radius: 6px;
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+.home-lineup-card__visual .lineup-card-media-placeholder {
+  width: 100%;
+  min-height: 244px;
+  padding: 20px;
+}
+
+.process-board-visual-placeholder {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+}
+
+.cnc-bento-media .cnc-bento-media-placeholder {
+  width: 100%;
+  min-height: 320px;
+}
+
+.guide-hero-visual .guide-hero-visual-placeholder {
+  position: relative;
+  inset: auto;
+  width: min(440px, 86%);
+  min-height: 220px;
+  padding: 24px;
+}
+
+.rotor-catalog-sheet .rotor-catalog-media-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  filter: none;
+}
+
 .cart-item h3 {
   margin: 0 0 4px;
   font-size: 0.94rem;
@@ -5371,14 +5440,14 @@ textarea:focus {
     background:
       linear-gradient(90deg, rgba(8, 10, 9, 0.97) 0%, rgba(8, 10, 9, 0.84) 72%, rgba(8, 10, 9, 0.68) 100%),
       linear-gradient(0deg, rgba(8, 10, 9, 0.96), rgba(8, 10, 9, 0.48)),
-      url("assets/images/product-bench.webp") 64% center / cover no-repeat;
+      linear-gradient(135deg, #101513 0%, #080a09 100%) 64% center / cover no-repeat;
   }
 
   .product-line-hero {
     background:
       linear-gradient(90deg, rgba(8, 10, 9, 0.98) 0%, rgba(8, 10, 9, 0.88) 72%, rgba(8, 10, 9, 0.74) 100%),
       linear-gradient(0deg, rgba(8, 10, 9, 1), rgba(8, 10, 9, 0.52)),
-      var(--product-hero-image, url("assets/images/product-bench.webp")) center / cover no-repeat,
+      var(--product-hero-image, linear-gradient(135deg, #101513 0%, #080a09 100%)) center / cover no-repeat,
       #111713;
   }
 
@@ -5459,7 +5528,7 @@ textarea:focus {
     background:
       linear-gradient(90deg, rgba(8, 10, 9, 0.96) 0%, rgba(8, 10, 9, 0.68) 68%, rgba(8, 10, 9, 0.24) 100%),
       linear-gradient(0deg, rgba(8, 10, 9, 1) 0%, rgba(8, 10, 9, 0.18) 52%),
-      url("assets/images/hero-test-rig.webp") 67% center / cover no-repeat;
+      linear-gradient(135deg, #101513 0%, #080a09 100%) 67% center / cover no-repeat;
   }
 
   .hero-content {
@@ -5629,7 +5698,7 @@ textarea:focus {
     linear-gradient(122deg, transparent 0 62%, rgba(55, 215, 255, 0.16) 62.2% 62.9%, transparent 63.2%),
     linear-gradient(90deg, rgba(238, 241, 235, 0.035) 1px, transparent 1px),
     linear-gradient(0deg, rgba(238, 241, 235, 0.026) 1px, transparent 1px),
-    url("/assets/products/sprocket-teeth-closeup.webp") right center / cover no-repeat,
+    linear-gradient(135deg, #101513 0%, #080a09 100%) right center / cover no-repeat,
     linear-gradient(115deg, #050606 0%, #090d0b 48%, #17120f 100%);
   background-size: auto, auto, auto, auto, 72px 72px, 72px 72px, cover, auto;
 }
@@ -6000,7 +6069,7 @@ textarea:focus {
   border-radius: var(--radius);
   background:
     linear-gradient(90deg, rgba(5, 6, 6, 0.68), rgba(5, 6, 6, 0.12) 50%, rgba(5, 6, 6, 0.68)),
-    url("/assets/products/sprocket-teeth-closeup.webp") right center / cover no-repeat,
+    linear-gradient(135deg, #101513 0%, #080a09 100%) right center / cover no-repeat,
     linear-gradient(135deg, rgba(255, 47, 31, 0.1), transparent 34%),
     radial-gradient(circle at center, rgba(238, 241, 235, 0.08), transparent 34%),
     rgba(8, 10, 9, 0.78);
@@ -7093,7 +7162,7 @@ textarea:focus {
     background:
       linear-gradient(180deg, rgba(5, 6, 6, 0.88), rgba(5, 6, 6, 0.96)),
       linear-gradient(118deg, transparent 0 56%, rgba(255, 47, 31, 0.2) 56.2% 57.4%, transparent 57.7%),
-      url("/assets/products/sprocket-teeth-closeup.webp") right top / cover no-repeat,
+      linear-gradient(135deg, #101513 0%, #080a09 100%) right top / cover no-repeat,
       #050606;
   }
 
@@ -7974,7 +8043,7 @@ textarea:focus {
   background:
     linear-gradient(180deg, rgba(8, 10, 9, 0.08), rgba(8, 10, 9, 0.82)),
     linear-gradient(90deg, rgba(8, 10, 9, 0.52), transparent 56%),
-    url("assets/products/sprocket-hero-industrial.webp") center / cover no-repeat;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) center / cover no-repeat;
   filter: saturate(0.82) contrast(1.08);
 }
 
@@ -8176,7 +8245,7 @@ textarea:focus {
 .knowledge-card-featured--image {
   background:
     linear-gradient(180deg, rgba(8, 10, 9, 0.02), rgba(8, 10, 9, 0.94) 86%),
-    url("assets/products/sprocket-teeth-closeup.webp") center / cover no-repeat;
+    linear-gradient(135deg, #101513 0%, #080a09 100%) center / cover no-repeat;
 }
 
 .knowledge-card-top {
