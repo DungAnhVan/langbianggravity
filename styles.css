@@ -3708,7 +3708,7 @@ p {
 }
 
 .product-line-hero-brake {
-  --product-hero-image: url("assets/products/brake-rotor.png");
+  --product-hero-image: url("assets/images/brake-rotor-blueprint-hero.webp");
   --product-hero-position: right 12% center;
   --product-hero-size: min(640px, 58vw) auto;
 }

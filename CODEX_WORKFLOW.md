@@ -39,6 +39,7 @@ Mo `http://localhost:4173/`.
 - `vercel.json`: redirect normalization cho slashless clean URLs.
 - `seo/keyword-map.md`, `seo/url-map.md`: lightweight SEO planning docs cho keyword map va route strategy.
 - `seo/gsc/`: GSC export templates va notes de uu tien SEO sprint tiep theo.
+- `seo/google-search-console-workflow.md`: quy trinh bat buoc sau moi lan sua page, doi URL, them page hoac them feature co the anh huong Search.
 - `assets/`: brand, product, va image assets local.
 - `assets/images/brake-rotor/`: source PDF va image assets cho UI Brake Rotor.
 - `assets/products/sprocket-editorial/`: Fusion visual va video teaser 15 giay cho `/products/sprockets/`.
@@ -168,6 +169,7 @@ Muc do on dinh: kha on dinh. De sai khi them URL moi ma quen sitemap.
 - Neu sua HTML/CSS/JS: preview local va kiem tra trang lien quan.
 - Neu sua data product/fitment: test card/modal/search/quote lien quan.
 - Neu sua route/SEO: check canonical, breadcrumb, sitemap.
+- Neu sua page/feature co anh huong Search: lam theo `seo/google-search-console-workflow.md`, ghi lai URL Inspection va follow-up production.
 - Cap nhat file nay neu phat hien quy tac moi hoac khau lam viec thay doi.
 
 ## Cach tiet kiem token khi lam viec
