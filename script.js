@@ -925,6 +925,62 @@ function setupForms() {
   });
 }
 
+function setupKnowledgeBase() {
+  const page = qs(".knowledge-hub-page");
+  if (!page) return;
+
+  const search = qs("[data-knowledge-search]", page);
+  const status = qs("[data-knowledge-status]", page);
+  const empty = qs("[data-knowledge-empty]", page);
+  const cards = qsa("[data-knowledge-card]", page);
+  const filters = qsa("[data-knowledge-filter]", page);
+  let activeFilter = "all";
+
+  const normalize = (value) => value.trim().toLowerCase();
+
+  const render = () => {
+    const query = normalize(search?.value || "");
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const matchesFilter = activeFilter === "all" || card.dataset.category === activeFilter;
+      const matchesSearch = !query || normalize(card.dataset.search || "").includes(query);
+      const isVisible = matchesFilter && matchesSearch;
+      card.hidden = !isVisible;
+      if (isVisible) visible += 1;
+    });
+
+    if (status) {
+      status.textContent = `${visible} article${visible === 1 ? "" : "s"}${query ? ` matching “${search.value.trim()}”` : ""}`;
+    }
+    if (empty) empty.hidden = visible !== 0;
+  };
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      activeFilter = filter.dataset.knowledgeFilter || "all";
+      filters.forEach((item) => {
+        const isActive = item === filter;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", String(isActive));
+      });
+      render();
+    });
+  });
+
+  search?.addEventListener("input", render);
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key !== "/" || event.metaKey || event.ctrlKey || event.altKey) return;
+    const target = event.target;
+    if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target instanceof HTMLSelectElement) return;
+    event.preventDefault();
+    search?.focus();
+  });
+
+  render();
+}
+
 function setupCartQuote() {
   const link = qs("[data-cart-quote]");
   if (!link) return;
@@ -1076,6 +1132,7 @@ function init() {
   renderCart();
   setupNavigation();
   setupForms();
+  setupKnowledgeBase();
   setupFitmentSearches();
   setupCrossReferenceSearches();
   setupCartQuote();

@@ -97,98 +97,163 @@
     </button>
 
     <main id="main">
-      <section class="page-hero section-pad">
-        <div class="shell section-heading">
-          <p class="eyebrow">Knowledge base</p>
-          <h1>Langbiang Gravity source pages.</h1>
-          <p>
-            These pages are written to answer common sprocket, fitment, material, and OEM questions in a short,
-            factual way. Start here when you need a direct explanation rather than a product card.
-          </p>
+      <section class="knowledge-hero section-pad">
+        <div class="shell knowledge-hero-grid">
+          <div class="knowledge-hero-copy">
+            <p class="eyebrow">Technical library / 01</p>
+            <h1>Know the part. Choose the right setup.</h1>
+            <p class="knowledge-hero-lead">
+              Direct answers for sprocket fitment, gearing, materials, manufacturing, and trail readiness — written
+              for riders, buyers, and the teams building the next batch.
+            </p>
+            <div class="knowledge-hero-actions">
+              <a class="button button-primary" href="#knowledge-library">Browse the library <span aria-hidden="true">↘</span></a>
+              <a class="knowledge-text-link" href="https://sprocket.langbianggravity.com/finder">Open fitment finder <span aria-hidden="true">↗</span></a>
+            </div>
+            <dl class="knowledge-stats" aria-label="Knowledge base overview">
+              <div><dt>14</dt><dd>source pages</dd></div>
+              <div><dt>04</dt><dd>core topics</dd></div>
+              <div><dt>01</dt><dd>clear next step</dd></div>
+            </dl>
+          </div>
+          <div class="knowledge-hero-visual" aria-label="Close-up of an industrial sprocket inspection">
+            <div class="knowledge-hero-visual-image"></div>
+            <div class="knowledge-hero-visual-label"><span>FIELD NOTE</span><strong>Geometry before guesswork</strong></div>
+            <span class="knowledge-hero-visual-index">LBG / KB-001</span>
+          </div>
         </div>
       </section>
 
-      <section class="section-pad">
-        <div class="shell b2b-cards">
-          <article>
-            <h2><a href="/knowledge/what-is-520-sprocket/">What is a 520 sprocket?</a></h2>
-            <p>Explains chain pitch, fitment, and why 520 matters for off-road bikes.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/how-to-choose-dirt-bike-sprocket-ratio/">How to choose sprocket ratio</a></h2>
-            <p>Shows how front and rear tooth changes affect acceleration, traction, and speed.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/scm440-sprocket-steel/">SCM440 sprocket steel</a></h2>
-            <p>Notes on a heat-treatable alloy steel used in hard-wearing sprocket programs.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/7075-t6-aluminium-sprocket/">7075-T6 aluminium sprocket</a></h2>
-            <p>Why aluminium rear sprockets trade wear life for lower rotating mass.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/steel-vs-aluminium-rear-sprocket/">Steel vs aluminium rear sprocket</a></h2>
-            <p>Practical comparison for riders, fleets, and race builds.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/cnc-sprocket-manufacturing/">CNC sprocket manufacturing</a></h2>
-            <p>How geometry, tooling, heat treatment, and inspection fit together.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/motorcycle-sprocket-fitment/">Motorcycle sprocket fitment</a></h2>
-            <p>The dimensions and checks that matter before ordering or production.</p>
-          </article>
-          <article>
-            <h2><a href="/knowledge/oem-sprocket-manufacturing-vietnam/">OEM sprocket manufacturing Vietnam</a></h2>
-            <p>What a buyer should provide for a batch or private-label sprocket program.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section-pad">
+      <section class="knowledge-library section-pad" id="knowledge-library">
         <div class="shell">
-          <p>
-            Source pages connect back to <a href="/products/sprockets/">/products/sprockets/</a>,
-            <a href="/b2b/">/b2b/</a>, <a href="/contact/">/contact/</a>, and the
-            <a href="https://sprocket.langbianggravity.com/finder">sprocket finder</a> where fitment lookup is needed.
-          </p>
+          <div class="knowledge-library-head">
+            <div class="section-heading">
+              <p class="eyebrow">Browse the library</p>
+              <h2>Find the answer before you order.</h2>
+              <p>Use a keyword or choose a topic. Every page stays short, practical, and tied to a real decision.</p>
+            </div>
+            <div class="knowledge-search-wrap">
+              <label for="knowledge-search">Search technical notes</label>
+              <div class="knowledge-search-field">
+                <span aria-hidden="true">⌕</span>
+                <input id="knowledge-search" type="search" placeholder="520, fitment, aluminium..." autocomplete="off" data-knowledge-search />
+                <kbd>/</kbd>
+              </div>
+              <p class="knowledge-search-status" aria-live="polite" data-knowledge-status>14 articles</p>
+            </div>
+          </div>
+
+          <div class="knowledge-filters" role="group" aria-label="Filter knowledge articles">
+            <button type="button" class="is-active" aria-pressed="true" data-knowledge-filter="all">All topics</button>
+            <button type="button" aria-pressed="false" data-knowledge-filter="fitment">Fitment &amp; gearing</button>
+            <button type="button" aria-pressed="false" data-knowledge-filter="materials">Materials</button>
+            <button type="button" aria-pressed="false" data-knowledge-filter="manufacturing">Manufacturing</button>
+            <button type="button" aria-pressed="false" data-knowledge-filter="trail">Trail readiness</button>
+          </div>
+
+          <div class="knowledge-card-grid" data-knowledge-grid>
+            <article class="knowledge-card knowledge-card-featured" data-knowledge-card data-category="fitment" data-search="520 sprocket chain pitch fitment off road bike">
+              <div class="knowledge-card-top"><span>01</span><small>FITMENT</small></div>
+              <h3><a href="/knowledge/what-is-520-sprocket/">What is a 520 sprocket?</a></h3>
+              <p>Chain pitch, fitment, and why 520 matters for off-road bikes.</p>
+              <a class="knowledge-card-link" href="/knowledge/what-is-520-sprocket/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card knowledge-card-featured knowledge-card-featured--image" data-knowledge-card data-category="fitment" data-search="sprocket ratio gearing acceleration traction speed dirt bike">
+              <div class="knowledge-card-top"><span>02</span><small>GEARING</small></div>
+              <h3><a href="/knowledge/how-to-choose-dirt-bike-sprocket-ratio/">How to choose a sprocket ratio</a></h3>
+              <p>See how front and rear tooth changes affect acceleration, traction, and speed.</p>
+              <a class="knowledge-card-link" href="/knowledge/how-to-choose-dirt-bike-sprocket-ratio/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="materials" data-search="SCM440 steel sprocket heat treat wear hard wearing">
+              <div class="knowledge-card-top"><span>03</span><small>MATERIALS</small></div>
+              <h3><a href="/knowledge/scm440-sprocket-steel/">SCM440 sprocket steel</a></h3>
+              <p>A practical note on heat-treatable alloy steel for hard-wearing sprocket programs.</p>
+              <a class="knowledge-card-link" href="/knowledge/scm440-sprocket-steel/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="materials" data-search="7075 T6 aluminium aluminum rear sprocket rotating mass wear life">
+              <div class="knowledge-card-top"><span>04</span><small>MATERIALS</small></div>
+              <h3><a href="/knowledge/7075-t6-aluminium-sprocket/">7075-T6 aluminium sprocket</a></h3>
+              <p>Why aluminium rear sprockets trade wear life for lower rotating mass.</p>
+              <a class="knowledge-card-link" href="/knowledge/7075-t6-aluminium-sprocket/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="materials" data-search="steel aluminium aluminum rear sprocket comparison race fleet">
+              <div class="knowledge-card-top"><span>05</span><small>MATERIALS</small></div>
+              <h3><a href="/knowledge/steel-vs-aluminium-rear-sprocket/">Steel vs aluminium rear sprocket</a></h3>
+              <p>A practical comparison for riders, fleets, and race builds.</p>
+              <a class="knowledge-card-link" href="/knowledge/steel-vs-aluminium-rear-sprocket/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="manufacturing" data-search="CNC sprocket manufacturing geometry tooling heat treatment inspection">
+              <div class="knowledge-card-top"><span>06</span><small>MANUFACTURING</small></div>
+              <h3><a href="/knowledge/cnc-sprocket-manufacturing/">CNC sprocket manufacturing</a></h3>
+              <p>How geometry, tooling, heat treatment, and inspection fit together.</p>
+              <a class="knowledge-card-link" href="/knowledge/cnc-sprocket-manufacturing/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="fitment" data-search="motorcycle sprocket fitment dimensions ordering production">
+              <div class="knowledge-card-top"><span>07</span><small>FITMENT</small></div>
+              <h3><a href="/knowledge/motorcycle-sprocket-fitment/">Motorcycle sprocket fitment</a></h3>
+              <p>The dimensions and checks that matter before ordering or production.</p>
+              <a class="knowledge-card-link" href="/knowledge/motorcycle-sprocket-fitment/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="manufacturing" data-search="OEM sprocket manufacturing Vietnam private label batch buyer">
+              <div class="knowledge-card-top"><span>08</span><small>OEM</small></div>
+              <h3><a href="/knowledge/oem-sprocket-manufacturing-vietnam/">OEM sprocket manufacturing in Vietnam</a></h3>
+              <p>What a buyer should provide for a batch or private-label sprocket program.</p>
+              <a class="knowledge-card-link" href="/knowledge/oem-sprocket-manufacturing-vietnam/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="trail" data-search="dirt bike trail ride drivetrain checklist chain slack sprocket teeth bolts">
+              <div class="knowledge-card-top"><span>09</span><small>TRAIL</small></div>
+              <h3><a href="/knowledge/trail-ride-drivetrain-checklist/">Dirt bike trail ride drivetrain checklist</a></h3>
+              <p>Pre-ride checks for chain slack, sprocket teeth, bolts, master link, and chain guide.</p>
+              <a class="knowledge-card-link" href="/knowledge/trail-ride-drivetrain-checklist/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="trail" data-search="inspect dirt bike chain sprockets before trail ride enduro">
+              <div class="knowledge-card-top"><span>10</span><small>TRAIL</small></div>
+              <h3><a href="/knowledge/chain-and-sprocket-inspection-before-trail/">Inspect chain and sprockets before a trail ride</a></h3>
+              <p>Practical inspection steps for dirt bike and enduro riders before they leave.</p>
+              <a class="knowledge-card-link" href="/knowledge/chain-and-sprocket-inspection-before-trail/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="trail" data-search="sprocket wear signs dirt bike hooked teeth noise chain lift off road">
+              <div class="knowledge-card-top"><span>11</span><small>TRAIL</small></div>
+              <h3><a href="/knowledge/sprocket-wear-signs-off-road/">Sprocket wear signs for dirt bikes</a></h3>
+              <p>What hooked teeth, noise, and chain lift usually mean on a worn drivetrain.</p>
+              <a class="knowledge-card-link" href="/knowledge/sprocket-wear-signs-off-road/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="trail" data-search="dirt bike sprocket ratio trail riding technical terrain fitment">
+              <div class="knowledge-card-top"><span>12</span><small>TRAIL</small></div>
+              <h3><a href="/knowledge/choose-sprocket-ratio-for-trail-riding/">Choose a sprocket ratio for trail riding</a></h3>
+              <p>Gearing tradeoffs for steep technical terrain, open trails, and fitment checks.</p>
+              <a class="knowledge-card-link" href="/knowledge/choose-sprocket-ratio-for-trail-riding/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="trail" data-search="common dirt bike drivetrain problems trail ride chain derailment loose hardware">
+              <div class="knowledge-card-top"><span>13</span><small>TRAIL</small></div>
+              <h3><a href="/knowledge/drivetrain-failure-on-trail/">Common drivetrain problems on trail rides</a></h3>
+              <p>Chain derailment, loose hardware, worn parts, and the right response when a ride goes wrong.</p>
+              <a class="knowledge-card-link" href="/knowledge/drivetrain-failure-on-trail/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+            <article class="knowledge-card" data-knowledge-card data-category="trail" data-search="tools carry chain sprocket problems trail rides emergency kit recovery">
+              <div class="knowledge-card-top"><span>14</span><small>TRAIL</small></div>
+              <h3><a href="/knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/">Tools to carry for chain and sprocket problems</a></h3>
+              <p>Small emergency kit guidance for chain, sprocket, and recovery situations on a ride.</p>
+              <a class="knowledge-card-link" href="/knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/">Read the note <span aria-hidden="true">↗</span></a>
+            </article>
+          </div>
+          <p class="knowledge-empty" data-knowledge-empty hidden>No technical notes match that search. Try a broader term.</p>
         </div>
       </section>
 
-      <section class="section-pad">
-        <div class="shell section-heading">
-          <p class="eyebrow">Trail readiness / drivetrain reliability</p>
-          <h2>Trail readiness and drivetrain reliability for dirt bike and enduro motorcycle riders.</h2>
-          <p>
-            These pages answer broad ride-prep questions from a dirt bike and enduro motorcycle drivetrain point of
-            view, not bicycle trail riding, without turning Langbiang Gravity into a general trail guide.
-          </p>
-        </div>
-        <div class="shell b2b-cards">
-          <article>
-            <h3><a href="/knowledge/trail-ride-drivetrain-checklist/">Dirt Bike Trail Ride Drivetrain Checklist</a></h3>
-            <p>Pre-ride checks for dirt bike chain slack, sprocket teeth, bolts, master link, and chain guide condition.</p>
-          </article>
-          <article>
-            <h3><a href="/knowledge/chain-and-sprocket-inspection-before-trail/">How to Inspect Dirt Bike Chain and Sprockets Before a Trail Ride</a></h3>
-            <p>Practical inspection steps for dirt bike and enduro motorcycle riders who want to catch drivetrain problems before they leave.</p>
-          </article>
-          <article>
-            <h3><a href="/knowledge/sprocket-wear-signs-off-road/">Sprocket Wear Signs for Dirt Bikes</a></h3>
-            <p>What hooked teeth, noise, and chain lift usually mean on a worn dirt bike drivetrain.</p>
-          </article>
-          <article>
-            <h3><a href="/knowledge/choose-sprocket-ratio-for-trail-riding/">How to Choose Dirt Bike Sprocket Ratio for Trail Riding</a></h3>
-            <p>Gearing tradeoffs for steep technical terrain, open trails, and dirt bike fitment verification.</p>
-          </article>
-          <article>
-            <h3><a href="/knowledge/drivetrain-failure-on-trail/">Common Dirt Bike Drivetrain Problems on Trail Rides</a></h3>
-            <p>Chain derailment, loose hardware, worn parts, and the right response when the ride goes wrong.</p>
-          </article>
-          <article>
-            <h3><a href="/knowledge/what-tools-to-carry-for-chain-and-sprocket-problems/">Tools to Carry for Dirt Bike Chain and Sprocket Problems on Trail Rides</a></h3>
-            <p>Small emergency kit guidance for dirt bike chain, sprocket, and recovery situations on a ride.</p>
-          </article>
+      <section class="knowledge-next section-pad">
+        <div class="shell knowledge-next-grid">
+          <div>
+            <p class="eyebrow">Need a specific answer?</p>
+            <h2>Take the next step with the right data.</h2>
+          </div>
+          <div class="knowledge-next-copy">
+            <p>Use the finder for bike-specific sprocket lookup, or send a request when you need fitment, quantity, finishing, or packaging confirmed.</p>
+            <div class="knowledge-hero-actions">
+              <a class="button button-primary" href="https://sprocket.langbianggravity.com/finder">Find your sprocket <span aria-hidden="true">↗</span></a>
+              <a class="knowledge-text-link" href="/contact/">Talk to the team <span aria-hidden="true">↗</span></a>
+            </div>
+          </div>
         </div>
       </section>
     </main>

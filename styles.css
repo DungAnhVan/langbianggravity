@@ -7792,8 +7792,576 @@ textarea:focus {
 @media (max-width: 620px) {
   .bolt-editorial-page .site-header { background: rgba(225, 229, 226, 0.98); }
   .bolt-editorial-page .nav-toggle span { background: var(--bolt-ink); }
-  .bolt-editorial-page .site-nav { border-color: var(--bolt-rule); background: var(--bolt-paper); }
+.bolt-editorial-page .site-nav { border-color: var(--bolt-rule); background: var(--bolt-paper); }
+
 .bolt-editorial-page .mobile-cart-button { background: var(--bolt-ink); color: var(--bolt-paper); }
+}
+
+/* Knowledge base hub */
+.knowledge-hub-page {
+  background: var(--black);
+}
+
+.knowledge-hub-page .site-header {
+  background: rgba(8, 10, 9, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.knowledge-hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: 154px;
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.028) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.022) 1px, transparent 1px),
+    radial-gradient(circle at 18% 20%, rgba(40, 167, 255, 0.12), transparent 32%),
+    #080a09;
+  background-size: 80px 80px, 80px 80px, auto, auto;
+}
+
+.knowledge-hero::after {
+  position: absolute;
+  right: -12vw;
+  bottom: -30%;
+  width: 52vw;
+  height: 52vw;
+  border: 1px solid rgba(184, 255, 45, 0.18);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.knowledge-hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(420px, 0.82fr);
+  gap: clamp(44px, 8vw, 124px);
+  align-items: center;
+}
+
+.knowledge-hero-copy {
+  padding-bottom: 14px;
+}
+
+.knowledge-hero-copy h1 {
+  max-width: 680px;
+  margin-bottom: 28px;
+  font-size: clamp(3.7rem, 7.5vw, 7.8rem);
+  letter-spacing: -0.055em;
+  line-height: 0.86;
+}
+
+.knowledge-hero-lead {
+  max-width: 620px;
+  margin-bottom: 30px;
+  color: #e1e9e1;
+  font-size: 1.12rem;
+  font-weight: 620;
+  line-height: 1.55;
+}
+
+.knowledge-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  align-items: center;
+}
+
+.knowledge-text-link {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  min-height: 46px;
+  color: var(--off-white);
+  font-size: 0.93rem;
+  font-weight: 900;
+}
+
+.knowledge-text-link span,
+.knowledge-card-link span {
+  color: var(--lime);
+  transition: transform 180ms ease;
+}
+
+.knowledge-text-link:hover span,
+.knowledge-text-link:focus-visible span,
+.knowledge-card-link:hover span,
+.knowledge-card-link:focus-visible span {
+  transform: translate(3px, -3px);
+}
+
+.knowledge-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 610px;
+  gap: 1px;
+  margin: 58px 0 0;
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+  background: var(--line);
+}
+
+.knowledge-stats div {
+  padding: 17px 16px 15px;
+  background: rgba(8, 10, 9, 0.74);
+}
+
+.knowledge-stats dt {
+  margin-bottom: 2px;
+  color: var(--lime);
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+}
+
+.knowledge-stats dd {
+  margin: 0;
+  color: var(--steel);
+  font-size: 0.73rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.knowledge-hero-visual {
+  position: relative;
+  min-height: 550px;
+  overflow: hidden;
+  border: 1px solid rgba(238, 241, 235, 0.28);
+  background: var(--graphite);
+  box-shadow: 24px 24px 0 rgba(184, 255, 45, 0.08);
+  transform: rotate(2deg);
+}
+
+.knowledge-hero-visual::before {
+  position: absolute;
+  inset: 18px;
+  z-index: 1;
+  border: 1px solid rgba(238, 241, 235, 0.28);
+  content: "";
+  pointer-events: none;
+}
+
+.knowledge-hero-visual::after {
+  position: absolute;
+  right: 14%;
+  bottom: 14%;
+  width: 112px;
+  height: 112px;
+  border: 1px solid var(--lime);
+  border-radius: 50%;
+  box-shadow: 0 0 0 15px rgba(184, 255, 45, 0.06), 0 0 0 30px rgba(184, 255, 45, 0.03);
+  content: "";
+  opacity: 0.7;
+}
+
+.knowledge-hero-visual-image {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 10, 9, 0.08), rgba(8, 10, 9, 0.82)),
+    linear-gradient(90deg, rgba(8, 10, 9, 0.52), transparent 56%),
+    url("assets/products/sprocket-hero-industrial.webp") center / cover no-repeat;
+  filter: saturate(0.82) contrast(1.08);
+}
+
+.knowledge-hero-visual-label,
+.knowledge-hero-visual-index {
+  position: absolute;
+  z-index: 2;
+}
+
+.knowledge-hero-visual-label {
+  right: 34px;
+  bottom: 34px;
+  left: 34px;
+  display: grid;
+  gap: 6px;
+}
+
+.knowledge-hero-visual-label span {
+  color: var(--lime);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.knowledge-hero-visual-label strong {
+  max-width: 240px;
+  color: var(--off-white);
+  font-size: 1.55rem;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+}
+
+.knowledge-hero-visual-index {
+  top: 34px;
+  left: 34px;
+  color: rgba(238, 241, 235, 0.75);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.knowledge-library {
+  background:
+    linear-gradient(90deg, rgba(238, 241, 235, 0.022) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(238, 241, 235, 0.018) 1px, transparent 1px),
+    #111713;
+  background-size: 80px 80px;
+}
+
+.knowledge-library-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.66fr);
+  gap: 60px;
+  align-items: end;
+  margin-bottom: 44px;
+}
+
+.knowledge-library .section-heading {
+  margin-bottom: 0;
+}
+
+.knowledge-library .section-heading h2 {
+  max-width: 650px;
+  margin-bottom: 18px;
+  font-size: clamp(2.7rem, 5vw, 5.4rem);
+  letter-spacing: -0.05em;
+}
+
+.knowledge-library .section-heading > p:last-child {
+  max-width: 560px;
+  margin-bottom: 0;
+  color: #cfd9d0;
+}
+
+.knowledge-search-wrap {
+  justify-self: end;
+  width: min(100%, 430px);
+}
+
+.knowledge-search-wrap label {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--steel);
+  font-size: 0.76rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.knowledge-search-field {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  min-height: 58px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  padding: 0 16px;
+  background: rgba(8, 10, 9, 0.78);
+}
+
+.knowledge-search-field:focus-within {
+  border-color: var(--lime);
+  box-shadow: 0 0 0 3px rgba(184, 255, 45, 0.12);
+}
+
+.knowledge-search-field > span {
+  color: var(--lime);
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.knowledge-search-field input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--off-white);
+  font-weight: 700;
+}
+
+.knowledge-search-field input::placeholder {
+  color: #87938a;
+}
+
+.knowledge-search-field kbd {
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: var(--steel);
+  font-size: 0.7rem;
+}
+
+.knowledge-search-status {
+  margin: 10px 0 0;
+  color: var(--steel);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.knowledge-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.knowledge-filters button {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 14px;
+  background: rgba(238, 241, 235, 0.035);
+  color: #cbd5cc;
+  font-size: 0.82rem;
+  font-weight: 850;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.knowledge-filters button:hover,
+.knowledge-filters button:focus-visible,
+.knowledge-filters button.is-active {
+  border-color: var(--lime);
+  background: var(--lime);
+  color: var(--black);
+}
+
+.knowledge-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.knowledge-card {
+  display: flex;
+  min-height: 290px;
+  flex-direction: column;
+  padding: 24px;
+  background: rgba(8, 10, 9, 0.88);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.knowledge-card:hover {
+  position: relative;
+  z-index: 1;
+  background: #19211c;
+  transform: translateY(-3px);
+}
+
+.knowledge-card-featured {
+  min-height: 340px;
+  background: linear-gradient(145deg, rgba(184, 255, 45, 0.16), rgba(8, 10, 9, 0.94) 60%);
+}
+
+.knowledge-card-featured--image {
+  background:
+    linear-gradient(180deg, rgba(8, 10, 9, 0.02), rgba(8, 10, 9, 0.94) 86%),
+    url("assets/products/sprocket-teeth-closeup.webp") center / cover no-repeat;
+}
+
+.knowledge-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: auto;
+  color: var(--lime);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.knowledge-card-top small {
+  color: var(--steel);
+  font-size: 0.65rem;
+}
+
+.knowledge-card h3 {
+  max-width: 300px;
+  margin: 42px 0 12px;
+  font-size: 1.5rem;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.knowledge-card h3 a:hover,
+.knowledge-card h3 a:focus-visible {
+  color: var(--lime);
+}
+
+.knowledge-card p {
+  max-width: 330px;
+  margin-bottom: 24px;
+  color: #c8d2ca;
+  font-size: 0.94rem;
+  font-weight: 620;
+  line-height: 1.48;
+}
+
+.knowledge-card-link {
+  display: inline-flex;
+  gap: 9px;
+  align-items: center;
+  margin-top: auto;
+  color: var(--off-white);
+  font-size: 0.82rem;
+  font-weight: 900;
+}
+
+.knowledge-card[hidden] {
+  display: none;
+}
+
+.knowledge-empty {
+  padding: 22px 0 0;
+  color: var(--steel);
+  font-weight: 700;
+}
+
+.knowledge-next {
+  background: var(--lime);
+  color: var(--black);
+}
+
+.knowledge-next-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
+  gap: 60px;
+  align-items: end;
+}
+
+.knowledge-next .eyebrow {
+  color: #315400;
+}
+
+.knowledge-next h2 {
+  max-width: 650px;
+  margin-bottom: 0;
+  color: var(--black);
+  font-size: clamp(2.7rem, 5.2vw, 5.8rem);
+  letter-spacing: -0.06em;
+}
+
+.knowledge-next-copy p {
+  max-width: 480px;
+  margin-bottom: 26px;
+  color: #20300e;
+  font-weight: 700;
+}
+
+.knowledge-next .button-primary {
+  border-color: var(--black);
+  background: var(--black);
+  color: var(--lime);
+}
+
+.knowledge-next .button-primary:hover,
+.knowledge-next .button-primary:focus-visible {
+  border-color: var(--black);
+  background: #273617;
+  color: var(--lime);
+}
+
+.knowledge-next .knowledge-text-link {
+  color: var(--black);
+}
+
+.knowledge-next .knowledge-text-link span {
+  color: #315400;
+}
+
+@media (max-width: 960px) {
+  .knowledge-hero-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 0.82fr);
+    gap: 44px;
+  }
+
+  .knowledge-hero-copy h1 {
+    font-size: clamp(3.4rem, 7.5vw, 5.8rem);
+  }
+
+  .knowledge-card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .knowledge-hero {
+    padding-top: 124px;
+  }
+
+  .knowledge-hero-grid,
+  .knowledge-library-head,
+  .knowledge-next-grid {
+    grid-template-columns: 1fr;
+    gap: 38px;
+  }
+
+  .knowledge-hero-copy h1 {
+    max-width: 100%;
+    font-size: clamp(3.2rem, 15vw, 5rem);
+  }
+
+  .knowledge-hero-lead {
+    font-size: 1rem;
+  }
+
+  .knowledge-stats {
+    margin-top: 40px;
+  }
+
+  .knowledge-hero-visual {
+    min-height: 390px;
+    transform: rotate(1deg);
+  }
+
+  .knowledge-hero-visual-label {
+    right: 26px;
+    bottom: 26px;
+    left: 26px;
+  }
+
+  .knowledge-hero-visual-index {
+    top: 28px;
+    left: 28px;
+  }
+
+  .knowledge-search-wrap {
+    justify-self: stretch;
+    width: 100%;
+  }
+
+  .knowledge-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .knowledge-card,
+  .knowledge-card-featured {
+    min-height: 250px;
+  }
+
+  .knowledge-card h3 {
+    margin-top: 34px;
+  }
+
+  .knowledge-next h2 {
+    max-width: 100%;
+    font-size: clamp(2.7rem, 13vw, 4.3rem);
+  }
+
+  .knowledge-next .knowledge-hero-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
 }
 
 .bolt-asset-image {
